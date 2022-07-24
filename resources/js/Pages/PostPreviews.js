@@ -1,0 +1,24 @@
+import React from "react";
+import Layout from "./Layout";
+import Tagbox from "./Tagbox";
+import Published from "./Published";
+import { Link } from "@inertiajs/inertia-react";
+
+export default function PostPreviews(props) {
+    const posts = props.posts;
+    const tags = props.tags;
+    const postPreviews = posts.map((post) => 
+        <div className="post">
+            <Link className="headline"><h2>{post.title}</h2></Link>
+            <div className="postpreview" key={post.id}>
+                <img className="featured" src=""></img>
+                <p className="postslug">{post.slug}</p>
+            </div><Tagbox postID={post.id} tags={tags} />
+        </div>
+    );
+    return(
+        <Layout>
+            {postPreviews}
+        </Layout>
+    )
+}
