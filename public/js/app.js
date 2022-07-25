@@ -2182,8 +2182,9 @@ __webpack_require__.r(__webpack_exports__);
 function PostPreviews(props) {
   var posts = props.posts;
   var tags = props.tags;
-  var postPreviews = posts.map(function (post) {
+  var postPreviews = posts.map(function (post, index) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      key: post.id,
       className: "post"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_4__.Link, {
       className: "headline"
@@ -2196,8 +2197,8 @@ function PostPreviews(props) {
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
       className: "postslug"
     }, post.slug)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Tagbox__WEBPACK_IMPORTED_MODULE_2__["default"], {
-      postID: post.id,
-      tags: tags
+      tags: tags,
+      index: index
     }));
   });
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Layout__WEBPACK_IMPORTED_MODULE_1__["default"], null, postPreviews);
@@ -2259,16 +2260,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ Tagbox)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
+
 
 function Tagbox(props) {
-  var postID = props.postID;
-  var tags = props.tags;
-  var postTags = tags.map(function (tag) {
-    if (postID === tags.post_id) {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
-        key: tags.id
-      }, tags.name);
-    }
+  var index = props.index;
+  var tagColl = props.tags[index];
+  var tags = tagColl.map(function (tag) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+      key: "tagIndex"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.Link, {
+      href: "{tag.tag_id}"
+    }, tag.name));
   });
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "filedunder"
@@ -2276,7 +2279,7 @@ function Tagbox(props) {
     id: "tagboxunder"
   }, "Filed under:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ol", {
     className: "tagbox"
-  }, postTags));
+  }, tags));
 }
 
 /***/ }),

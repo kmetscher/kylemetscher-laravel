@@ -24,25 +24,27 @@ class PostPreviewsController extends Controller {
         BlogPost model to return an array: */
 
         $posts = BlogPost::select('id', 'title', 'slug', 'image', 'date', 'language')
-                        ->take(5)
+                        ->take(10)
                         ->orderBy('id', 'desc')
                         ->get();
 
         /* Tags associated with a post are retrieved with a join on the tags table;
         the site database is in 3NF. There is an associative table with post IDs
-        and tag IDs used to make matches between them. For this, we can use the
-        PostTags model and collection methods, and hand off the whole collection
-        to React where matches can be made using the post ID as a key.
-        This implementation isn't going to scale well -- it works for now. */
+        and tag IDs used to make matches between them. */
         
-        foreach ($posts as $post) {
-             $tags = PostTags::join('tags', 'post_tags.tag_id', '=', 'tags.id')
-                                    ->select('post_id', 'tags.*')
-                                    ->get();
+        foreach ($posts as $post) { // match the tags by each post ID rendered
+             $tags[] = PostTags::join('tags', function ($join) use ($post) {
+                $join->on('post_tags.tag_id', '=', 'tags.id')
+                ->where('post_tags.post_id', '=', $post->id);
+             })->get();
         }
 
-        /* Now, we can hand off both collections as props to the PostPreview
-        React component. */
+        /* The above returns an array of collections, which is a giant pain in the
+        fucking ass. They are, however, indexed by the order in which post rows were
+        retrieved.
+
+        Now, we can hand off the posts collection and the tags array as props 
+        to the PostPreview React component. */
 
         return Inertia::render('PostPreviews', [
             'posts' => $posts,

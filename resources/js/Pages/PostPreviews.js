@@ -7,13 +7,13 @@ import { Link } from "@inertiajs/inertia-react";
 export default function PostPreviews(props) {
     const posts = props.posts;
     const tags = props.tags;
-    const postPreviews = posts.map((post) => 
-        <div className="post">
+    const postPreviews = posts.map((post, index) => 
+        <div key={post.id} className="post">
             <Link className="headline"><h2>{post.title}</h2></Link>
             <div className="postpreview" key={post.id}>
                 <img className="featured" src=""></img>
                 <p className="postslug">{post.slug}</p>
-            </div><Tagbox postID={post.id} tags={tags} />
+            </div><Tagbox tags={tags} index ={index}/>
         </div>
     );
     return(
