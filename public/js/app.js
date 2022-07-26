@@ -2199,9 +2199,50 @@ function PostPreviews(props) {
     }, post.slug)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Tagbox__WEBPACK_IMPORTED_MODULE_2__["default"], {
       tags: tags,
       index: index
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Published__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      date: post.date
     }));
   });
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Layout__WEBPACK_IMPORTED_MODULE_1__["default"], null, postPreviews);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Layout__WEBPACK_IMPORTED_MODULE_1__["default"], null, props.headline &&
+  /*#__PURE__*/
+  // Conditionally render headlines like tag names etc
+  react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
+    className: "tagline"
+  }, props.headline), postPreviews);
+}
+
+/***/ }),
+
+/***/ "./resources/js/Pages/PostTagbox.js":
+/*!******************************************!*\
+  !*** ./resources/js/Pages/PostTagbox.js ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ PostTagbox)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
+
+
+function PostTagbox(props) {
+  var tags = props.tags.map(function (tag) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+      key: "{tag.tag_id}"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.Link, {
+      href: "{tag.tag_id}"
+    }, tag.name));
+  });
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "filedunder"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+    id: "tagboxunder"
+  }, "Filed under:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ol", {
+    className: "tagbox"
+  }, tags));
 }
 
 /***/ }),
@@ -2222,7 +2263,9 @@ __webpack_require__.r(__webpack_exports__);
 function Published(props) {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "pubdatebox"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "fixme"));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+    className: "pubdate"
+  }, "Published ", props.date));
 }
 
 /***/ }),
@@ -2297,21 +2340,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _Layout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Layout */ "./resources/js/Pages/Layout.js");
-/* harmony import */ var _Tagbox__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Tagbox */ "./resources/js/Pages/Tagbox.js");
+/* harmony import */ var _PostTagbox__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./PostTagbox */ "./resources/js/Pages/PostTagbox.js");
 /* harmony import */ var _Published__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Published */ "./resources/js/Pages/Published.js");
 
 
 
 
-function ViewPost(post) {
+function ViewPost(props) {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Layout__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "blogpost"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, post.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, props.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
     className: "blogpost",
     src: "https://kylemetscher.com/images/{post.image}"
-  }), post.body, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }), props.body, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "filedunder"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Tagbox__WEBPACK_IMPORTED_MODULE_2__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_PostTagbox__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    tags: props.tags
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "pubdatebox"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Published__WEBPACK_IMPORTED_MODULE_3__["default"], null))));
 }
@@ -53824,6 +53869,8 @@ var map = {
 	"./Layout.js": "./resources/js/Pages/Layout.js",
 	"./PostPreviews": "./resources/js/Pages/PostPreviews.js",
 	"./PostPreviews.js": "./resources/js/Pages/PostPreviews.js",
+	"./PostTagbox": "./resources/js/Pages/PostTagbox.js",
+	"./PostTagbox.js": "./resources/js/Pages/PostTagbox.js",
 	"./Published": "./resources/js/Pages/Published.js",
 	"./Published.js": "./resources/js/Pages/Published.js",
 	"./Sidebar": "./resources/js/Pages/Sidebar.js",

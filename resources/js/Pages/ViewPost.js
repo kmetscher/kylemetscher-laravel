@@ -1,17 +1,17 @@
 import React from "react";
 import Layout from "./Layout";
-import Tagbox from "./Tagbox";
+import PostTagbox from "./PostTagbox";
 import Published from "./Published";
 
-export default function ViewPost(post) {
+export default function ViewPost(props) {
     return (
         <Layout>
             <div className="blogpost">
-                <h2>{post.title}</h2>
+                <h2>{props.title}</h2>
                 <img className="blogpost" src="https://kylemetscher.com/images/{post.image}"></img>
-                {post.body}
+                {props.body}
                 <div className="filedunder">
-                    <Tagbox />
+                    <PostTagbox tags={props.tags}/>
                 </div>
                 <div className="pubdatebox">
                     <Published />

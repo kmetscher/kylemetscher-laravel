@@ -15,15 +15,19 @@ use Inertia\Inertia;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+// Post preview controller
 Route::get('/',
     [PostPreviewsController::class, 'displayIndexPosts']
+);
+
+Route::get('/tagged/{tagID}',
+    [PostPreviewsController::class, 'displayByTag']
 );
 
 Route::get('/inertiatest/{postID}', 
     [InertiaTestController::class, 'inertiaTest']
 );
-
+// View post controller
 Route::get('/viewpost/{postID}',
     [ViewPostController::class, 'byID']
 );

@@ -13,11 +13,15 @@ export default function PostPreviews(props) {
             <div className="postpreview" key={post.id}>
                 <img className="featured" src=""></img>
                 <p className="postslug">{post.slug}</p>
-            </div><Tagbox tags={tags} index ={index}/>
+            </div>
+            <Tagbox tags={tags} index ={index}/>
+            <Published date={post.date}/>
         </div>
     );
     return(
         <Layout>
+            {props.headline && // Conditionally render headlines like tag names etc
+                <h2 className="tagline">{props.headline}</h2>}
             {postPreviews}
         </Layout>
     )
