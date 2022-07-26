@@ -48,7 +48,7 @@ class PostPreviewsController extends Controller {
         BlogPost model to return an array: */
 
         $posts = BlogPost::select('id', 'title', 'slug', 'image', 'date', 'language')
-                        ->take(10)
+                        ->take(5)
                         ->orderBy('id', 'desc')
                         ->get();
         

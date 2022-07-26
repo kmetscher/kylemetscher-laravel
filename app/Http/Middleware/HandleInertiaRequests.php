@@ -4,6 +4,8 @@ namespace App\Http\Middleware;
 
 use Illuminate\Http\Request;
 use Inertia\Middleware;
+use App\Models\Tags;
+use App\Models\BlogPost;
 
 class HandleInertiaRequests extends Middleware
 {
@@ -34,10 +36,15 @@ class HandleInertiaRequests extends Middleware
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
-    public function share(Request $request): array
-    {
+    public function share(Request $request): array {
+        /* Returning information to hydrate props in the sidebar */
         return array_merge(parent::share($request), [
-            //
+            'alltags' => fn() => Tags::get(),
+            // do not do this at home
+            'archives' => fn() => BlogPost::selectRaw(
+                'DISTINCT YEAR(date) AS year, MONTH(date) AS month')
+                ->orderBy('year', 'desc')
+                ->get()
         ]);
     }
 }
