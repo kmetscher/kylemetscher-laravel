@@ -5,29 +5,24 @@ use App\Http\Controllers\PostPreviewsController;
 use App\Http\Controllers\ViewPostController;
 use Inertia\Inertia;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 // Post preview controller
+
 Route::get('/',
-    [PostPreviewsController::class, 'displayIndexPosts']
-);
+    [PostPreviewsController::class, 'displayIndexPosts']);
 
 Route::get('/tagged/{tagID}',
-    [PostPreviewsController::class, 'displayByTag']
-);
+    [PostPreviewsController::class, 'displayByTag']);
+
+Route::get('/archive/{dateTuple}',
+    [PostPreviewsController::class, 'displayByDate']);
+
+Route::get('/language/{lang}',
+    [PostPreviewsController::class, 'displayByLang']);
 
 Route::get('/inertiatest/{postID}', 
-    [InertiaTestController::class, 'inertiaTest']
-);
+    [InertiaTestController::class, 'inertiaTest']);
+
 // View post controller
+
 Route::get('/viewpost/{postID}',
-    [ViewPostController::class, 'byID']
-);
+    [ViewPostController::class, 'byID']);

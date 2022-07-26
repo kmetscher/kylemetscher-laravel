@@ -15,7 +15,7 @@ with different previews depending on the desired action, whether it is the
 recent list of posts on index, or viewing by tag, language, date etc. */
 
 class PostPreviewsController extends Controller {
-    public function retrieveTags(Collection $posts) {
+    private function retrieveTags(Collection $posts) {
 
         /* Accepts an Illuminate collection of posts retrieved from the blog_posts table.
         Returns an array of collections of the tags associated with each post in the
@@ -76,12 +76,17 @@ class PostPreviewsController extends Controller {
         $tagName = Tags::select('name')->where('id', '=', $tagID)
                     ->get(); // we also want the tag name
 
-        $headline = "Tagged \"{$tagName[0]->name}\""; // I hate this language
+        $tagline = "\"{$tagName[0]->name}\""; // I hate this language
         
         $tags = $this->retrieveTags($posts);
 
         return Inertia::render('PostPreviews', [
-            'headline' => $headline,
+            'tagline' => $tagline,
+            /* Passing the tag name as a "tagline" allows us to reuse the
+            PostPreviews component since it can be conditionally rendered
+            and contain any string, like the name of a tag, a date, or 
+            a language, depending on state. */
+            'taglinetype' => 'tag',
             'posts' => $posts,
             'tags' => $tags
         ]);
@@ -89,8 +94,43 @@ class PostPreviewsController extends Controller {
 
     public function displayByDate($dateTuple) {
 
+        /* For this view, we'll select rows with a date 'like' a tuple of a
+        year and a month, so that archives can be organized on a monthly basis. */
+
+        $year = substr($dateTuple, 0, 4); // year as YYYY
+        $month = substr($dateTuple, 4, 2); // month as MM
+        $date[] = ['year' => $year, 'month' => $month]; // for handing off
+
+        /* Now we can query with specificity, and rely on SQL functions instead
+        of PHP string manipulation. */
+
+        $posts = BlogPost::where('date', 'like', "$year-$month-%") // cursed
+                        ->get();
+
+        $tags = $this->retrieveTags($posts);
+
+        return Inertia::render('PostPreviews', [
+            'tagline' => $date,
+            'taglinetype' => 'date',
+            'posts' => $posts,
+            'tags' => $tags
+        ]);
+
     }
     public function displayByLang($lang) {
         
+        /* This view is simple, with just a select-where match on language. */
+
+        $posts = BlogPost::where('language', '=', $lang)
+                            ->get();
+        
+        $tags = $this->retrieveTags($posts);
+
+        return Inertia::render('PostPreviews', [
+            'tagline' => $lang,
+            'taglinetype' => 'lang',
+            'posts' => $posts,
+            'tags' => $tags
+        ]);
     }
 }

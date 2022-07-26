@@ -2173,7 +2173,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Layout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Layout */ "./resources/js/Pages/Layout.js");
 /* harmony import */ var _Tagbox__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Tagbox */ "./resources/js/Pages/Tagbox.js");
 /* harmony import */ var _Published__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Published */ "./resources/js/Pages/Published.js");
-/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
+/* harmony import */ var _Tagline__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Tagline */ "./resources/js/Pages/Tagline.js");
+/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
+
 
 
 
@@ -2186,7 +2188,7 @@ function PostPreviews(props) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
       key: post.id,
       className: "post"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_4__.Link, {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_5__.Link, {
       className: "headline"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, post.title)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
       className: "postpreview",
@@ -2203,12 +2205,13 @@ function PostPreviews(props) {
       date: post.date
     }));
   });
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Layout__WEBPACK_IMPORTED_MODULE_1__["default"], null, props.headline &&
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Layout__WEBPACK_IMPORTED_MODULE_1__["default"], null, props.tagline &&
   /*#__PURE__*/
-  // Conditionally render headlines like tag names etc
-  react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
-    className: "tagline"
-  }, props.headline), postPreviews);
+  // Conditionally render the tagline 
+  react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Tagline__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    taglinetype: props.taglinetype,
+    tagline: props.tagline
+  }), postPreviews);
 }
 
 /***/ }),
@@ -2261,11 +2264,29 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 function Published(props) {
+  var options = {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  };
+  var date = new Date(props.date);
+  date = date.toLocaleDateString('en-US', options);
+  /*
+  date = date.toLocaleDateString(lang.dateFormat, options);
+  */
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "pubdatebox"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
     className: "pubdate"
-  }, "Published ", props.date));
+  }, "Published ", date));
+  /* 
+  return(
+      <div className="pubdatebox">
+          <p className="pubdate">{lang.published} {date}</p>
+      </div>
+  );
+  */
 }
 
 /***/ }),
@@ -2323,6 +2344,111 @@ function Tagbox(props) {
   }, "Filed under:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ol", {
     className: "tagbox"
   }, tags));
+}
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Tagline.js":
+/*!***************************************!*\
+  !*** ./resources/js/Pages/Tagline.js ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Tagline)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+/* Several sections are commented out in anticipation of future use with 
+React's context hooks. */
+
+function Tagline(props) {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(props.taglinetype),
+      _useState2 = _slicedToArray(_useState, 2),
+      taglinetype = _useState2[0],
+      setType = _useState2[1]; // const lang = useContext(LangContext);
+  // const theme = useContext(ThemeContext);
+
+
+  var taglineContent;
+  /* We want the tagline to look different depending on its state, since
+  the tagline might be used to display the name of a tag, an archive date,
+  or the name of a language. The tagline type is passed as a prop to use
+  in state, and here we can conditionally define a variable to hold the 
+  appropriate JSX for the tagline type. The use of state lets us reuse 
+  this component sitewide. */
+
+  if (taglinetype === 'tag') {
+    taglineContent = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
+      className: "tagline"
+    }, "Tagged ", props.tagline);
+    /* 
+    taglineContent =
+    <h2 className="tagline">{lang.tagphrase} {props.tagline}</h2>
+    */
+  }
+
+  if (taglinetype === 'date') {
+    var options = {
+      year: 'numeric',
+      month: 'long'
+    };
+    var year = props.tagline[0].year;
+    var month = props.tagline[0].month - 1;
+    /* Possibly the most cursed thing I have ever written in JS. Not only
+    are months zero-indexed in its Date object, but its typing system just 
+    let me subtract an integer 1 from a fucking string. */
+
+    var newDate = new Date(year, month);
+    var archiveDate = newDate.toLocaleDateString('en-US', options); // const archiveDate = newDate.toLocaleDateString(lang.dateFormat, options);
+
+    taglineContent = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
+      className: "tagline"
+    }, archiveDate);
+  }
+
+  if (taglinetype === 'lang') {
+    switch (props.tagline) {
+      case 'en':
+        taglineContent = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
+          className: "tagline"
+        }, "Posts in English");
+        break;
+
+      case 'hu':
+        taglineContent = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
+          className: "tagline"
+        }, "Magyar nyelv\u0171 cikkek");
+        break;
+
+      case 'de':
+        taglineContent = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
+          className: "tagline"
+        }, "Beitr\xE4ge auf Deutsch");
+        break;
+    }
+    /* 
+    taglineContent =
+    <h2 className="tagline">{lang.langtagline}</h2>
+    */
+
+  }
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, taglineContent);
 }
 
 /***/ }),
@@ -53877,6 +54003,8 @@ var map = {
 	"./Sidebar.js": "./resources/js/Pages/Sidebar.js",
 	"./Tagbox": "./resources/js/Pages/Tagbox.js",
 	"./Tagbox.js": "./resources/js/Pages/Tagbox.js",
+	"./Tagline": "./resources/js/Pages/Tagline.js",
+	"./Tagline.js": "./resources/js/Pages/Tagline.js",
 	"./ViewPost": "./resources/js/Pages/ViewPost.js",
 	"./ViewPost.js": "./resources/js/Pages/ViewPost.js"
 };
