@@ -10,12 +10,12 @@ export default function PostPreviews(props) {
     const tags = props.tags;
     const postPreviews = posts.map((post, index) => 
         <div key={post.id} className="post">
-            <Link className="headline"><h2>{post.title}</h2></Link>
+            <Link href={'/viewpost/' + post.id} className="headline"><h2>{post.title}</h2></Link>
             <div className="postpreview" key={post.id}>
                 <img className="featured" src=""></img>
                 <p className="postslug">{post.slug}</p>
             </div>
-            <Tagbox tags={tags} index ={index}/>
+            <Tagbox tags={tags} index={index}/>
             <Published date={post.date}/>
         </div>
     );

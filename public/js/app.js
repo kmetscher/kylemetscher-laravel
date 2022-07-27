@@ -2114,7 +2114,7 @@ function HeaderNav(props) {
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("header", {
     className: themeState.headerclass
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Kyle Metscher")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("nav", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.Link, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "KYLE METSCHER")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("nav", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.Link, {
     href: "/"
   }, "Home")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.Link, {
     href: "/about"
@@ -2140,6 +2140,31 @@ __webpack_require__.r(__webpack_exports__);
 
 function InertiaTest(props) {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "well?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "title is ", props.title));
+}
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Languages.js":
+/*!*****************************************!*\
+  !*** ./resources/js/Pages/Languages.js ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Languages)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+function Languages(props) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", {
+    id: "languages"
+  }, "Languages"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "languages"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
+    className: "languages"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "English"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "Magyar"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "Deutsch"))));
 }
 
 /***/ }),
@@ -2182,15 +2207,34 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 function Layout(_ref) {
   var children = _ref.children;
 
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(_themes__WEBPACK_IMPORTED_MODULE_4__.themes.dark),
+  /* Check for a user preference on brightness. On first visit, 
+  one doesn't exist, so default to dark mode. Use system settings 
+  in the future? */
+  var storedTheme = JSON.parse(localStorage.getItem('theme'));
+  storedTheme = storedTheme ? storedTheme : _themes__WEBPACK_IMPORTED_MODULE_4__.themes.dark;
+  /* Use the state hook to apply the appropriate context */
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(storedTheme),
       _useState2 = _slicedToArray(_useState, 2),
       themeState = _useState2[0],
       setThemeState = _useState2[1];
+  /* Used by the Lightswitch component to update theme context state
+  when a user changes the theme. */
+
 
   var toggleTheme = function toggleTheme() {
     setThemeState(themeState === _themes__WEBPACK_IMPORTED_MODULE_4__.themes.dark ? _themes__WEBPACK_IMPORTED_MODULE_4__.themes.light : _themes__WEBPACK_IMPORTED_MODULE_4__.themes.dark);
     document.body.style.backgroundColor = themeState.bgcolor;
   };
+  /* Local storage is a side effect, so make those API calls whenever
+  the state of the theme is changed. This also sets local storage 
+  immediately upon first visit. */
+
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    localStorage.setItem('theme', JSON.stringify(themeState));
+  }, [themeState]);
+  /* cursed */
 
   document.body.style.backgroundColor = themeState.bgcolor;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("main", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ThemeContext__WEBPACK_IMPORTED_MODULE_3__.ThemeContext.Provider, {
@@ -2232,7 +2276,9 @@ var Lightswitch = function Lightswitch() {
       themeState = _useContext.themeState,
       toggleTheme = _useContext.toggleTheme;
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", {
+    id: "brightness"
+  }, "Brightness"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
     id: "darkmode"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
     type: "checkbox",
@@ -2243,7 +2289,7 @@ var Lightswitch = function Lightswitch() {
     checked: themeState.checked
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
     className: themeState.switchclass
-  }));
+  })));
   /*return(
       <div className={theme.switchclass} onClick={theme.toggleTheme}>
       </div>
@@ -2285,6 +2331,7 @@ function PostPreviews(props) {
       key: post.id,
       className: "post"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_5__.Link, {
+      href: '/viewpost/' + post.id,
       className: "headline"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, post.title)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
       className: "postpreview",
@@ -2330,9 +2377,9 @@ __webpack_require__.r(__webpack_exports__);
 function PostTagbox(props) {
   var tags = props.tags.map(function (tag) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
-      key: "{tag.tag_id}"
+      key: tag.tag_id
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.Link, {
-      href: "{tag.tag_id}"
+      href: '/tagged/' + tag.id
     }, tag.name));
   });
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -2400,8 +2447,38 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
-/* harmony import */ var _Lightswitch__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Lightswitch */ "./resources/js/Pages/Lightswitch.js");
+/* harmony import */ var _SidebarTags__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./SidebarTags */ "./resources/js/Pages/SidebarTags.js");
+/* harmony import */ var _SidebarArchive__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./SidebarArchive */ "./resources/js/Pages/SidebarArchive.js");
+/* harmony import */ var _Lightswitch__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Lightswitch */ "./resources/js/Pages/Lightswitch.js");
+/* harmony import */ var _Languages__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Languages */ "./resources/js/Pages/Languages.js");
 
+
+
+
+
+
+
+function Sidebar(props) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "sidebar"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Lightswitch__WEBPACK_IMPORTED_MODULE_4__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_SidebarTags__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_SidebarArchive__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Languages__WEBPACK_IMPORTED_MODULE_5__["default"], null));
+}
+
+/***/ }),
+
+/***/ "./resources/js/Pages/SidebarArchive.js":
+/*!**********************************************!*\
+  !*** ./resources/js/Pages/SidebarArchive.js ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ SidebarArchive)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
 
 
 
@@ -2416,42 +2493,60 @@ function formatDate(month, year) {
   return formattedDate;
 }
 
-function Sidebar(props) {
-  var allTags = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.usePage)().props.alltags;
-  var sidebarTags = allTags.map(function (sidebartag) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
-      key: sidebartag.id
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.Link, null, sidebartag.name));
-  });
+function SidebarArchive(props) {
   var archives = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.usePage)().props.archives;
   var sidebarArchive = archives.map(function (date) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
       key: date.year + date.month
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.Link, null, formatDate(date.month - 1, date.year)));
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.Link, {
+      href: '/archive/' + date.year + '0' + date.month
+      /* unbelievably cursed */
+
+    }, formatDate(date.month - 1, date.year)));
   });
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "sidebar"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", {
-    id: "brightness"
-  }, "Brightness"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Lightswitch__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", {
-    id: "sidebartags"
-  }, "Tags"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "tags"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ol", {
-    className: "tags"
-  }, sidebarTags)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", {
     id: "archives"
   }, "Archive"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "archives"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ol", {
     className: "archives"
-  }, sidebarArchive)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", {
-    id: "languages"
-  }, "Languages"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "languages"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
-    className: "languages"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "English"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "Magyar"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "Deutsch"))));
+  }, sidebarArchive)));
+}
+
+/***/ }),
+
+/***/ "./resources/js/Pages/SidebarTags.js":
+/*!*******************************************!*\
+  !*** ./resources/js/Pages/SidebarTags.js ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ SidebarTags)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
+
+
+
+function SidebarTags(props) {
+  var allTags = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.usePage)().props.alltags;
+  var sidebarTags = allTags.map(function (sidebartag) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+      key: sidebartag.id
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.Link, {
+      href: '/tagged/' + sidebartag.id
+    }, sidebartag.name));
+  });
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", {
+    id: "sidebartags"
+  }, "Tags"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "tags"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ol", {
+    className: "tags"
+  }, sidebarTags)));
 }
 
 /***/ }),
@@ -2476,9 +2571,9 @@ function Tagbox(props) {
   var tagColl = props.tags[index];
   var tags = tagColl.map(function (tag) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
-      key: "tagIndex"
+      key: tag.tag_id
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.Link, {
-      href: "{tag.tag_id}"
+      href: '/tagged/' + tag.tag_id
     }, tag.name));
   });
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -54677,6 +54772,8 @@ var map = {
 	"./HeaderNav.js": "./resources/js/Pages/HeaderNav.js",
 	"./InertiaTest": "./resources/js/Pages/InertiaTest.js",
 	"./InertiaTest.js": "./resources/js/Pages/InertiaTest.js",
+	"./Languages": "./resources/js/Pages/Languages.js",
+	"./Languages.js": "./resources/js/Pages/Languages.js",
 	"./Layout": "./resources/js/Pages/Layout.js",
 	"./Layout.js": "./resources/js/Pages/Layout.js",
 	"./Lightswitch": "./resources/js/Pages/Lightswitch.js",
@@ -54689,6 +54786,10 @@ var map = {
 	"./Published.js": "./resources/js/Pages/Published.js",
 	"./Sidebar": "./resources/js/Pages/Sidebar.js",
 	"./Sidebar.js": "./resources/js/Pages/Sidebar.js",
+	"./SidebarArchive": "./resources/js/Pages/SidebarArchive.js",
+	"./SidebarArchive.js": "./resources/js/Pages/SidebarArchive.js",
+	"./SidebarTags": "./resources/js/Pages/SidebarTags.js",
+	"./SidebarTags.js": "./resources/js/Pages/SidebarTags.js",
 	"./Tagbox": "./resources/js/Pages/Tagbox.js",
 	"./Tagbox.js": "./resources/js/Pages/Tagbox.js",
 	"./Tagline": "./resources/js/Pages/Tagline.js",

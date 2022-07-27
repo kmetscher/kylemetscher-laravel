@@ -17,10 +17,6 @@
   }
   
   body {
-    background-color: white;
-  }
-  
-  .dark {
     background-color: #181b1c;
   }
   
@@ -31,6 +27,7 @@
     background-repeat: no-repeat;
     background-position: center;
     font-family: 'Archivo', sans-serif;
+    transition: background-image 0.5s;
   }
   
   .header {
@@ -40,11 +37,13 @@
     background-repeat: no-repeat;
     background-position: center;
     font-family: 'Archivo', sans-serif;
+    transition: background-image 0.5s;
   }
   
   body {
     font-family: 'Archivo', sans-serif;
     color: white;
+    transition: background-color 0.5s;
   }
   
   h1 {

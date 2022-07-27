@@ -5,8 +5,8 @@ export default function Tagbox(props) {
     const index = props.index;
     const tagColl = props.tags[index];
     const tags = tagColl.map((tag) => 
-        <li key="tagIndex">
-            <Link href="{tag.tag_id}">{tag.name}</Link>
+        <li key={tag.tag_id}>
+            <Link href={'/tagged/' + tag.tag_id}>{tag.name}</Link>
         </li>);
     return(
         <div className="filedunder">

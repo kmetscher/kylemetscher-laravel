@@ -7,7 +7,7 @@ export default function HeaderNav(props) {
     return(
         <div>
             <header className={themeState.headerclass}>
-                <h1>Kyle Metscher</h1>
+                <h1>KYLE METSCHER</h1>
             </header>
             <nav>
                 <ul>

@@ -3,8 +3,8 @@ import { Link } from "@inertiajs/inertia-react";
 
 export default function PostTagbox(props) {
     const tags = props.tags.map((tag) =>
-    <li key="{tag.tag_id}">
-        <Link href="{tag.tag_id}">{tag.name}</Link>
+    <li key={tag.tag_id}>
+        <Link href={'/tagged/' + tag.id}>{tag.name}</Link>
     </li>);
     return(
         <div className="filedunder">
