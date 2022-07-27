@@ -162,9 +162,9 @@
   }
   
   #darkmode {
-    height: 3vw;
+    height: 4vw;
     width: 100%;
-    display: block;
+    display: flex;
     position: relative;
   }
   
@@ -172,7 +172,7 @@
     display: none;
   }
   
-  #darkmodeswitch {
+  .darkmodeswitch {
     position: absolute;
     cursor: pointer;
     top: 0;
@@ -184,14 +184,26 @@
     background-repeat: no-repeat;
   }
   
-  #darkmodeswitch:active {
+  .darkmodeswitch:active {
+    animation-name: darkmodeclick;
+    animation-duration: 0.5s;
+  }
+
+  .switchedon:active {
     animation-name: darkmodeclick;
     animation-duration: 0.5s;
   }
   
-  input:checked ~ #darkmodeswitch {
+  .switchedon {
     position: absolute;
+    cursor: pointer;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
     background-image: url(https://kylemetscher.com/images/themoon.png);
+    background-size: contain;
+    background-repeat: no-repeat;
   }
   
   @media screen and (max-width: 800px) {

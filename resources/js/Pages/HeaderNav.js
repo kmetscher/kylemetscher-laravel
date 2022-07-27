@@ -1,11 +1,13 @@
-import React from "react";
+import React, {useContext} from "react";
 import { Link } from '@inertiajs/inertia-react';
+import { ThemeContext } from "./ThemeContext";
 
 export default function HeaderNav(props) {
+    const {themeState, toggleTheme} = useContext(ThemeContext);
     return(
         <div>
-            <header className="header">
-                <h1>KYLE METSCHER</h1>
+            <header className={themeState.headerclass}>
+                <h1>Kyle Metscher</h1>
             </header>
             <nav>
                 <ul>

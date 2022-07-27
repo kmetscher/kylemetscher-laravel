@@ -26,9 +26,7 @@ export default function Sidebar(props) {
     return(
         <div className="sidebar">
             <h3 id="brightness">Brightness</h3>
-            <div>
-                <Lightswitch />
-            </div>
+            <Lightswitch />
             <h3 id="sidebartags">Tags</h3>
             <div className="tags">
                 <ol className="tags">
