@@ -7,11 +7,13 @@ export default function PostTagbox(props) {
         <Link href={'/tagged/' + tag.id}>{tag.name}</Link>
     </li>);
     return(
+        <>
+        <h3>Tagged:</h3>
         <div className="filedunder">
-            <p id="tagboxunder">Filed under:</p>
             <ol className="tagbox">
                 {tags}
             </ol>
         </div>
+        </>
     );
 } 

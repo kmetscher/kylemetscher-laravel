@@ -26,3 +26,9 @@ Route::get('/inertiatest/{postID}',
 
 Route::get('/viewpost/{postID}',
     [ViewPostController::class, 'byID']);
+
+// Plain views
+
+Route::inertia('/alltags', 'AllTags');
+
+Route::inertia('/archive', 'Archive');

@@ -10,7 +10,6 @@ export default function Tagbox(props) {
         </li>);
     return(
         <div className="filedunder">
-            <p id="tagboxunder">Filed under:</p>
             <ol className="tagbox">
                 {tags}
             </ol>

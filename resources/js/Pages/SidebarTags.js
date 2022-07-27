@@ -10,7 +10,8 @@ export default function SidebarTags(props) {
     </li>);
     return(
         <>
-        <h3 id="sidebartags">Tags</h3><div className="tags">
+        <Link><h3 id="sidebartags">Tags</h3></Link>
+        <div className="tags">
             <ol className="tags">
                 {sidebarTags}
             </ol>

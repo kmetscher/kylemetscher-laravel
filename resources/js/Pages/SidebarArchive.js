@@ -20,7 +20,8 @@ export default function SidebarArchive(props) {
     </li>);
     return(
         <>
-        <h3 id="archives">Archive</h3><div className="archives">
+        <Link><h3 id="archives">Archive</h3></Link>
+        <div className="archives">
             <ol className="archives">
                 {sidebarArchive}
             </ol>
