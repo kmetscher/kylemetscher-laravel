@@ -2,10 +2,12 @@ import React from "react";
 import Layout from "./Layout";
 import PostTagbox from "./PostTagbox";
 import Published from "./Published";
+import Site from "./Site";
 
 export default function ViewPost(props) {
     return (
         <Layout>
+            <Site title={props.title} />
             <div className="blogpost">
                 <h2>{props.title}</h2>
                 <img className="blogpost" src="https://kylemetscher.com/images/{post.image}"></img>

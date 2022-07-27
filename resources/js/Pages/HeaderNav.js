@@ -5,7 +5,7 @@ import { ThemeContext } from "./ThemeContext";
 export default function HeaderNav(props) {
     const {themeState, toggleTheme} = useContext(ThemeContext);
     return(
-        <div>
+        <header>
             <header className={themeState.headerclass}>
                 <h1>KYLE METSCHER</h1>
             </header>
@@ -16,6 +16,6 @@ export default function HeaderNav(props) {
                     <li><Link href="/contact">Contact</Link></li>
                 </ul>
             </nav>
-        </div>
+        </header>
     );
 }

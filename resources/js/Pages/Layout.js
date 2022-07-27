@@ -30,17 +30,13 @@ export default function Layout({children}) {
     return (
         <main>
             <ThemeContext.Provider value={{themeState, toggleTheme}}>
-            <header>
                 <HeaderNav />
-            </header>
-            <div className='container'>
-                <div className='mainflex'>
-                    {children}
+                <div className='container'>
+                    <div className='mainflex'>
+                        {children}
+                    </div>
+                <Sidebar />
                 </div>
-                <div className='siderbarFlex'>
-                    <Sidebar />
-                </div>
-            </div>
             </ThemeContext.Provider>
         </main>
     )

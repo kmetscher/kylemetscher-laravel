@@ -2112,7 +2112,7 @@ function HeaderNav(props) {
       themeState = _useContext.themeState,
       toggleTheme = _useContext.toggleTheme;
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("header", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("header", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("header", {
     className: themeState.headerclass
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "KYLE METSCHER")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("nav", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.Link, {
     href: "/"
@@ -2242,13 +2242,11 @@ function Layout(_ref) {
       themeState: themeState,
       toggleTheme: toggleTheme
     }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("header", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_HeaderNav__WEBPACK_IMPORTED_MODULE_1__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_HeaderNav__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "mainflex"
-  }, children), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "siderbarFlex"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Sidebar__WEBPACK_IMPORTED_MODULE_2__["default"], null)))));
+  }, children), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Sidebar__WEBPACK_IMPORTED_MODULE_2__["default"], null))));
 }
 
 /***/ }),
@@ -2317,6 +2315,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Published__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Published */ "./resources/js/Pages/Published.js");
 /* harmony import */ var _Tagline__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Tagline */ "./resources/js/Pages/Tagline.js");
 /* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
+/* harmony import */ var _Site__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Site */ "./resources/js/Pages/Site.js");
+
 
 
 
@@ -2330,15 +2330,15 @@ function PostPreviews(props) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
       key: post.id,
       className: "post"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_5__.Link, {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_5__.Link, {
       href: '/viewpost/' + post.id,
       className: "headline"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, post.title)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    }, post.title)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
       className: "postpreview",
       key: post.id
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
       className: "featured",
-      src: ""
+      src: 'https://kylemetscher.com/' + post.image
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
       className: "postslug"
     }, post.slug)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Tagbox__WEBPACK_IMPORTED_MODULE_2__["default"], {
@@ -2348,7 +2348,9 @@ function PostPreviews(props) {
       date: post.date
     }));
   });
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Layout__WEBPACK_IMPORTED_MODULE_1__["default"], null, props.tagline &&
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Layout__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Site__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    title: "Home"
+  }), props.tagline &&
   /*#__PURE__*/
   // Conditionally render the tagline 
   react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Tagline__WEBPACK_IMPORTED_MODULE_4__["default"], {
@@ -2446,13 +2448,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ Sidebar)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
-/* harmony import */ var _SidebarTags__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./SidebarTags */ "./resources/js/Pages/SidebarTags.js");
-/* harmony import */ var _SidebarArchive__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./SidebarArchive */ "./resources/js/Pages/SidebarArchive.js");
-/* harmony import */ var _Lightswitch__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Lightswitch */ "./resources/js/Pages/Lightswitch.js");
-/* harmony import */ var _Languages__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Languages */ "./resources/js/Pages/Languages.js");
-
-
+/* harmony import */ var _SidebarTags__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SidebarTags */ "./resources/js/Pages/SidebarTags.js");
+/* harmony import */ var _SidebarArchive__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./SidebarArchive */ "./resources/js/Pages/SidebarArchive.js");
+/* harmony import */ var _Lightswitch__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Lightswitch */ "./resources/js/Pages/Lightswitch.js");
+/* harmony import */ var _Languages__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Languages */ "./resources/js/Pages/Languages.js");
 
 
 
@@ -2460,8 +2459,8 @@ __webpack_require__.r(__webpack_exports__);
 
 function Sidebar(props) {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "sidebar"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Lightswitch__WEBPACK_IMPORTED_MODULE_4__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_SidebarTags__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_SidebarArchive__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Languages__WEBPACK_IMPORTED_MODULE_5__["default"], null));
+    className: "sidebarflex"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Lightswitch__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_SidebarTags__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_SidebarArchive__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Languages__WEBPACK_IMPORTED_MODULE_4__["default"], null));
 }
 
 /***/ }),
@@ -2551,6 +2550,35 @@ function SidebarTags(props) {
 
 /***/ }),
 
+/***/ "./resources/js/Pages/Site.js":
+/*!************************************!*\
+  !*** ./resources/js/Pages/Site.js ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Site)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
+
+
+function Site(props) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.Head, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("title", null, props.title + ' | Kyle Metscher'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("meta", {
+    charset: "utf-8"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("meta", {
+    name: "viewport",
+    content: "width=device-width, initial-scale=1"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("link", {
+    href: "https://fonts.googleapis.com/css2?family=Archivo:wght@500&display=swap",
+    rel: "stylesheet"
+  }));
+}
+
+/***/ }),
+
 /***/ "./resources/js/Pages/Tagbox.js":
 /*!**************************************!*\
   !*** ./resources/js/Pages/Tagbox.js ***!
@@ -2599,6 +2627,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ Tagline)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _Site__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Site */ "./resources/js/Pages/Site.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -2612,6 +2641,7 @@ function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Sy
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
+
 /* Several sections are commented out in anticipation of future use with 
 React's context hooks. */
 
@@ -2623,7 +2653,9 @@ function Tagline(props) {
   // const theme = useContext(ThemeContext);
 
 
-  var taglineContent;
+  var taglineContent; // to use in header
+
+  var titleContent;
   /* We want the tagline to look different depending on its state, since
   the tagline might be used to display the name of a tag, an archive date,
   or the name of a language. The tagline type is passed as a prop to use
@@ -2632,6 +2664,7 @@ function Tagline(props) {
   this component sitewide. */
 
   if (taglinetype === 'tag') {
+    titleContent = 'Tagged ' + props.tagline;
     taglineContent = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
       className: "tagline"
     }, "Tagged ", props.tagline);
@@ -2655,6 +2688,7 @@ function Tagline(props) {
     var newDate = new Date(year, month);
     var archiveDate = newDate.toLocaleDateString('en-US', options); // const archiveDate = newDate.toLocaleDateString(lang.dateFormat, options);
 
+    titleContent = archiveDate;
     taglineContent = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
       className: "tagline"
     }, archiveDate);
@@ -2663,21 +2697,24 @@ function Tagline(props) {
   if (taglinetype === 'lang') {
     switch (props.tagline) {
       case 'en':
+        titleContent = 'Posts in English';
         taglineContent = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
           className: "tagline"
-        }, "Posts in English");
+        }, titleContent);
         break;
 
       case 'hu':
+        titleContent = 'Magyar nyelvű cikkek';
         taglineContent = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
           className: "tagline"
-        }, "Magyar nyelv\u0171 cikkek");
+        }, titleContent);
         break;
 
       case 'de':
+        titleContent = 'Beiträge auf Deutsch';
         taglineContent = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
           className: "tagline"
-        }, "Beitr\xE4ge auf Deutsch");
+        }, titleContent);
         break;
     }
     /* 
@@ -2687,7 +2724,9 @@ function Tagline(props) {
 
   }
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, taglineContent);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Site__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    title: titleContent
+  }), taglineContent);
 }
 
 /***/ }),
@@ -2729,12 +2768,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Layout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Layout */ "./resources/js/Pages/Layout.js");
 /* harmony import */ var _PostTagbox__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./PostTagbox */ "./resources/js/Pages/PostTagbox.js");
 /* harmony import */ var _Published__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Published */ "./resources/js/Pages/Published.js");
+/* harmony import */ var _Site__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Site */ "./resources/js/Pages/Site.js");
+
 
 
 
 
 function ViewPost(props) {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Layout__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Layout__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Site__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    title: props.title
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "blogpost"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, props.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
     className: "blogpost",
@@ -54790,6 +54833,8 @@ var map = {
 	"./SidebarArchive.js": "./resources/js/Pages/SidebarArchive.js",
 	"./SidebarTags": "./resources/js/Pages/SidebarTags.js",
 	"./SidebarTags.js": "./resources/js/Pages/SidebarTags.js",
+	"./Site": "./resources/js/Pages/Site.js",
+	"./Site.js": "./resources/js/Pages/Site.js",
 	"./Tagbox": "./resources/js/Pages/Tagbox.js",
 	"./Tagbox.js": "./resources/js/Pages/Tagbox.js",
 	"./Tagline": "./resources/js/Pages/Tagline.js",

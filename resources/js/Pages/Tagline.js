@@ -1,4 +1,5 @@
 import React, {useState/*, useContext*/} from "react";
+import Site from "./Site";
 
 /* Several sections are commented out in anticipation of future use with 
 React's context hooks. */
@@ -8,7 +9,8 @@ export default function Tagline(props) {
     // const lang = useContext(LangContext);
     // const theme = useContext(ThemeContext);
 
-    let taglineContent;
+    let taglineContent; // to use in header
+    let titleContent;
     /* We want the tagline to look different depending on its state, since
     the tagline might be used to display the name of a tag, an archive date,
     or the name of a language. The tagline type is passed as a prop to use
@@ -16,6 +18,7 @@ export default function Tagline(props) {
     appropriate JSX for the tagline type. The use of state lets us reuse 
     this component sitewide. */
     if (taglinetype === 'tag') {
+        titleContent = 'Tagged ' + props.tagline;
         taglineContent =
         <h2 className="tagline">Tagged {props.tagline}</h2>
         /* 
@@ -33,22 +36,26 @@ export default function Tagline(props) {
         const newDate = new Date(year, month);
         const archiveDate = newDate.toLocaleDateString('en-US', options);
         // const archiveDate = newDate.toLocaleDateString(lang.dateFormat, options);
+        titleContent = archiveDate;
         taglineContent =
         <h2 className="tagline">{archiveDate}</h2>
     }
     if (taglinetype === 'lang') {
         switch (props.tagline) {
             case 'en':
+                titleContent = 'Posts in English';
                 taglineContent =
-                <h2 className="tagline">Posts in English</h2>
+                <h2 className="tagline">{titleContent}</h2>
                 break;
             case 'hu':
+                titleContent = 'Magyar nyelvű cikkek';
                 taglineContent =
-                <h2 className="tagline">Magyar nyelvű cikkek</h2>
+                <h2 className="tagline">{titleContent}</h2>
                 break;
             case 'de':
+                titleContent = 'Beiträge auf Deutsch';
                 taglineContent =
-                <h2 className="tagline">Beiträge auf Deutsch</h2>
+                <h2 className="tagline">{titleContent}</h2>
                 break;
         }
         /* 
@@ -59,6 +66,7 @@ export default function Tagline(props) {
 
     return(
         <div>
+            <Site title={titleContent} />
             {taglineContent}
         </div>
     );

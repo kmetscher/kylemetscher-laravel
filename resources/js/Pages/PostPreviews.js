@@ -4,15 +4,16 @@ import Tagbox from "./Tagbox";
 import Published from "./Published";
 import Tagline from "./Tagline";
 import { Link } from "@inertiajs/inertia-react";
+import Site from "./Site";
 
 export default function PostPreviews(props) {
     const posts = props.posts;
     const tags = props.tags;
     const postPreviews = posts.map((post, index) => 
         <div key={post.id} className="post">
-            <Link href={'/viewpost/' + post.id} className="headline"><h2>{post.title}</h2></Link>
+            <h2><Link href={'/viewpost/' + post.id} className="headline">{post.title}</Link></h2>
             <div className="postpreview" key={post.id}>
-                <img className="featured" src=""></img>
+                <img className="featured" src={'https://kylemetscher.com/' + post.image}></img>
                 <p className="postslug">{post.slug}</p>
             </div>
             <Tagbox tags={tags} index={index}/>
@@ -21,6 +22,7 @@ export default function PostPreviews(props) {
     );
     return(
         <Layout>
+            <Site title='Home' />
             {props.tagline && // Conditionally render the tagline 
             <Tagline 
             taglinetype={props.taglinetype}
