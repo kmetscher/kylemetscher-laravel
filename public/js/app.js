@@ -2912,9 +2912,28 @@ var formatDate = function formatDate(month, year) {
 /*!****************************************!*\
   !*** ./resources/js/Pages/language.js ***!
   \****************************************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "languages": () => (/* binding */ languages)
+/* harmony export */ });
+var languages = {
+  en: {
+    home: 'Home',
+    about: 'About',
+    contact: 'Contact',
+    brightness: 'Brightness',
+    tags: 'Tags',
+    archive: 'Archive',
+    languages: 'Languages',
+    published: 'Published',
+    tagged: 'Tagged:',
+    typetag: 'Tagged:',
+    alltags: 'All Tags'
+  }
+};
 
 /***/ }),
 
