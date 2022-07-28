@@ -541,6 +541,7 @@
   .blogpost h3 {
     margin-left: 2vw;
     margin-bottom: 0;
+    font-size: 2vw;
   }
   
   .blogpost a {
@@ -677,6 +678,62 @@
     .blogpost .pubdatebox p {
       font-size: 3vw;
     }
+
+    .taglist a {
+      text-decoration: underline;
+    }
   }
   
+  .taglist {
+    background-color: black;
+    padding: 2vw;
+    margin-bottom: 2vw;
+    margin-top: 0;
+  }
+  
+  .taglist ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    list-style: none;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    line-height: 1.5;
+    margin-bottom: 1vw;
+    margin-top: 0;
+  }
+  
+  .taglist li {
+    margin: 0.5vw;
+  }
+  
+  .taglist a {
+    font-size: inherit;
+    text-decoration: none;
+    position: relative;
+    display: block;
+    transition: font-size 1s;
+  }
+
+  .taglist a:hover {
+    transform: scale(1.1);
+  }
+
+  .archive {
+    background-color: black;
+    padding: 2vw;
+    margin-bottom: 2vw;
+    margin-top: 0;
+  }
+  
+  .archive ol {
+    list-style: none;
+    list-style-position: outside;
+    padding-left: 0;
+  }
+  
+  .archive a {
+    text-decoration: underline;
+  }
   

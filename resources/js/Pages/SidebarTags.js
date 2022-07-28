@@ -6,11 +6,12 @@ export default function SidebarTags(props) {
     const allTags = usePage().props.alltags;
     const sidebarTags = allTags.map((sidebartag) =>
     <li key={sidebartag.id}>
-        <Link href={'/tagged/' + sidebartag.id}>{sidebartag.name}</Link>
+        <Link href={'/tagged/' + sidebartag.id}>
+            {sidebartag.name + ' (' + sidebartag.refs + ')'}</Link>
     </li>);
     return(
         <>
-        <Link><h3 id="sidebartags">Tags</h3></Link>
+        <Link href="/alltags"><h3 id="sidebartags">Tags</h3></Link>
         <div className="tags">
             <ol className="tags">
                 {sidebarTags}

@@ -1,13 +1,7 @@
 import React from "react";
 import { Link } from "@inertiajs/inertia-react";
 import { usePage } from "@inertiajs/inertia-react";
-
-function formatDate(month, year) {
-    const options = {year: 'numeric', month: 'long'};
-    const date = new Date(year, month);
-    const formattedDate = date.toLocaleDateString('en-US', options);
-    return formattedDate;
-}
+import { formatDate } from "./formatDate";
 
 export default function SidebarArchive(props) {
     const archives = usePage().props.archives;
@@ -20,7 +14,7 @@ export default function SidebarArchive(props) {
     </li>);
     return(
         <>
-        <Link><h3 id="archives">Archive</h3></Link>
+        <Link href="/archive"><h3 id="archives">Archive</h3></Link>
         <div className="archives">
             <ol className="archives">
                 {sidebarArchive}

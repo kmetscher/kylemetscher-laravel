@@ -63,6 +63,16 @@ export default function Tagline(props) {
         <h2 className="tagline">{lang.langtagline}</h2>
         */
     }
+    if (taglinetype === 'tags') {
+        titleContent = 'All Tags';
+        taglineContent =
+        <h2 className="tagline">{titleContent}</h2>
+    }
+    if (taglinetype === 'archive') {
+        titleContent = 'Archive'
+        taglineContent =
+        <h2 className="tagline">{titleContent}</h2>
+    }
 
     return(
         <div>

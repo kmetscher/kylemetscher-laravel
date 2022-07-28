@@ -2094,9 +2094,85 @@ module.exports = {
 /*!***************************************!*\
   !*** ./resources/js/Pages/AllTags.js ***!
   \***************************************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ AllTags)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _Layout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Layout */ "./resources/js/Pages/Layout.js");
+/* harmony import */ var _Tagline__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Tagline */ "./resources/js/Pages/Tagline.js");
+/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
 
 
+
+
+
+function AllTags(props) {
+  var allTags = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_3__.usePage)().props.alltags;
+  var totalRefs = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_3__.usePage)().props.totalrefs;
+  var tagCloud = allTags.map(function (tag) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+      key: tag.id
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_3__.Link, {
+      style: {
+        fontSize: tag.refs / totalRefs * 100 + 'vw'
+      },
+      href: '/tagged/' + tag.id
+    }, tag.name));
+  });
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Layout__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Tagline__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    taglinetype: "tags"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "taglist"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, tagCloud)));
+}
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Archive.js":
+/*!***************************************!*\
+  !*** ./resources/js/Pages/Archive.js ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Archive)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _Layout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Layout */ "./resources/js/Pages/Layout.js");
+/* harmony import */ var _Tagline__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Tagline */ "./resources/js/Pages/Tagline.js");
+/* harmony import */ var _SidebarArchive__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./SidebarArchive */ "./resources/js/Pages/SidebarArchive.js");
+/* harmony import */ var _formatDate__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./formatDate */ "./resources/js/Pages/formatDate.js");
+/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
+
+
+
+
+
+
+
+function Archive(props) {
+  var archive = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_5__.usePage)().props.archives;
+  var dateList = archive.map(function (date) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+      key: date.year + date.month
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_5__.Link, {
+      href: '/archive/' + date.year + '0' + date.month
+      /* unbelievably cursed */
+
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, (0,_formatDate__WEBPACK_IMPORTED_MODULE_4__.formatDate)(date.month - 1, date.year))));
+  });
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Layout__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Tagline__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    taglinetype: "archive"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "archive"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ol", null, dateList)));
+}
 
 /***/ }),
 
@@ -2486,19 +2562,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
+/* harmony import */ var _formatDate__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./formatDate */ "./resources/js/Pages/formatDate.js");
 
 
 
-
-function formatDate(month, year) {
-  var options = {
-    year: 'numeric',
-    month: 'long'
-  };
-  var date = new Date(year, month);
-  var formattedDate = date.toLocaleDateString('en-US', options);
-  return formattedDate;
-}
 
 function SidebarArchive(props) {
   var archives = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.usePage)().props.archives;
@@ -2509,9 +2576,11 @@ function SidebarArchive(props) {
       href: '/archive/' + date.year + '0' + date.month
       /* unbelievably cursed */
 
-    }, formatDate(date.month - 1, date.year)));
+    }, (0,_formatDate__WEBPACK_IMPORTED_MODULE_2__.formatDate)(date.month - 1, date.year)));
   });
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.Link, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.Link, {
+    href: "/archive"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", {
     id: "archives"
   }, "Archive")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "archives"
@@ -2545,9 +2614,11 @@ function SidebarTags(props) {
       key: sidebartag.id
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.Link, {
       href: '/tagged/' + sidebartag.id
-    }, sidebartag.name));
+    }, sidebartag.name + ' (' + sidebartag.refs + ')'));
   });
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.Link, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.Link, {
+    href: "/alltags"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", {
     id: "sidebartags"
   }, "Tags")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "tags"
@@ -2730,6 +2801,20 @@ function Tagline(props) {
 
   }
 
+  if (taglinetype === 'tags') {
+    titleContent = 'All Tags';
+    taglineContent = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
+      className: "tagline"
+    }, titleContent);
+  }
+
+  if (taglinetype === 'archive') {
+    titleContent = 'Archive';
+    taglineContent = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
+      className: "tagline"
+    }, titleContent);
+  }
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Site__WEBPACK_IMPORTED_MODULE_1__["default"], {
     title: titleContent
   }), taglineContent);
@@ -2797,6 +2882,39 @@ function ViewPost(props) {
     date: props.date
   })));
 }
+
+/***/ }),
+
+/***/ "./resources/js/Pages/formatDate.js":
+/*!******************************************!*\
+  !*** ./resources/js/Pages/formatDate.js ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "formatDate": () => (/* binding */ formatDate)
+/* harmony export */ });
+var formatDate = function formatDate(month, year) {
+  var options = {
+    year: 'numeric',
+    month: 'long'
+  };
+  var date = new Date(year, month);
+  var formattedDate = date.toLocaleDateString('en-US', options);
+  return formattedDate;
+};
+
+/***/ }),
+
+/***/ "./resources/js/Pages/language.js":
+/*!****************************************!*\
+  !*** ./resources/js/Pages/language.js ***!
+  \****************************************/
+/***/ (() => {
+
+
 
 /***/ }),
 
@@ -57408,6 +57526,8 @@ module.exports = function isBuffer (obj) {
 var map = {
 	"./AllTags": "./resources/js/Pages/AllTags.js",
 	"./AllTags.js": "./resources/js/Pages/AllTags.js",
+	"./Archive": "./resources/js/Pages/Archive.js",
+	"./Archive.js": "./resources/js/Pages/Archive.js",
 	"./HeaderNav": "./resources/js/Pages/HeaderNav.js",
 	"./HeaderNav.js": "./resources/js/Pages/HeaderNav.js",
 	"./InertiaTest": "./resources/js/Pages/InertiaTest.js",
@@ -57440,6 +57560,10 @@ var map = {
 	"./ThemeContext.js": "./resources/js/Pages/ThemeContext.js",
 	"./ViewPost": "./resources/js/Pages/ViewPost.js",
 	"./ViewPost.js": "./resources/js/Pages/ViewPost.js",
+	"./formatDate": "./resources/js/Pages/formatDate.js",
+	"./formatDate.js": "./resources/js/Pages/formatDate.js",
+	"./language": "./resources/js/Pages/language.js",
+	"./language.js": "./resources/js/Pages/language.js",
 	"./themes": "./resources/js/Pages/themes.js",
 	"./themes.js": "./resources/js/Pages/themes.js"
 };
