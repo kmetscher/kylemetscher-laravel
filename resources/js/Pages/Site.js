@@ -1,5 +1,7 @@
-import React from "react";
+import React, {useContext} from "react";
 import { Head } from "@inertiajs/inertia-react";
+import { LanguageContext } from "./LanguageContext";
+
 export default function Site(props) {
     return(
         <Head>

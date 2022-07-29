@@ -12,6 +12,7 @@ createInertiaApp({
 });
 
 InertiaProgress.init({
+  includeCSS: true,
   delay: 5000,
-  showSpinner: false,
+  showSpinner: true,
 });

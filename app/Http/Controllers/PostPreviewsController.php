@@ -58,6 +58,7 @@ class PostPreviewsController extends Controller {
         to the PostPreview React component. */
 
         return Inertia::render('PostPreviews', [
+            'taglinetype' => 'home',
             'posts' => $posts,
             'tags' => $tags
         ]);
@@ -71,7 +72,7 @@ class PostPreviewsController extends Controller {
         $posts = BlogPost::join('post_tags', function ($join) use ($tagID) {
             $join->on('blog_posts.id', '=', 'post_tags.post_id')
             ->where('post_tags.tag_id', '=', $tagID);
-        })->get();
+        })->orderBy('id', 'desc')->get();
 
         $tagName = Tags::select('name')->where('id', '=', $tagID)
                     ->get(); // we also want the tag name
@@ -105,7 +106,7 @@ class PostPreviewsController extends Controller {
         of PHP string manipulation. */
 
         $posts = BlogPost::where('date', 'like', "$year-$month-%") // cursed
-                        ->get();
+                        ->orderBy('id', 'desc')->get();
 
         $tags = $this->retrieveTags($posts);
 

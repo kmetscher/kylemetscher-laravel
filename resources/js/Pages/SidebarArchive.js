@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "@inertiajs/inertia-react";
 import { usePage } from "@inertiajs/inertia-react";
 import { formatDate } from "./formatDate";
+import { LanguageContext } from "./LanguageContext";
 
 export default function SidebarArchive(props) {
+    const {langState, changeLanguage} = useContext(LanguageContext);
     const archives = usePage().props.archives;
     const sidebarArchive = archives.map((date) =>
     <li key={date.year + date.month}>
@@ -14,7 +16,8 @@ export default function SidebarArchive(props) {
     </li>);
     return(
         <>
-        <Link href="/archive"><h3 id="archives">Archive</h3></Link>
+        <Link href="/archive">
+            <h3 id="archives">{langState.archive}</h3></Link>
         <div className="archives">
             <ol className="archives">
                 {sidebarArchive}

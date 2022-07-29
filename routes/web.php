@@ -29,6 +29,6 @@ Route::get('/viewpost/{postID}',
 
 // Plain views
 
-Route::inertia('/alltags', 'AllTags');
+Route::inertia('/tagged', 'AllTags');
 
 Route::inertia('/archive', 'Archive');

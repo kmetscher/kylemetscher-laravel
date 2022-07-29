@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "@inertiajs/inertia-react";
 import { usePage } from "@inertiajs/inertia-react";
+import { LanguageContext } from "./LanguageContext";
 
 export default function SidebarTags(props) {
+    const {langState, changeLanguage} = useContext(LanguageContext);
     const allTags = usePage().props.alltags;
     const sidebarTags = allTags.map((sidebartag) =>
     <li key={sidebartag.id}>
@@ -11,7 +13,8 @@ export default function SidebarTags(props) {
     </li>);
     return(
         <>
-        <Link href="/alltags"><h3 id="sidebartags">Tags</h3></Link>
+        <Link href="/tagged">
+            <h3 id="sidebartags">{langState.tags}</h3></Link>
         <div className="tags">
             <ol className="tags">
                 {sidebarTags}

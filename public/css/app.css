@@ -27,6 +27,18 @@
     100% {opacity: 1;}
   }
 
+  @-webkit-keyframes rerender {
+    0% {opacity: 1;}
+    50% {opacity: 0;}
+    100% {opacity: 1;}
+  }
+
+  @keyframes rerender {
+    0% {opacity: 1;}
+    50% {opacity: 0;}
+    100% {opacity: 1;}
+  }
+
   body {
     font-family: 'Archivo', sans-serif;
     color: white;

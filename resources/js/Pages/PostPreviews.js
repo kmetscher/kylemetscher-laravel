@@ -1,10 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import Layout from "./Layout";
 import Tagbox from "./Tagbox";
 import Published from "./Published";
 import Tagline from "./Tagline";
 import { Link } from "@inertiajs/inertia-react";
-import Site from "./Site";
 
 export default function PostPreviews(props) {
     const posts = props.posts;
@@ -20,14 +19,12 @@ export default function PostPreviews(props) {
             <Published date={post.date}/>
         </div>
     );
-    return(
+    return (
         <Layout>
-            <Site title='Home' />
-            {props.tagline && // Conditionally render the tagline 
-            <Tagline 
-            taglinetype={props.taglinetype}
-            tagline={props.tagline}
-            />}
+            <Tagline
+                taglinetype={props.taglinetype}
+                tagline={props.tagline}
+            />
             {postPreviews}
         </Layout>
     )

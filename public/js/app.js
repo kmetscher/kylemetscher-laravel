@@ -2113,7 +2113,10 @@ __webpack_require__.r(__webpack_exports__);
 function AllTags(props) {
   var allTags = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_3__.usePage)().props.alltags;
   var totalRefs = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_3__.usePage)().props.totalrefs;
-  var tagCloud = allTags.map(function (tag) {
+  var shuffleTags = allTags.sort(function () {
+    return Math.random() - 0.5;
+  });
+  var tagCloud = shuffleTags.map(function (tag) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
       key: tag.id
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_3__.Link, {
@@ -2146,9 +2149,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _Layout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Layout */ "./resources/js/Pages/Layout.js");
 /* harmony import */ var _Tagline__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Tagline */ "./resources/js/Pages/Tagline.js");
-/* harmony import */ var _SidebarArchive__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./SidebarArchive */ "./resources/js/Pages/SidebarArchive.js");
-/* harmony import */ var _formatDate__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./formatDate */ "./resources/js/Pages/formatDate.js");
-/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
+/* harmony import */ var _formatDate__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./formatDate */ "./resources/js/Pages/formatDate.js");
+/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
+/* harmony import */ var _DateList__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./DateList */ "./resources/js/Pages/DateList.js");
 
 
 
@@ -2157,21 +2160,45 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function Archive(props) {
-  var archive = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_5__.usePage)().props.archives;
-  var dateList = archive.map(function (date) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
-      key: date.year + date.month
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_5__.Link, {
-      href: '/archive/' + date.year + '0' + date.month
-      /* unbelievably cursed */
-
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, (0,_formatDate__WEBPACK_IMPORTED_MODULE_4__.formatDate)(date.month - 1, date.year))));
-  });
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Layout__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Tagline__WEBPACK_IMPORTED_MODULE_2__["default"], {
     taglinetype: "archive"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "archive"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ol", null, dateList)));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ol", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_DateList__WEBPACK_IMPORTED_MODULE_5__["default"], null))));
+}
+
+/***/ }),
+
+/***/ "./resources/js/Pages/DateList.js":
+/*!****************************************!*\
+  !*** ./resources/js/Pages/DateList.js ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ DateList)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
+/* harmony import */ var _formatDate__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./formatDate */ "./resources/js/Pages/formatDate.js");
+
+
+
+
+function DateList(props) {
+  var archive = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.usePage)().props.archives;
+  var dateList = archive.map(function (date) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+      key: date.year + date.month
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.Link, {
+      href: '/archive/' + date.year + '0' + date.month
+      /* unbelievably cursed */
+
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, (0,_formatDate__WEBPACK_IMPORTED_MODULE_2__.formatDate)(date.month - 1, date.year))));
+  });
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, dateList);
 }
 
 /***/ }),
@@ -2190,6 +2217,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
 /* harmony import */ var _ThemeContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ThemeContext */ "./resources/js/Pages/ThemeContext.js");
+/* harmony import */ var _LanguageContext__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./LanguageContext */ "./resources/js/Pages/LanguageContext.js");
+
 
 
 
@@ -2198,15 +2227,19 @@ function HeaderNav(props) {
       themeState = _useContext.themeState,
       toggleTheme = _useContext.toggleTheme;
 
+  var _useContext2 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_LanguageContext__WEBPACK_IMPORTED_MODULE_3__.LanguageContext),
+      langState = _useContext2.langState,
+      changeLanguage = _useContext2.changeLanguage;
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("header", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("header", {
     className: themeState.headerclass
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "KYLE METSCHER")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("nav", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.Link, {
     href: "/"
-  }, "Home")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.Link, {
+  }, langState.home)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.Link, {
     href: "/about"
-  }, "About")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.Link, {
+  }, langState.about)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.Link, {
     href: "/contact"
-  }, "Contact")))));
+  }, langState.contact)))));
 }
 
 /***/ }),
@@ -2230,6 +2263,28 @@ function InertiaTest(props) {
 
 /***/ }),
 
+/***/ "./resources/js/Pages/LanguageContext.js":
+/*!***********************************************!*\
+  !*** ./resources/js/Pages/LanguageContext.js ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "LanguageContext": () => (/* binding */ LanguageContext)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _language__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./language */ "./resources/js/Pages/language.js");
+
+
+var LanguageContext = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createContext({
+  language: _language__WEBPACK_IMPORTED_MODULE_1__.languages.en,
+  changeLanguage: function changeLanguage(lang) {}
+});
+
+/***/ }),
+
 /***/ "./resources/js/Pages/Languages.js":
 /*!*****************************************!*\
   !*** ./resources/js/Pages/Languages.js ***!
@@ -2243,16 +2298,36 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
+/* harmony import */ var _LanguageContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./LanguageContext */ "./resources/js/Pages/LanguageContext.js");
+/* harmony import */ var _language__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./language */ "./resources/js/Pages/language.js");
+
+
 
 
 function Languages(props) {
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_LanguageContext__WEBPACK_IMPORTED_MODULE_2__.LanguageContext),
+      langState = _useContext.langState,
+      changeLanguage = _useContext.changeLanguage;
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", {
     id: "languages"
-  }, "Languages"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, langState.langs), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "languages"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
     className: "languages"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.Link, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "English")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.Link, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "Magyar")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.Link, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "Deutsch")))));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.Link, {
+    onClick: function onClick() {
+      return changeLanguage(_language__WEBPACK_IMPORTED_MODULE_3__.languages.en);
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "English")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.Link, {
+    onClick: function onClick() {
+      return changeLanguage(_language__WEBPACK_IMPORTED_MODULE_3__.languages.hu);
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "Magyar")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.Link, {
+    onClick: function onClick() {
+      return changeLanguage(_language__WEBPACK_IMPORTED_MODULE_3__.languages.de);
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "Deutsch")))));
 }
 
 /***/ }),
@@ -2271,66 +2346,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _HeaderNav__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./HeaderNav */ "./resources/js/Pages/HeaderNav.js");
 /* harmony import */ var _Sidebar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Sidebar */ "./resources/js/Pages/Sidebar.js");
-/* harmony import */ var _ThemeContext__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ThemeContext */ "./resources/js/Pages/ThemeContext.js");
-/* harmony import */ var _themes__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./themes */ "./resources/js/Pages/themes.js");
-/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-
-
+/* harmony import */ var _Providers__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Providers */ "./resources/js/Pages/Providers.js");
 
 
 
 
 function Layout(_ref) {
   var children = _ref.children;
-
-  /* Check for a user preference on brightness. On first visit, 
-  one doesn't exist, so default to dark mode. Use system settings 
-  in the future? */
-  var storedTheme = JSON.parse(localStorage.getItem('theme'));
-  storedTheme = storedTheme ? storedTheme : _themes__WEBPACK_IMPORTED_MODULE_4__.themes.dark;
-  /* Use the state hook to apply the appropriate context */
-
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(storedTheme),
-      _useState2 = _slicedToArray(_useState, 2),
-      themeState = _useState2[0],
-      setThemeState = _useState2[1];
-  /* Used by the Lightswitch component to update theme context state
-  when a user changes the theme. */
-
-
-  var toggleTheme = function toggleTheme() {
-    setThemeState(themeState === _themes__WEBPACK_IMPORTED_MODULE_4__.themes.dark ? _themes__WEBPACK_IMPORTED_MODULE_4__.themes.light : _themes__WEBPACK_IMPORTED_MODULE_4__.themes.dark);
-    document.body.style.backgroundColor = themeState.bgcolor;
-  };
-  /* Local storage is a side effect, so make those API calls whenever
-  the state of the theme is changed. This also sets local storage 
-  immediately upon first visit. */
-
-
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    localStorage.setItem('theme', JSON.stringify(themeState));
-  }, [themeState]);
-  /* cursed */
-
-  document.body.style.backgroundColor = themeState.bgcolor;
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("main", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ThemeContext__WEBPACK_IMPORTED_MODULE_3__.ThemeContext.Provider, {
-    value: {
-      themeState: themeState,
-      toggleTheme: toggleTheme
-    }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_HeaderNav__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useLayoutEffect)(function () {
+    console.log('Container updated');
+  }, [children.mainflex]);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Providers__WEBPACK_IMPORTED_MODULE_3__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("main", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_HeaderNav__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "mainflex"
@@ -2351,20 +2377,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _ThemeContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ThemeContext */ "./resources/js/Pages/ThemeContext.js");
-/* harmony import */ var _themes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./themes */ "./resources/js/Pages/themes.js");
+/* harmony import */ var _LanguageContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./LanguageContext */ "./resources/js/Pages/LanguageContext.js");
+/* harmony import */ var _ThemeContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ThemeContext */ "./resources/js/Pages/ThemeContext.js");
 
 
 
 
 var Lightswitch = function Lightswitch() {
-  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_ThemeContext__WEBPACK_IMPORTED_MODULE_1__.ThemeContext),
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_ThemeContext__WEBPACK_IMPORTED_MODULE_2__.ThemeContext),
       themeState = _useContext.themeState,
       toggleTheme = _useContext.toggleTheme;
 
+  var _useContext2 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_LanguageContext__WEBPACK_IMPORTED_MODULE_1__.LanguageContext),
+      langState = _useContext2.langState,
+      changeLanguage = _useContext2.changeLanguage;
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", {
     id: "brightness"
-  }, "Brightness"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
+  }, langState.brightness), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
     id: "darkmode"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
     type: "checkbox",
@@ -2376,10 +2406,6 @@ var Lightswitch = function Lightswitch() {
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
     className: themeState.switchclass
   })));
-  /*return(
-      <div className={theme.switchclass} onClick={theme.toggleTheme}>
-      </div>
-  );*/
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Lightswitch);
@@ -2403,8 +2429,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Published__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Published */ "./resources/js/Pages/Published.js");
 /* harmony import */ var _Tagline__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Tagline */ "./resources/js/Pages/Tagline.js");
 /* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
-/* harmony import */ var _Site__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Site */ "./resources/js/Pages/Site.js");
-
 
 
 
@@ -2436,12 +2460,7 @@ function PostPreviews(props) {
       date: post.date
     }));
   });
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Layout__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Site__WEBPACK_IMPORTED_MODULE_6__["default"], {
-    title: "Home"
-  }), props.tagline &&
-  /*#__PURE__*/
-  // Conditionally render the tagline 
-  react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Tagline__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Layout__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Tagline__WEBPACK_IMPORTED_MODULE_4__["default"], {
     taglinetype: props.taglinetype,
     tagline: props.tagline
   }), postPreviews);
@@ -2462,9 +2481,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
+/* harmony import */ var _LanguageContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./LanguageContext */ "./resources/js/Pages/LanguageContext.js");
+
 
 
 function PostTagbox(props) {
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_LanguageContext__WEBPACK_IMPORTED_MODULE_2__.LanguageContext),
+      langState = _useContext.langState,
+      changeLanguage = _useContext.changeLanguage;
+
   var tags = props.tags.map(function (tag) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
       key: tag.tag_id
@@ -2472,11 +2497,148 @@ function PostTagbox(props) {
       href: '/tagged/' + tag.id
     }, tag.name));
   });
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Tagged:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, langState.tagged), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "filedunder"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ol", {
     className: "tagbox"
   }, tags)));
+}
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Providers.js":
+/*!*****************************************!*\
+  !*** ./resources/js/Pages/Providers.js ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Providers)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _ThemeContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ThemeContext */ "./resources/js/Pages/ThemeContext.js");
+/* harmony import */ var _themes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./themes */ "./resources/js/Pages/themes.js");
+/* harmony import */ var _LanguageContext__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./LanguageContext */ "./resources/js/Pages/LanguageContext.js");
+/* harmony import */ var _language__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./language */ "./resources/js/Pages/language.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+function Providers(_ref) {
+  var children = _ref.children;
+
+  /* Check for a user preference on brightness and language. 
+  On first visit, these don't exist, so default to dark mode 
+  for the theme, and use the navigator.language property to set
+  language and place them in storage. */
+  var storedTheme = JSON.parse(localStorage.getItem('theme'));
+  storedTheme = storedTheme ? storedTheme : _themes__WEBPACK_IMPORTED_MODULE_2__.themes.dark;
+  var storedLang = localStorage.getItem('lang');
+
+  switch (storedLang) {
+    case 'en-US':
+      storedLang = _language__WEBPACK_IMPORTED_MODULE_4__.languages.en;
+      break;
+
+    case 'de-DE':
+      storedLang = _language__WEBPACK_IMPORTED_MODULE_4__.languages.de;
+      break;
+
+    case 'hu-HU':
+      storedLang = _language__WEBPACK_IMPORTED_MODULE_4__.languages.hu;
+      break;
+
+    default:
+      storedLang = navigator.language;
+
+      switch (storedLang) {
+        case storedLang.indexOf('en') === 0:
+          storedLang = _language__WEBPACK_IMPORTED_MODULE_4__.languages.en;
+          break;
+
+        case storedLang.indexOf('hu') === 0:
+          storedLang = _language__WEBPACK_IMPORTED_MODULE_4__.languages.hu;
+          break;
+
+        case storedLang.indexOf('de') === 0:
+          storedLang = _language__WEBPACK_IMPORTED_MODULE_4__.languages.de;
+          break;
+
+        default:
+          storedLang = _language__WEBPACK_IMPORTED_MODULE_4__.languages.en;
+      }
+
+  }
+  /* Use the state hook to apply the appropriate language and theme
+  contexts. */
+
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(storedTheme),
+      _useState2 = _slicedToArray(_useState, 2),
+      themeState = _useState2[0],
+      setThemeState = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(storedLang),
+      _useState4 = _slicedToArray(_useState3, 2),
+      langState = _useState4[0],
+      setLangState = _useState4[1];
+  /* Used by the Lightswitch component to update theme context state
+  when a user changes the theme. */
+
+
+  var toggleTheme = function toggleTheme() {
+    setThemeState(themeState === _themes__WEBPACK_IMPORTED_MODULE_2__.themes.dark ? _themes__WEBPACK_IMPORTED_MODULE_2__.themes.light : _themes__WEBPACK_IMPORTED_MODULE_2__.themes.dark);
+    document.body.style.backgroundColor = themeState.bgcolor;
+  };
+  /* Used by the Languages component to update language context state
+  when a user chooses a different language. */
+
+
+  var changeLanguage = function changeLanguage(lang) {
+    setLangState(lang);
+  };
+  /* Local storage is a side effect, so make those API calls whenever
+  context state is changed. This also sets local storage 
+  immediately upon first visit. */
+
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    localStorage.setItem('theme', JSON.stringify(themeState));
+  }, [themeState]);
+  /* cursed */
+
+  document.body.style.backgroundColor = themeState.bgcolor;
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    localStorage.setItem('lang', langState.locale);
+  }, [langState]);
+  /* Ah, yes, a return statement. */
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_LanguageContext__WEBPACK_IMPORTED_MODULE_3__.LanguageContext.Provider, {
+    value: {
+      langState: langState,
+      changeLanguage: changeLanguage
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ThemeContext__WEBPACK_IMPORTED_MODULE_1__.ThemeContext.Provider, {
+    value: {
+      themeState: themeState,
+      toggleTheme: toggleTheme
+    }
+  }, children));
 }
 
 /***/ }),
@@ -2493,22 +2655,36 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ Published)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _LanguageContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./LanguageContext */ "./resources/js/Pages/LanguageContext.js");
+
 
 function Published(props) {
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_LanguageContext__WEBPACK_IMPORTED_MODULE_1__.LanguageContext),
+      langState = _useContext.langState,
+      changeLanguage = _useContext.changeLanguage;
+
   var options = {
     year: 'numeric',
     month: 'long',
     day: 'numeric'
   };
   var date = new Date(props.date);
-  date = date.toLocaleDateString('en-US', options);
-  /*
-  date = date.toLocaleDateString(lang.dateFormat, options);
-  */
+  date = date.toLocaleDateString(langState.locale, options);
+  var pubdateContent;
+
+  switch (langState.locale) {
+    case 'en-EN':
+    case 'de-DE':
+      pubdateContent = "".concat(langState.published, " ").concat(date);
+      break;
+
+    case 'hu-HU':
+      pubdateContent = "".concat(date).concat(langState.published);
+  }
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "pubdatebox"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Published ", date));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, pubdateContent));
   /* 
   return(
       <div className="pubdatebox">
@@ -2563,11 +2739,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
 /* harmony import */ var _formatDate__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./formatDate */ "./resources/js/Pages/formatDate.js");
+/* harmony import */ var _LanguageContext__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./LanguageContext */ "./resources/js/Pages/LanguageContext.js");
+
 
 
 
 
 function SidebarArchive(props) {
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_LanguageContext__WEBPACK_IMPORTED_MODULE_3__.LanguageContext),
+      langState = _useContext.langState,
+      changeLanguage = _useContext.changeLanguage;
+
   var archives = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.usePage)().props.archives;
   var sidebarArchive = archives.map(function (date) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
@@ -2582,7 +2764,7 @@ function SidebarArchive(props) {
     href: "/archive"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", {
     id: "archives"
-  }, "Archive")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, langState.archive)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "archives"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ol", {
     className: "archives"
@@ -2604,10 +2786,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
+/* harmony import */ var _LanguageContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./LanguageContext */ "./resources/js/Pages/LanguageContext.js");
+
 
 
 
 function SidebarTags(props) {
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_LanguageContext__WEBPACK_IMPORTED_MODULE_2__.LanguageContext),
+      langState = _useContext.langState,
+      changeLanguage = _useContext.changeLanguage;
+
   var allTags = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.usePage)().props.alltags;
   var sidebarTags = allTags.map(function (sidebartag) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
@@ -2617,10 +2805,10 @@ function SidebarTags(props) {
     }, sidebartag.name + ' (' + sidebartag.refs + ')'));
   });
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.Link, {
-    href: "/alltags"
+    href: "/tagged"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", {
     id: "sidebartags"
-  }, "Tags")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, langState.tags)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "tags"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ol", {
     className: "tags"
@@ -2642,6 +2830,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
+/* harmony import */ var _LanguageContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./LanguageContext */ "./resources/js/Pages/LanguageContext.js");
+
 
 
 function Site(props) {
@@ -2704,7 +2894,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ Tagline)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _Site__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Site */ "./resources/js/Pages/Site.js");
+/* harmony import */ var _LanguageContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./LanguageContext */ "./resources/js/Pages/LanguageContext.js");
+/* harmony import */ var _Site__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Site */ "./resources/js/Pages/Site.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -2719,6 +2910,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 /* Several sections are commented out in anticipation of future use with 
 React's context hooks. */
 
@@ -2726,11 +2918,12 @@ function Tagline(props) {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(props.taglinetype),
       _useState2 = _slicedToArray(_useState, 2),
       taglinetype = _useState2[0],
-      setType = _useState2[1]; // const lang = useContext(LangContext);
-  // const theme = useContext(ThemeContext);
+      setType = _useState2[1];
 
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_LanguageContext__WEBPACK_IMPORTED_MODULE_1__.LanguageContext),
+      langState = _useContext.langState,
+      changeLanguage = _useContext.changeLanguage; // const theme = useContext(ThemeContext);
 
-  var taglineContent; // to use in header
 
   var titleContent;
   /* We want the tagline to look different depending on its state, since
@@ -2740,15 +2933,21 @@ function Tagline(props) {
   appropriate JSX for the tagline type. The use of state lets us reuse 
   this component sitewide. */
 
+  if (taglinetype === 'home') {
+    titleContent = langState.home;
+  }
+
   if (taglinetype === 'tag') {
-    titleContent = 'Tagged ' + props.tagline;
-    taglineContent = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
-      className: "tagline"
-    }, "Tagged ", props.tagline);
-    /* 
-    taglineContent =
-    <h2 className="tagline">{lang.tagphrase} {props.tagline}</h2>
-    */
+    switch (langState.locale) {
+      case 'en-EN':
+      case 'de-DE':
+        titleContent = "".concat(langState.typetag, " ").concat(props.tagline);
+        break;
+
+      case 'hu-HU':
+        titleContent = "".concat(props.tagline, " ").concat(langState.typetag);
+        break;
+    }
   }
 
   if (taglinetype === 'date') {
@@ -2758,64 +2957,33 @@ function Tagline(props) {
     };
     var year = props.tagline[0].year;
     var month = props.tagline[0].month - 1;
+    var locale = langState.locale;
     /* Possibly the most cursed thing I have ever written in JS. Not only
     are months zero-indexed in its Date object, but its typing system just 
     let me subtract an integer 1 from a fucking string. */
 
     var newDate = new Date(year, month);
-    var archiveDate = newDate.toLocaleDateString('en-US', options); // const archiveDate = newDate.toLocaleDateString(lang.dateFormat, options);
+    var archiveDate = newDate.toLocaleDateString(locale, options); // const archiveDate = newDate.toLocaleDateString(lang.dateFormat, options);
 
     titleContent = archiveDate;
-    taglineContent = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
-      className: "tagline"
-    }, archiveDate);
   }
 
   if (taglinetype === 'lang') {
-    switch (props.tagline) {
-      case 'en':
-        titleContent = 'Posts in English';
-        taglineContent = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
-          className: "tagline"
-        }, titleContent);
-        break;
-
-      case 'hu':
-        titleContent = 'Magyar nyelvű cikkek';
-        taglineContent = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
-          className: "tagline"
-        }, titleContent);
-        break;
-
-      case 'de':
-        titleContent = 'Beiträge auf Deutsch';
-        taglineContent = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
-          className: "tagline"
-        }, titleContent);
-        break;
-    }
-    /* 
-    taglineContent =
-    <h2 className="tagline">{lang.langtagline}</h2>
-    */
-
+    titleContent = langState.langposts;
   }
 
   if (taglinetype === 'tags') {
-    titleContent = 'All Tags';
-    taglineContent = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
-      className: "tagline"
-    }, titleContent);
+    titleContent = langState.alltags;
   }
 
   if (taglinetype === 'archive') {
-    titleContent = 'Archive';
-    taglineContent = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
-      className: "tagline"
-    }, titleContent);
+    titleContent = langState.archive;
   }
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Site__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  var taglineContent = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
+    className: "tagline"
+  }, titleContent);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Site__WEBPACK_IMPORTED_MODULE_2__["default"], {
     title: titleContent
   }), taglineContent);
 }
@@ -2896,13 +3064,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "formatDate": () => (/* binding */ formatDate)
 /* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _LanguageContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./LanguageContext */ "./resources/js/Pages/LanguageContext.js");
+
+
 var formatDate = function formatDate(month, year) {
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_LanguageContext__WEBPACK_IMPORTED_MODULE_1__.LanguageContext),
+      langState = _useContext.langState,
+      changeLanguage = _useContext.changeLanguage;
+
   var options = {
     year: 'numeric',
     month: 'long'
   };
   var date = new Date(year, month);
-  var formattedDate = date.toLocaleDateString('en-US', options);
+  var formattedDate = date.toLocaleDateString(langState.locale, options);
   return formattedDate;
 };
 
@@ -2927,11 +3103,43 @@ var languages = {
     brightness: 'Brightness',
     tags: 'Tags',
     archive: 'Archive',
-    languages: 'Languages',
+    langs: 'Languages',
+    langposts: 'Posts in English',
     published: 'Published',
     tagged: 'Tagged:',
-    typetag: 'Tagged:',
-    alltags: 'All Tags'
+    typetag: 'Tagged',
+    alltags: 'All Tags',
+    locale: 'en-US'
+  },
+  hu: {
+    home: 'Főoldal',
+    about: 'Erről',
+    contact: 'Kapcsolat',
+    brightness: 'Napsütés',
+    tags: 'Témák',
+    archive: 'Archivum',
+    langs: 'Nyelvek',
+    langposts: 'Magyar nyelvű cikkek',
+    published: '-en közzétett',
+    tagged: 'Ezekkel a témákkal:',
+    typetag: 'témával',
+    alltags: 'Minden téma',
+    locale: 'hu-HU'
+  },
+  de: {
+    home: 'Startseite',
+    about: 'Über',
+    contact: 'Kontakt',
+    brightness: 'Helligkeit',
+    tags: 'Tags',
+    archive: 'Archiv',
+    langs: 'Sprache',
+    langposts: 'Beiträge auf Deutsch',
+    published: 'Veröffentlicht am',
+    tagged: 'Mit dieser Tags:',
+    typetag: 'Mit Tag',
+    alltags: 'Alle Tags',
+    locale: 'de-DE'
   }
 };
 
@@ -2995,8 +3203,9 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
   }
 });
 _inertiajs_progress__WEBPACK_IMPORTED_MODULE_3__.InertiaProgress.init({
+  includeCSS: true,
   delay: 5000,
-  showSpinner: false
+  showSpinner: true
 });
 
 /***/ }),
@@ -57547,10 +57756,14 @@ var map = {
 	"./AllTags.js": "./resources/js/Pages/AllTags.js",
 	"./Archive": "./resources/js/Pages/Archive.js",
 	"./Archive.js": "./resources/js/Pages/Archive.js",
+	"./DateList": "./resources/js/Pages/DateList.js",
+	"./DateList.js": "./resources/js/Pages/DateList.js",
 	"./HeaderNav": "./resources/js/Pages/HeaderNav.js",
 	"./HeaderNav.js": "./resources/js/Pages/HeaderNav.js",
 	"./InertiaTest": "./resources/js/Pages/InertiaTest.js",
 	"./InertiaTest.js": "./resources/js/Pages/InertiaTest.js",
+	"./LanguageContext": "./resources/js/Pages/LanguageContext.js",
+	"./LanguageContext.js": "./resources/js/Pages/LanguageContext.js",
 	"./Languages": "./resources/js/Pages/Languages.js",
 	"./Languages.js": "./resources/js/Pages/Languages.js",
 	"./Layout": "./resources/js/Pages/Layout.js",
@@ -57561,6 +57774,8 @@ var map = {
 	"./PostPreviews.js": "./resources/js/Pages/PostPreviews.js",
 	"./PostTagbox": "./resources/js/Pages/PostTagbox.js",
 	"./PostTagbox.js": "./resources/js/Pages/PostTagbox.js",
+	"./Providers": "./resources/js/Pages/Providers.js",
+	"./Providers.js": "./resources/js/Pages/Providers.js",
 	"./Published": "./resources/js/Pages/Published.js",
 	"./Published.js": "./resources/js/Pages/Published.js",
 	"./Sidebar": "./resources/js/Pages/Sidebar.js",

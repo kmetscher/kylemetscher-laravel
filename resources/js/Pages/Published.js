@@ -1,14 +1,23 @@
-import React from "react";
+import React, {useContext} from "react";
+import {LanguageContext} from "./LanguageContext"
+
 export default function Published(props) {
+    const {langState, changeLanguage} = useContext(LanguageContext);
     const options = {year: 'numeric', month: 'long', day: 'numeric'};
     let date = new Date(props.date);
-    date = date.toLocaleDateString('en-US', options);
-    /*
-    date = date.toLocaleDateString(lang.dateFormat, options);
-    */
+    date = date.toLocaleDateString(langState.locale, options);
+    let pubdateContent;
+    switch (langState.locale) {
+        case 'en-EN':
+        case 'de-DE':
+            pubdateContent = `${langState.published} ${date}`;
+            break;
+        case 'hu-HU':
+            pubdateContent = `${date}${langState.published}`;
+    }
     return(
         <div className="pubdatebox">
-            <p>Published {date}</p>
+            <p>{pubdateContent}</p>
         </div>
     );
     /* 
