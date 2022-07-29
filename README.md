@@ -4,13 +4,13 @@ This is a port of [my website](https://github.com/kmetscher/kylemetscher-dot-com
 
 ## In progress
 
-- Writing routes and controllers for site use cases
-- Writing React components for returned views
+- About and Contact pages
+- Gutenberg pages
 - Restructuring directories to resemble the vanilla website build
 
 ## Stuck
 
-- Implementing the tagbox functionality present in the vanilla PHP version of the site using Eloquent collections; returning rows of post data presents no challenge, but matching data from the post tags table to individual posts as React components is proving to be array hell
+- React transition group usage
 
 ## Ideas
 

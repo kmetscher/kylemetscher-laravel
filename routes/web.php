@@ -32,3 +32,7 @@ Route::get('/viewpost/{postID}',
 Route::inertia('/tagged', 'AllTags');
 
 Route::inertia('/archive', 'Archive');
+
+Route::inertia('/about', 'About');
+
+Route::inertia('contact', 'Contact');

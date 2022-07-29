@@ -2090,6 +2090,97 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./resources/js/Pages/About.js":
+/*!*************************************!*\
+  !*** ./resources/js/Pages/About.js ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ About)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _AboutContent__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AboutContent */ "./resources/js/Pages/AboutContent.js");
+/* harmony import */ var _Layout__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Layout */ "./resources/js/Pages/Layout.js");
+/* harmony import */ var _Tagline__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Tagline */ "./resources/js/Pages/Tagline.js");
+
+
+
+
+function About(props) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Layout__WEBPACK_IMPORTED_MODULE_2__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Tagline__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    taglinetype: "about"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "blogpost"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_AboutContent__WEBPACK_IMPORTED_MODULE_1__["default"], null)));
+}
+
+/***/ }),
+
+/***/ "./resources/js/Pages/AboutContent.js":
+/*!********************************************!*\
+  !*** ./resources/js/Pages/AboutContent.js ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ AboutContent)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _LanguageContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./LanguageContext */ "./resources/js/Pages/LanguageContext.js");
+/* harmony import */ var react_markdown__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-markdown */ "./node_modules/react-markdown/lib/react-markdown.js");
+
+
+
+function AboutContent(props) {
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_LanguageContext__WEBPACK_IMPORTED_MODULE_1__.LanguageContext),
+      langState = _useContext.langState,
+      changeLanguage = _useContext.changeLanguage;
+
+  var markdown;
+
+  switch (langState.locale) {
+    case 'en-EN':
+      markdown = abouten;
+      break;
+
+    case 'hu-HU':
+      markdown = abouthu;
+      break;
+
+    case 'de-DE':
+      markdown = aboutde;
+      break;
+  }
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_markdown__WEBPACK_IMPORTED_MODULE_2__.ReactMarkdown, null, langState.aboutmd);
+}
+
+/***/ }),
+
+/***/ "./resources/js/Pages/AboutMD.js":
+/*!***************************************!*\
+  !*** ./resources/js/Pages/AboutMD.js ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "aboutde": () => (/* binding */ aboutde),
+/* harmony export */   "abouten": () => (/* binding */ abouten),
+/* harmony export */   "abouthu": () => (/* binding */ abouthu)
+/* harmony export */ });
+var abouten = "## in English\n\ngod damn\n\n- linguini\n- and\n- clams";
+var abouthu = "## magyarul\n\nna bazmeg\n\n- a l\xF3fasznak\n- is van\n- v\xE9ge";
+var aboutde = "## Auf Deutsch\n\nna klar\n\n- alles\n- ist\n- in Ordnung";
+
+/***/ }),
+
 /***/ "./resources/js/Pages/AllTags.js":
 /*!***************************************!*\
   !*** ./resources/js/Pages/AllTags.js ***!
@@ -2980,6 +3071,10 @@ function Tagline(props) {
     titleContent = langState.archive;
   }
 
+  if (taglinetype === 'about') {
+    titleContent = langState.about;
+  }
+
   var taglineContent = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
     className: "tagline"
   }, titleContent);
@@ -3099,6 +3194,7 @@ var languages = {
   en: {
     home: 'Home',
     about: 'About',
+    aboutpage: 'About this site',
     contact: 'Contact',
     brightness: 'Brightness',
     tags: 'Tags',
@@ -3109,11 +3205,13 @@ var languages = {
     tagged: 'Tagged:',
     typetag: 'Tagged',
     alltags: 'All Tags',
-    locale: 'en-US'
+    locale: 'en-US',
+    aboutmd: "## in English\n\ngod damn\n        \n- linguini\n- and\n- clams"
   },
   hu: {
     home: 'Főoldal',
     about: 'Erről',
+    aboutpage: 'Erről az oldalról',
     contact: 'Kapcsolat',
     brightness: 'Napsütés',
     tags: 'Témák',
@@ -3124,11 +3222,13 @@ var languages = {
     tagged: 'Ezekkel a témákkal:',
     typetag: 'témával',
     alltags: 'Minden téma',
-    locale: 'hu-HU'
+    locale: 'hu-HU',
+    aboutmd: ""
   },
   de: {
     home: 'Startseite',
     about: 'Über',
+    aboutpage: 'Über dieser Seite',
     contact: 'Kontakt',
     brightness: 'Helligkeit',
     tags: 'Tags',
@@ -3139,7 +3239,8 @@ var languages = {
     tagged: 'Mit dieser Tags:',
     typetag: 'Mit Tag',
     alltags: 'Alle Tags',
-    locale: 'de-DE'
+    locale: 'de-DE',
+    aboutmd: ""
   }
 };
 
@@ -57752,6 +57853,12 @@ module.exports = function isBuffer (obj) {
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var map = {
+	"./About": "./resources/js/Pages/About.js",
+	"./About.js": "./resources/js/Pages/About.js",
+	"./AboutContent": "./resources/js/Pages/AboutContent.js",
+	"./AboutContent.js": "./resources/js/Pages/AboutContent.js",
+	"./AboutMD": "./resources/js/Pages/AboutMD.js",
+	"./AboutMD.js": "./resources/js/Pages/AboutMD.js",
 	"./AllTags": "./resources/js/Pages/AllTags.js",
 	"./AllTags.js": "./resources/js/Pages/AllTags.js",
 	"./Archive": "./resources/js/Pages/Archive.js",

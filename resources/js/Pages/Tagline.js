@@ -52,6 +52,10 @@ export default function Tagline(props) {
     if (taglinetype === 'archive') {
         titleContent = langState.archive;
     }
+    if (taglinetype === 'about') {
+        titleContent = langState.about;
+    }
+
     const taglineContent = <h2 className="tagline">{titleContent}</h2>
     return(
         <div>

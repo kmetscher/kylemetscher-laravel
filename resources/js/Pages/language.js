@@ -2,6 +2,7 @@ export const languages = {
     en: {
         home: 'Home',
         about: 'About',
+        aboutpage: 'About this site',
         contact: 'Contact',
         brightness: 'Brightness',
         tags: 'Tags',
@@ -13,10 +14,19 @@ export const languages = {
         typetag: 'Tagged',
         alltags: 'All Tags',
         locale: 'en-US',
+        aboutmd: 
+`## in English
+
+god damn
+        
+- linguini
+- and
+- clams`
     },
     hu: {
         home: 'Főoldal',
         about: 'Erről',
+        aboutpage: 'Erről az oldalról',
         contact: 'Kapcsolat',
         brightness: 'Napsütés',
         tags: 'Témák',
@@ -28,10 +38,13 @@ export const languages = {
         typetag: 'témával',
         alltags: 'Minden téma',
         locale: 'hu-HU', 
+        aboutmd: 
+``,
     },
     de: {
         home: 'Startseite',
         about: 'Über',
+        aboutpage: 'Über dieser Seite',
         contact: 'Kontakt',
         brightness: 'Helligkeit',
         tags: 'Tags',
@@ -43,5 +56,7 @@ export const languages = {
         typetag: 'Mit Tag',
         alltags: 'Alle Tags',
         locale: 'de-DE',
+        aboutmd:
+``,
     }
 }
