@@ -9,6 +9,7 @@ export default function About(props) {
         <Layout>
             <Tagline taglinetype='about'/>
             <div className="blogpost">
+                <img className="blogpost" src="/storage/images/tucson.jpg" />
                 <AboutContent />
             </div>
         </Layout>

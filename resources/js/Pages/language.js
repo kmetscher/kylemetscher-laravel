@@ -14,14 +14,6 @@ export const languages = {
         typetag: 'Tagged',
         alltags: 'All Tags',
         locale: 'en-US',
-        aboutmd: 
-`## in English
-
-god damn
-        
-- linguini
-- and
-- clams`
     },
     hu: {
         home: 'Főoldal',
@@ -38,8 +30,6 @@ god damn
         typetag: 'témával',
         alltags: 'Minden téma',
         locale: 'hu-HU', 
-        aboutmd: 
-``,
     },
     de: {
         home: 'Startseite',
@@ -56,7 +46,5 @@ god damn
         typetag: 'Mit Tag',
         alltags: 'Alle Tags',
         locale: 'de-DE',
-        aboutmd:
-``,
     }
 }

@@ -8,12 +8,13 @@ export default function Published(props) {
     date = date.toLocaleDateString(langState.locale, options);
     let pubdateContent;
     switch (langState.locale) {
-        case 'en-EN':
+        case 'en-US':
         case 'de-DE':
             pubdateContent = `${langState.published} ${date}`;
             break;
         case 'hu-HU':
             pubdateContent = `${date}${langState.published}`;
+            break;
     }
     return(
         <div className="pubdatebox">

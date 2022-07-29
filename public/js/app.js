@@ -2114,7 +2114,10 @@ function About(props) {
     taglinetype: "about"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "blogpost"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_AboutContent__WEBPACK_IMPORTED_MODULE_1__["default"], null)));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+    className: "blogpost",
+    src: "/storage/images/tucson.jpg"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_AboutContent__WEBPACK_IMPORTED_MODULE_1__["default"], null)));
 }
 
 /***/ }),
@@ -2144,20 +2147,20 @@ function AboutContent(props) {
   var markdown;
 
   switch (langState.locale) {
-    case 'en-EN':
-      markdown = abouten;
+    case 'en-US':
+      markdown = "## Howdy!\n\nI am a Computer Science major at Western Governors University. Previously,\nI have been an auto mechanic, warehouse worker, freelance writer, translator,\nand many other things too boring to list here.\n\nI built this site with the \n[Laravel PHP framework](https://laravel.com/), \nthe [React JavaScript library](https://reactjs.org/), \nand the [Inertia adapter library](https://inertiajs.com/). You can view\nits source code and implementation details on \n[GitHub](https://github.com/kmetscher/kylemetscher-laravel).\n\nNavigate the site with the links in the header and sidebar (desktop) or footer (mobile). \n\nChange the site's theme by toggling the tarot face under \"Brightness,\" \nand change languages by selecting one listed. \n\nThe \"Tags\" and \"Archives\" links take you to a page listing their respective \nitems. On desktop, selecting a tag or date returns all posts filed under that\ntag or posted within that month, respectively.\n\nView a post by clicking/tapping its title or featured image. Selecting a tag underneath\na post also returns all posts filed under that topic.\n\nThis site collects your locale and saves your preferred theme brightness\nso things are in your language and within your retinal tolerances. It \ndoesn't track you, doesn't store personal information, and never will.";
       break;
 
     case 'hu-HU':
-      markdown = abouthu;
+      markdown = "## Szia!\n\nInformatikus di\xE1k vagyok a Western Governors Egyetemen az Egyes\xFClt \xC1llamokban.\nKor\xE1bban ut\xF3szerel\u0151, rakt\xE1rmunk\xE1s, szabad\xFAsz\xF3 \xEDr\xF3, fordit\xF3, meg sok m\xE1s \nunalmas dolog is voltam.\n\nEzt az oldalt meg\xE9p\xEDtettem a [Laravel PHP frameworkkal](https://laravel.com/),\na [React JavaScript k\xF6nyvt\xE1rral](https://reactjs.org/),\n\xE9s az [Inertia adapter k\xF6nyvt\xE1rral](https://inertiajs.com/). A \n[GitHub-on](https://github.com/kmetscher/kylemetscher-laravel) l\xE1that\xF3 a\nforr\xE1sk\xF3dja.\n\nV\xE1ltoztatja \xD6n az oldal kin\xE9z\xE9s\xE9t a tarot arcra kattintva a \"Naps\xFCt\xE9s\" alatt, \n\xE9s v\xE1lasszon egy nyelvet az oldalnak a nyelv nev\xE9re kattintva.\n\nA \"T\xE9m\xE1k\" \xE9s \"Archivum\" ";
       break;
 
     case 'de-DE':
-      markdown = aboutde;
+      markdown = "## Hallo!";
       break;
   }
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_markdown__WEBPACK_IMPORTED_MODULE_2__.ReactMarkdown, null, langState.aboutmd);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_markdown__WEBPACK_IMPORTED_MODULE_2__.ReactMarkdown, null, markdown);
 }
 
 /***/ }),
@@ -2764,13 +2767,14 @@ function Published(props) {
   var pubdateContent;
 
   switch (langState.locale) {
-    case 'en-EN':
+    case 'en-US':
     case 'de-DE':
       pubdateContent = "".concat(langState.published, " ").concat(date);
       break;
 
     case 'hu-HU':
       pubdateContent = "".concat(date).concat(langState.published);
+      break;
   }
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -3205,8 +3209,7 @@ var languages = {
     tagged: 'Tagged:',
     typetag: 'Tagged',
     alltags: 'All Tags',
-    locale: 'en-US',
-    aboutmd: "## in English\n\ngod damn\n        \n- linguini\n- and\n- clams"
+    locale: 'en-US'
   },
   hu: {
     home: 'Főoldal',
@@ -3222,8 +3225,7 @@ var languages = {
     tagged: 'Ezekkel a témákkal:',
     typetag: 'témával',
     alltags: 'Minden téma',
-    locale: 'hu-HU',
-    aboutmd: ""
+    locale: 'hu-HU'
   },
   de: {
     home: 'Startseite',
@@ -3239,8 +3241,7 @@ var languages = {
     tagged: 'Mit dieser Tags:',
     typetag: 'Mit Tag',
     alltags: 'Alle Tags',
-    locale: 'de-DE',
-    aboutmd: ""
+    locale: 'de-DE'
   }
 };
 
