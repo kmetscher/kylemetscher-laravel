@@ -55,6 +55,9 @@ export default function Tagline(props) {
     if (taglinetype === 'about') {
         titleContent = langState.about;
     }
+    if (taglinetype === 'contact') {
+        titleContent = langState.contact;
+    }
 
     const taglineContent = <h2 className="tagline">{titleContent}</h2>
     return(

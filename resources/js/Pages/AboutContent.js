@@ -40,8 +40,11 @@ doesn't track you, doesn't store personal information, and never will.`;
 `## Szia!
 
 Informatikus diák vagyok a Western Governors Egyetemen az Egyesült Államokban.
-Korábban utószerelő, raktármunkás, szabadúszó író, forditó, meg sok más 
+Korábban autószerelő, raktármunkás, szabadúszó író, forditó, meg sok más 
 unalmas dolog is voltam.
+
+A linkeket fel és a sáv jobbra (számitógépen) vagy alól (mobilon) használja
+az oldal navigációjához.
 
 Ezt az oldalt megépítettem a [Laravel PHP frameworkkal](https://laravel.com/),
 a [React JavaScript könyvtárral](https://reactjs.org/),
@@ -52,10 +55,49 @@ forráskódja.
 Változtatja Ön az oldal kinézését a tarot arcra kattintva a "Napsütés" alatt, 
 és válasszon egy nyelvet az oldalnak a nyelv nevére kattintva.
 
-A "Témák" és "Archivum" `; 
+A "Témák" linkre kattintva láthatja Ön minden témát amivel írok itt; az 
+"Archivum" linkre pedig régi posztok hónaponként. Ha számitógépen vagy, egy
+pontos témára vagy dátumra kattintva lát Ön minden poszt ez alatt a téma
+vagy dátum alatt.
+
+Olvasson egy posztot a címére vagy képére kattintva. Egy témára kattintva
+ami egy poszt alatt van is hoz listát ezekkel a témátikus posztok Önnek.
+
+Ez az oldal gyűjti az Ön nyelvét és fényérösségpreferenciaját arra a célra
+hogy dolgok a nyelvén és szemtoleráncián vannak. Soha nem gyűjti a 
+szemelyes információját, meg soha nem fog.`; 
         break;
         case 'de-DE': markdown = 
-`## Hallo!`; 
+`## Grüß dich!
+
+Ich bin ein Student der Informatik bei dem Western Governors Universität in
+der Vereignete Staaten. Früher war ich auch Automechaniker, Lagerungarbeiter,
+freiberuflicher Schreiber, Übersetzer, und viele andere ganz langweilig Sachen.
+
+Mit der Links hoch und mit dem Randleiste (Desktop) oder Fußzeile (Mobil)
+können Sie die Seite navigieren. 
+
+Ich baute diese Seite mit dem [Laravel PHP framework](https://laravel.com/), 
+der [React JavaScript Bibliothek](https://reactjs.org/), 
+und der [Inertia adaptive Biblothek](https://inertiajs.com/). Sie können
+den Quellcode sehen auf 
+[GitHub](https://github.com/kmetscher/kylemetscher-laravel).
+
+Sie können den Aussehung der Seite ändern mit einem Drück des Tarotgesichts
+unter "Helligkeit." Wählen Sie auch eine Sprache für die Seite mit einem 
+Drück.
+
+Mit der "Tags" Link können Sie alle Tags sehen, mit den ich schreibe. Unter 
+"Archiv" finden Sie eine Liste von Posts pro Monat und Jahr. Wenn Sie auf
+Desktop sind, drücken Sie eine Tag oder ein Datum um Posts mit dieser zu
+sehen.
+
+Lesen Sie einen Beitrag mit einem Drück auf seinen Titel oder Bild. Drücken
+Sie eine Tag unter einem Beitrag um weiter Beiträge zu sehen mit dieser Tag.
+
+Diese Seite sammelt deine Sprache und Helligkeitpräferenz damit Sachen in
+Ihrer Sprache und Augentoleranz sind. Es sammelt nicht Ihre persönliches
+Infos, und wird das auch nie machen.`; 
         break;
     }
     return (

@@ -2152,11 +2152,11 @@ function AboutContent(props) {
       break;
 
     case 'hu-HU':
-      markdown = "## Szia!\n\nInformatikus di\xE1k vagyok a Western Governors Egyetemen az Egyes\xFClt \xC1llamokban.\nKor\xE1bban ut\xF3szerel\u0151, rakt\xE1rmunk\xE1s, szabad\xFAsz\xF3 \xEDr\xF3, fordit\xF3, meg sok m\xE1s \nunalmas dolog is voltam.\n\nEzt az oldalt meg\xE9p\xEDtettem a [Laravel PHP frameworkkal](https://laravel.com/),\na [React JavaScript k\xF6nyvt\xE1rral](https://reactjs.org/),\n\xE9s az [Inertia adapter k\xF6nyvt\xE1rral](https://inertiajs.com/). A \n[GitHub-on](https://github.com/kmetscher/kylemetscher-laravel) l\xE1that\xF3 a\nforr\xE1sk\xF3dja.\n\nV\xE1ltoztatja \xD6n az oldal kin\xE9z\xE9s\xE9t a tarot arcra kattintva a \"Naps\xFCt\xE9s\" alatt, \n\xE9s v\xE1lasszon egy nyelvet az oldalnak a nyelv nev\xE9re kattintva.\n\nA \"T\xE9m\xE1k\" \xE9s \"Archivum\" ";
+      markdown = "## Szia!\n\nInformatikus di\xE1k vagyok a Western Governors Egyetemen az Egyes\xFClt \xC1llamokban.\nKor\xE1bban aut\xF3szerel\u0151, rakt\xE1rmunk\xE1s, szabad\xFAsz\xF3 \xEDr\xF3, fordit\xF3, meg sok m\xE1s \nunalmas dolog is voltam.\n\nA linkeket fel \xE9s a s\xE1v jobbra (sz\xE1mit\xF3g\xE9pen) vagy al\xF3l (mobilon) haszn\xE1lja\naz oldal navig\xE1ci\xF3j\xE1hoz.\n\nEzt az oldalt meg\xE9p\xEDtettem a [Laravel PHP frameworkkal](https://laravel.com/),\na [React JavaScript k\xF6nyvt\xE1rral](https://reactjs.org/),\n\xE9s az [Inertia adapter k\xF6nyvt\xE1rral](https://inertiajs.com/). A \n[GitHub-on](https://github.com/kmetscher/kylemetscher-laravel) l\xE1that\xF3 a\nforr\xE1sk\xF3dja.\n\nV\xE1ltoztatja \xD6n az oldal kin\xE9z\xE9s\xE9t a tarot arcra kattintva a \"Naps\xFCt\xE9s\" alatt, \n\xE9s v\xE1lasszon egy nyelvet az oldalnak a nyelv nev\xE9re kattintva.\n\nA \"T\xE9m\xE1k\" linkre kattintva l\xE1thatja \xD6n minden t\xE9m\xE1t amivel \xEDrok itt; az \n\"Archivum\" linkre pedig r\xE9gi posztok h\xF3naponk\xE9nt. Ha sz\xE1mit\xF3g\xE9pen vagy, egy\npontos t\xE9m\xE1ra vagy d\xE1tumra kattintva l\xE1t \xD6n minden poszt ez alatt a t\xE9ma\nvagy d\xE1tum alatt.\n\nOlvasson egy posztot a c\xEDm\xE9re vagy k\xE9p\xE9re kattintva. Egy t\xE9m\xE1ra kattintva\nami egy poszt alatt van is hoz list\xE1t ezekkel a t\xE9m\xE1tikus posztok \xD6nnek.\n\nEz az oldal gy\u0171jti az \xD6n nyelv\xE9t \xE9s f\xE9ny\xE9r\xF6ss\xE9gpreferenciaj\xE1t arra a c\xE9lra\nhogy dolgok a nyelv\xE9n \xE9s szemtoler\xE1nci\xE1n vannak. Soha nem gy\u0171jti a \nszemelyes inform\xE1ci\xF3j\xE1t, meg soha nem fog.";
       break;
 
     case 'de-DE':
-      markdown = "## Hallo!";
+      markdown = "## Gr\xFC\xDF dich!\n\nIch bin ein Student der Informatik bei dem Western Governors Universit\xE4t in\nder Vereignete Staaten. Fr\xFCher war ich auch Automechaniker, Lagerungarbeiter,\nfreiberuflicher Schreiber, \xDCbersetzer, und viele andere ganz langweilig Sachen.\n\nMit der Links hoch und mit dem Randleiste (Desktop) oder Fu\xDFzeile (Mobil)\nk\xF6nnen Sie die Seite navigieren. \n\nIch baute diese Seite mit dem [Laravel PHP framework](https://laravel.com/), \nder [React JavaScript Bibliothek](https://reactjs.org/), \nund der [Inertia adaptive Biblothek](https://inertiajs.com/). Sie k\xF6nnen\nden Quellcode sehen auf \n[GitHub](https://github.com/kmetscher/kylemetscher-laravel).\n\nSie k\xF6nnen den Aussehung der Seite \xE4ndern mit einem Dr\xFCck des Tarotgesichts\nunter \"Helligkeit.\" W\xE4hlen Sie auch eine Sprache f\xFCr die Seite mit einem \nDr\xFCck.\n\nMit der \"Tags\" Link k\xF6nnen Sie alle Tags sehen, mit den ich schreibe. Unter \n\"Archiv\" finden Sie eine Liste von Posts pro Monat und Jahr. Wenn Sie auf\nDesktop sind, dr\xFCcken Sie eine Tag oder ein Datum um Posts mit dieser zu\nsehen.\n\nLesen Sie einen Beitrag mit einem Dr\xFCck auf seinen Titel oder Bild. Dr\xFCcken\nSie eine Tag unter einem Beitrag um weiter Beitr\xE4ge zu sehen mit dieser Tag.\n\nDiese Seite sammelt deine Sprache und Helligkeitpr\xE4ferenz damit Sachen in\nIhrer Sprache und Augentoleranz sind. Es sammelt nicht Ihre pers\xF6nliches\nInfos, und wird das auch nie machen.";
       break;
   }
 
@@ -2259,6 +2259,55 @@ function Archive(props) {
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "archive"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ol", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_DateList__WEBPACK_IMPORTED_MODULE_5__["default"], null))));
+}
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Contact.js":
+/*!***************************************!*\
+  !*** ./resources/js/Pages/Contact.js ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Contact)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _Layout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Layout */ "./resources/js/Pages/Layout.js");
+/* harmony import */ var _Tagline__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Tagline */ "./resources/js/Pages/Tagline.js");
+
+
+
+function Contact(props) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Layout__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Tagline__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    taglinetype: "contact"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "blogpost"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
+    href: "https://github.com/kmetscher/"
+  }, "GitHub")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
+    href: "https://my.indeed.com/p/kylem-7bs7wxv"
+  }, "R\xE9sum\xE9")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Email"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    style: {
+      paddingLeft: '2vw'
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+    src: "/storage/images/emailsplit1.png",
+    alt: "howdy@",
+    style: {
+      height: 'max-content',
+      width: 'max-content'
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+    src: "/storage/images/emailsplit2.png",
+    alt: "kylemetscher.com",
+    style: {
+      height: 'max-content',
+      width: 'max-content'
+    }
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null)));
 }
 
 /***/ }),
@@ -3077,6 +3126,10 @@ function Tagline(props) {
 
   if (taglinetype === 'about') {
     titleContent = langState.about;
+  }
+
+  if (taglinetype === 'contact') {
+    titleContent = langState.contact;
   }
 
   var taglineContent = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
@@ -57864,6 +57917,8 @@ var map = {
 	"./AllTags.js": "./resources/js/Pages/AllTags.js",
 	"./Archive": "./resources/js/Pages/Archive.js",
 	"./Archive.js": "./resources/js/Pages/Archive.js",
+	"./Contact": "./resources/js/Pages/Contact.js",
+	"./Contact.js": "./resources/js/Pages/Contact.js",
 	"./DateList": "./resources/js/Pages/DateList.js",
 	"./DateList.js": "./resources/js/Pages/DateList.js",
 	"./HeaderNav": "./resources/js/Pages/HeaderNav.js",

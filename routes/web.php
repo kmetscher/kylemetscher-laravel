@@ -35,4 +35,4 @@ Route::inertia('/archive', 'Archive');
 
 Route::inertia('/about', 'About');
 
-Route::inertia('contact', 'Contact');
+Route::inertia('/contact', 'Contact');
