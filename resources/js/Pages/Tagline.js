@@ -21,7 +21,7 @@ export default function Tagline(props) {
     }
     if (taglinetype === 'tag') {
         switch (langState.locale) {
-            case 'en-EN':
+            case 'en-US':
             case 'de-DE': 
                 titleContent = `${langState.typetag} ${props.tagline}`;
             break;

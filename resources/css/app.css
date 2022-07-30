@@ -308,6 +308,11 @@
     margin-bottom: 1vw;
     background-color: black;
   }
+
+  .post .headline {
+    font-size: 2.5vw;
+    padding-left: 0;
+  }
   
   .postpreview {
     padding-left: 2vw;
@@ -725,5 +730,11 @@
   
   .archive a {
     text-decoration: underline;
+  }
+
+  .gutenberg {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
   }
   

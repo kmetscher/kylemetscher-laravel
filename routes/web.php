@@ -36,3 +36,7 @@ Route::inertia('/archive', 'Archive');
 Route::inertia('/about', 'About');
 
 Route::inertia('/contact', 'Contact');
+
+// Auth
+
+Route::inertia('/gutenberg', 'Gutenberg');
