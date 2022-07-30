@@ -3,6 +3,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InertiaTestController;
 use App\Http\Controllers\PostPreviewsController;
 use App\Http\Controllers\ViewPostController;
+use App\Http\Controllers\WritePostController;
+use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 // Post preview controller
@@ -40,3 +42,6 @@ Route::inertia('/contact', 'Contact');
 // Auth
 
 Route::inertia('/gutenberg', 'Gutenberg');
+
+Route::post('/gutenberg',
+    [WritePostController::class, 'submitPost']);

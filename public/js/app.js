@@ -2358,10 +2358,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ Gutenberg)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_markdown_lib_react_markdown__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-markdown/lib/react-markdown */ "./node_modules/react-markdown/lib/react-markdown.js");
-/* harmony import */ var _Tagbox__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Tagbox */ "./resources/js/Pages/Tagbox.js");
-/* harmony import */ var _Published__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Published */ "./resources/js/Pages/Published.js");
-/* harmony import */ var _Site__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Site */ "./resources/js/Pages/Site.js");
+/* harmony import */ var react_markdown_lib_react_markdown__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-markdown/lib/react-markdown */ "./node_modules/react-markdown/lib/react-markdown.js");
+/* harmony import */ var _Site__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Site */ "./resources/js/Pages/Site.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
@@ -2383,8 +2381,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-
-
 function Gutenberg(props) {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
     title: '',
@@ -2399,11 +2395,14 @@ function Gutenberg(props) {
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "gutenberg"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Site__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Site__WEBPACK_IMPORTED_MODULE_1__["default"], {
     title: "Gutenberg"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "editor"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
+    action: "/gutenberg",
+    method: "post"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
     htmlFor: "title"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Title")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
     type: "text",
@@ -2470,12 +2469,15 @@ function Gutenberg(props) {
         tags: taglist
       }));
     }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+    type: "submit",
+    value: "let's go girls"
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "blogpost"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_markdown_lib_react_markdown__WEBPACK_IMPORTED_MODULE_4__.ReactMarkdown, null, text.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_markdown_lib_react_markdown__WEBPACK_IMPORTED_MODULE_2__.ReactMarkdown, null, text.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
     className: "blogpost",
     src: text.image
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_markdown_lib_react_markdown__WEBPACK_IMPORTED_MODULE_4__.ReactMarkdown, null, text.body), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Tagged:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_markdown_lib_react_markdown__WEBPACK_IMPORTED_MODULE_2__.ReactMarkdown, null, text.body), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Tagged:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "filedunder"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ol", {
     className: "tagbox"
@@ -2485,7 +2487,7 @@ function Gutenberg(props) {
     className: "post"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
     className: "headline"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_markdown_lib_react_markdown__WEBPACK_IMPORTED_MODULE_4__.ReactMarkdown, null, text.title)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_markdown_lib_react_markdown__WEBPACK_IMPORTED_MODULE_2__.ReactMarkdown, null, text.title)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "postpreview"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
     className: "featured",

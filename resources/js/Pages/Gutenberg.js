@@ -1,7 +1,5 @@
 import React, { useState } from "react"
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
-import Tagbox from "./Tagbox";
-import Published from "./Published";
 import Site from "./Site";
 
 export default function Gutenberg(props) {
@@ -16,7 +14,7 @@ export default function Gutenberg(props) {
         <div className="gutenberg">
             <Site title="Gutenberg" />
             <div className="editor">
-                <form>
+                <form action="/gutenberg" method="post">
                     <label htmlFor="title"><h3>Title</h3></label>
                     <input type="text" name="title" id="title"
                         value={text.title}
@@ -63,7 +61,8 @@ export default function Gutenberg(props) {
                                     tags: taglist
                                 })
                             }} />
-
+                    <br></br>
+                    <input type="submit" value="let's go girls" />
                 </form>
             </div>
             <div>
