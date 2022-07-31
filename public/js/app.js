@@ -2357,9 +2357,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ Gutenberg)
 /* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_markdown_lib_react_markdown__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-markdown/lib/react-markdown */ "./node_modules/react-markdown/lib/react-markdown.js");
-/* harmony import */ var _Site__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Site */ "./resources/js/Pages/Site.js");
+/* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_markdown_lib_react_markdown__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-markdown/lib/react-markdown */ "./node_modules/react-markdown/lib/react-markdown.js");
+/* harmony import */ var _Site__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Site */ "./resources/js/Pages/Site.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
@@ -2381,126 +2382,129 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 function Gutenberg(props) {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({
     title: '',
     slug: '',
     body: '',
     image: '',
-    tags: []
+    tags: '',
+    tagmap: ''
   }),
       _useState2 = _slicedToArray(_useState, 2),
       text = _useState2[0],
       setText = _useState2[1];
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  function handleChange(e) {
+    var field = e.target.id;
+    var value = e.target.value;
+    setText(function (text) {
+      return _objectSpread(_objectSpread({}, text), {}, _defineProperty({}, field, value));
+    });
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_0__.Inertia.post('/gutenberg', text);
+  }
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
     className: "gutenberg"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Site__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_Site__WEBPACK_IMPORTED_MODULE_2__["default"], {
     title: "Gutenberg"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
     className: "editor"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("form", {
     action: "/gutenberg",
     method: "post"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("label", {
     htmlFor: "title"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Title")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("h3", null, "Title")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("input", {
     type: "text",
     name: "title",
     id: "title",
     value: text.title,
-    onChange: function onChange(e) {
-      return setText(_objectSpread(_objectSpread({}, text), {}, {
-        title: e.target.value
-      }));
-    }
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
+    onChange: handleChange
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("label", {
     htmlFor: "slug"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Slug")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("textarea", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("h3", null, "Slug")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("textarea", {
     name: "slug",
     id: "slug",
     cols: 50,
     rows: 2,
     value: text.slug,
-    onChange: function onChange(e) {
-      return setText(_objectSpread(_objectSpread({}, text), {}, {
-        slug: e.target.value
-      }));
-    }
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
+    onChange: handleChange
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("label", {
     htmlFor: "body"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Body")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("textarea", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("h3", null, "Body")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("textarea", {
     name: "body",
     id: "body",
     cols: 50,
     rows: 20,
     value: text.body,
-    onChange: function onChange(e) {
-      return setText(_objectSpread(_objectSpread({}, text), {}, {
-        body: e.target.value
-      }));
-    }
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
+    onChange: handleChange
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("label", {
     htmlFor: "image"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Featured image")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("h3", null, "Featured image")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("input", {
     type: "text",
     name: "image",
-    id: "tag",
+    id: "image",
     value: text.image,
-    onChange: function onChange(e) {
-      return setText(_objectSpread(_objectSpread({}, text), {}, {
-        image: e.target.value
-      }));
-    }
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
+    onChange: handleChange
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("label", {
     htmlFor: "tags"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Tags")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("h3", null, "Tags")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("input", {
     type: "text",
-    name: "tags",
-    id: "tags",
     onChange: function onChange(e) {
       var exploded = e.target.value.split(',');
       var taglist = exploded.map(function (tag, index) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("li", {
           key: index
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", null, tag));
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("a", null, tag));
       });
       setText(_objectSpread(_objectSpread({}, text), {}, {
-        tags: taglist
+        tags: exploded,
+        tagmap: taglist
       }));
     }
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("input", {
+    type: "text",
+    value: JSON.stringify(text.tags),
+    name: "tags",
+    id: "tags"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("input", {
     type: "submit",
     value: "let's go girls"
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
     className: "blogpost"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_markdown_lib_react_markdown__WEBPACK_IMPORTED_MODULE_2__.ReactMarkdown, null, text.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(react_markdown_lib_react_markdown__WEBPACK_IMPORTED_MODULE_3__.ReactMarkdown, null, text.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("img", {
     className: "blogpost",
     src: text.image
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_markdown_lib_react_markdown__WEBPACK_IMPORTED_MODULE_2__.ReactMarkdown, null, text.body), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Tagged:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(react_markdown_lib_react_markdown__WEBPACK_IMPORTED_MODULE_3__.ReactMarkdown, null, text.body), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("h3", null, "Tagged:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
     className: "filedunder"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ol", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("ol", {
     className: "tagbox"
-  }, text.tags)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, text.tagmap)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
     className: "pubdatebox"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Published April 20, 1337"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("p", null, "Published April 20, 1337"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
     className: "post"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("a", {
     className: "headline"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_markdown_lib_react_markdown__WEBPACK_IMPORTED_MODULE_2__.ReactMarkdown, null, text.title)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(react_markdown_lib_react_markdown__WEBPACK_IMPORTED_MODULE_3__.ReactMarkdown, null, text.title)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
     className: "postpreview"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("img", {
     className: "featured",
     src: text.image
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("p", {
     className: "postslug"
-  }, text.slug)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, text.slug)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
     className: "filedunder"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ol", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("ol", {
     className: "tagbox"
-  }, text.tags)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, text.tagmap)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
     className: "pubdatebox"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Published April 20, 1337")))));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("p", null, "Published April 20, 1337")))));
 }
 
 /***/ }),

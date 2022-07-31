@@ -41,7 +41,8 @@ Route::inertia('/contact', 'Contact');
 
 // Auth
 
-Route::inertia('/gutenberg', 'Gutenberg');
+Route::get('/gutenberg', 
+    [WritePostController::class, 'editor']);
 
 Route::post('/gutenberg',
     [WritePostController::class, 'submitPost']);

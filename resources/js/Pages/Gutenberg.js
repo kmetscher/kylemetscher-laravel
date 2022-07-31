@@ -1,3 +1,4 @@
+import { Inertia } from "@inertiajs/inertia";
 import React, { useState } from "react"
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import Site from "./Site";
@@ -8,8 +9,21 @@ export default function Gutenberg(props) {
         slug: '',
         body: '',
         image: '',
-        tags: [],
+        tags: '',
+        tagmap: '',
     });
+    function handleChange(e) {
+        const field = e.target.id;
+        const value = e.target.value;
+        setText(text => ({
+            ...text,
+            [field]: value,
+        }));
+    }
+    function handleSubmit(e) {
+        e.preventDefault();
+        Inertia.post('/gutenberg', text);
+    }
     return (
         <div className="gutenberg">
             <Site title="Gutenberg" />
@@ -18,39 +32,23 @@ export default function Gutenberg(props) {
                     <label htmlFor="title"><h3>Title</h3></label>
                     <input type="text" name="title" id="title"
                         value={text.title}
-                        onChange={
-                            (e) => setText({
-                                ...text,
-                                title: e.target.value
-                            })} />
+                        onChange={handleChange} />
                     <label htmlFor="slug"><h3>Slug</h3></label>
                     <textarea name="slug" id="slug" cols={50} rows={2}
                         value={text.slug}
-                        onChange={
-                            (e) => setText({
-                                ...text,
-                                slug: e.target.value
-                            })}>
+                        onChange={handleChange}>
                     </textarea>
                     <label htmlFor="body"><h3>Body</h3></label>
                     <textarea name="body" id="body" cols={50} rows={20}
                         value={text.body}
-                        onChange={
-                            (e) => setText({
-                                ...text,
-                                body: e.target.value
-                            })}>
+                        onChange={handleChange}>
                     </textarea>
                     <label htmlFor="image"><h3>Featured image</h3></label>
-                    <input type="text" name="image" id="tag"
+                    <input type="text" name="image" id="image"
                         value={text.image}
-                        onChange={
-                            (e) => setText({
-                                ...text,
-                                image: e.target.value
-                            })} />
+                        onChange={handleChange} />
                     <label htmlFor="tags"><h3>Tags</h3></label>
-                    <input type="text" name="tags" id="tags"
+                    <input type="text"
                         onChange={
                             (e) => {
                                 let exploded = e.target.value.split(',');
@@ -58,10 +56,14 @@ export default function Gutenberg(props) {
                                     <li key={index}><a>{tag}</a></li>)
                                 setText({
                                     ...text,
-                                    tags: taglist
+                                    tags: exploded,
+                                    tagmap: taglist,
                                 })
                             }} />
                     <br></br>
+                    <input type="text" 
+                    value={JSON.stringify(text.tags)} 
+                    name="tags" id="tags"/>
                     <input type="submit" value="let's go girls" />
                 </form>
             </div>
@@ -77,7 +79,7 @@ export default function Gutenberg(props) {
                     <h3>Tagged:</h3>
                     <div className="filedunder">
                         <ol className="tagbox">
-                            {text.tags}
+                            {text.tagmap}
                         </ol>
                     </div>
                     <div className="pubdatebox">
@@ -96,7 +98,7 @@ export default function Gutenberg(props) {
                     </div>
                     <div className="filedunder">
                         <ol className="tagbox">
-                            {text.tags}
+                            {text.tagmap}
                         </ol>
                     </div>
                     <div className="pubdatebox">
