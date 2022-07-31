@@ -6,16 +6,12 @@ import Site from "./Site";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 
 export default function ViewPost(props) {
-    const markdown = 
-    `## omg hey!!  
-
-does this work lol`
     return (
         <Layout>
             <Site title={props.title} />
             <div className="blogpost">
-                <h2>{props.title}</h2>
-                <img className="blogpost" src={'https://kylemetscher.com/' + props.image}></img>
+                <ReactMarkdown>{props.title}</ReactMarkdown>
+                <img className="blogpost" src={props.image}></img>
                 <ReactMarkdown>
                     {props.body}
                 </ReactMarkdown>

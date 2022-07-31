@@ -2735,6 +2735,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Published__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Published */ "./resources/js/Pages/Published.js");
 /* harmony import */ var _Tagline__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Tagline */ "./resources/js/Pages/Tagline.js");
 /* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
+/* harmony import */ var react_markdown_lib_react_markdown__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-markdown/lib/react-markdown */ "./node_modules/react-markdown/lib/react-markdown.js");
+
 
 
 
@@ -2748,16 +2750,19 @@ function PostPreviews(props) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
       key: post.id,
       className: "post"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_5__.Link, {
-      href: '/viewpost/' + post.id,
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_5__.Link, {
+      href: '/viewpost/' + post.id
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_markdown_lib_react_markdown__WEBPACK_IMPORTED_MODULE_6__.ReactMarkdown, {
       className: "headline"
     }, post.title)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
       className: "postpreview",
       key: post.id
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_5__.Link, {
+      href: '/viewpost/' + post.id
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
       className: "featured",
-      src: 'https://kylemetscher.com/' + post.image
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+      src: post.image
+    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
       className: "postslug"
     }, post.slug)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Tagbox__WEBPACK_IMPORTED_MODULE_2__["default"], {
       tags: tags,
@@ -3351,14 +3356,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function ViewPost(props) {
-  var markdown = "## omg hey!!  \n\ndoes this work lol";
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Layout__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Site__WEBPACK_IMPORTED_MODULE_4__["default"], {
     title: props.title
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "blogpost"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, props.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_markdown_lib_react_markdown__WEBPACK_IMPORTED_MODULE_5__.ReactMarkdown, null, props.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
     className: "blogpost",
-    src: 'https://kylemetscher.com/' + props.image
+    src: props.image
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_markdown_lib_react_markdown__WEBPACK_IMPORTED_MODULE_5__.ReactMarkdown, null, props.body), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_PostTagbox__WEBPACK_IMPORTED_MODULE_2__["default"], {
     tags: props.tags
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Published__WEBPACK_IMPORTED_MODULE_3__["default"], {

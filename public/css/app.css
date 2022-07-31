@@ -74,6 +74,15 @@
     font-weight: bold;
     padding-left: 2vw;
     display: inline-block;
+    color: inherit;
+  }
+
+  .post .headline h1:hover {
+    -webkit-animation-name: linkhover;
+            animation-name: linkhover;
+    -webkit-animation-duration: 0.25s;
+            animation-duration: 0.25s;
+    color: gray;
   }
   
   h1 {
@@ -83,6 +92,11 @@
     text-align: left;
     padding: 2vw;
     display: inline;
+  }
+
+  .blogpost h1 {
+    padding-top: 0;
+    padding-bottom: 0;
   }
   
   #bgcaption {
@@ -340,6 +354,14 @@
   .post .headline {
     font-size: 2.5vw;
     padding-left: 0;
+  }
+
+  a.headline:hover {
+    -webkit-animation-name: linkhover;
+            animation-name: linkhover;
+    -webkit-animation-duration: 0.25s;
+            animation-duration: 0.25s;
+    color: gray;
   }
   
   .postpreview {
