@@ -4,19 +4,21 @@ This is a port of [my website](https://github.com/kmetscher/kylemetscher-dot-com
 
 ## In progress
 
-- About and Contact pages
-- Gutenberg pages
-- Restructuring directories to resemble the vanilla website build
+- Full post editor functionality (edit, delete, more informative success page)
+- Conversion of blog post record data to Markdown
 
 ## Stuck
 
 - React transition group usage
+- Basic auth usage with Laravel's authentication middleware (do I really need a user table?)
+- CSRF protection with Inertia
+- ReactMarkdown component parameter usage
 
 ## Ideas
 
 - Creating a permalink column in the post table to use for more readable and search-optimized URIs, or, using Laravel and React's URL tools to create permalinks while still using post ID primary keys
 - Comment section?
-- Using Breeze library for authentication on admin side of site as opposed to httpauth in vanilla site build
+- Search bar?
 
 ## Security
 
