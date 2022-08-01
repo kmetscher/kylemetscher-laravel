@@ -12,7 +12,8 @@ class VerifyCsrfToken extends Middleware
      * @var array<int, string>
      */
     protected $except = [
-        '/gutenberg/new',
+        /*'/gutenberg/new',
         '/gutenberg/edit',
+        '/gutenberg/delete',*/
     ];
 }

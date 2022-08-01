@@ -4,6 +4,9 @@ import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import Site from "./Site";
 
 export default function Gutenberg(props) {
+    const [delPost, setDelPost] = useState({
+        bool: false,
+    });
     const [text, setText] = useState({
         title: props.title,
         slug: props.slug,
@@ -22,16 +25,19 @@ export default function Gutenberg(props) {
             [field]: value,
         }));
     }
-    function handleSubmit(e) {
-        e.preventDefault();
-        Inertia.post('/gutenberg', text);
-    }
     return (
         <div className="gutenberg">
             <Site title="Gutenberg" />
             <div className="editor">
                 {props.id && <h3>Editing {props.title}</h3>}
-                <form action={!props.id ? '/gutenberg/new' : '/gutenberg/edit'} method="post">
+                <form onSubmit={(e) => {
+                    e.preventDefault;
+                    !props.id ?
+                    Inertia.post('/gutenberg/new', {text: text, _token: props._token}) :
+                !delPost.bool ?
+                    Inertia.post('/gutenberg/edit', {text: text, _token: props._token}) :
+                    Inertia.post('/gutenberg/delete', {text: text, _token: props._token})} 
+                }>
                     {props.id && <label htmlFor="id"><h3>Post ID</h3></label>}
                     {props.id && <input type="number" name="id" id="id"
                         value={props.id} />}
@@ -60,7 +66,7 @@ export default function Gutenberg(props) {
                         <option value="de">Deutsch</option>
                     </select>
                     <label htmlFor="tags"><h3>Tags</h3></label>
-                    <input type="text" defaultValue = {props.tagstring}
+                    <input type="text" defaultValue={props.tagstring}
                         onChange={
                             (e) => {
                                 let exploded = e.target.value.split(',');
@@ -71,13 +77,21 @@ export default function Gutenberg(props) {
                                     tags: exploded,
                                     tagmap: taglist,
                                 })
-                            }}/>
+                            }} />
                     <br></br>
                     <input type="text"
                         value={JSON.stringify(text.tags)}
                         name="tags" id="tags" readOnly />
                     <br></br>
-                    <input type="submit" value="let's go girls" />
+                    <button type="submit">Publish</button>
+                    <br></br>
+                    {props.id &&
+                        <button type="button"
+                            onClick={(e) => setDelPost({ bool: true })}>
+                            Delete
+                        </button>}
+                    {(delPost.bool === true) &&
+                        <button type="submit">Are you sure?</button>}
                 </form>
             </div>
             <div>

@@ -2385,6 +2385,13 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function Gutenberg(props) {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({
+    bool: false
+  }),
+      _useState2 = _slicedToArray(_useState, 2),
+      delPost = _useState2[0],
+      setDelPost = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({
     title: props.title,
     slug: props.slug,
     body: props.body,
@@ -2394,9 +2401,9 @@ function Gutenberg(props) {
     language: props.language,
     tagmap: ''
   }),
-      _useState2 = _slicedToArray(_useState, 2),
-      text = _useState2[0],
-      setText = _useState2[1];
+      _useState4 = _slicedToArray(_useState3, 2),
+      text = _useState4[0],
+      setText = _useState4[1];
 
   function handleChange(e) {
     var field = e.target.id;
@@ -2406,11 +2413,6 @@ function Gutenberg(props) {
     });
   }
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_0__.Inertia.post('/gutenberg', text);
-  }
-
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
     className: "gutenberg"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_Site__WEBPACK_IMPORTED_MODULE_2__["default"], {
@@ -2418,8 +2420,19 @@ function Gutenberg(props) {
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
     className: "editor"
   }, props.id && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("h3", null, "Editing ", props.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("form", {
-    action: !props.id ? '/gutenberg/new' : '/gutenberg/edit',
-    method: "post"
+    onSubmit: function onSubmit(e) {
+      e.preventDefault;
+      !props.id ? _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_0__.Inertia.post('/gutenberg/new', {
+        text: text,
+        _token: props._token
+      }) : !delPost.bool ? _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_0__.Inertia.post('/gutenberg/edit', {
+        text: text,
+        _token: props._token
+      }) : _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_0__.Inertia.post('/gutenberg/delete', {
+        text: text,
+        _token: props._token
+      });
+    }
   }, props.id && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("label", {
     htmlFor: "id"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("h3", null, "Post ID")), props.id && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("input", {
@@ -2496,10 +2509,18 @@ function Gutenberg(props) {
     name: "tags",
     id: "tags",
     readOnly: true
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("input", {
-    type: "submit",
-    value: "let's go girls"
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("button", {
+    type: "submit"
+  }, "Publish"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("br", null), props.id && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("button", {
+    type: "button",
+    onClick: function onClick(e) {
+      return setDelPost({
+        bool: true
+      });
+    }
+  }, "Delete"), delPost.bool === true && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("button", {
+    type: "submit"
+  }, "Are you sure?"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
     className: "blogpost"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(react_markdown_lib_react_markdown__WEBPACK_IMPORTED_MODULE_3__.ReactMarkdown, null, text.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("img", {
     className: "blogpost",
@@ -2546,10 +2567,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 function GutenbergHome(props) {
-  var posts = props.posts;
+  var posts = props.posts.map(function (post) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+      key: post.id
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
+      href: '/gutenberg/edit/' + post.id
+    }, post.title));
+  });
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
     href: "/gutenberg/new"
-  }, "Write"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Edit/Delete"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ol", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Image upload"));
+  }, "Write"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Edit/Delete"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "gutenbergposts"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ol", null, posts)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Image upload"));
 }
 
 /***/ }),

@@ -9,9 +9,9 @@ This is a port of [my website](https://github.com/kmetscher/kylemetscher-dot-com
 
 ## Stuck
 
+- CSRF protection with Inertia. Absolutely nothing seems to work. Inertia's own docs on this do not spell out usage beyond direct contradiction of Laravel's or to suggest that you do nothing. 
 - React transition group usage
 - Basic auth usage with Laravel's authentication middleware (do I really need a user table?)
-- CSRF protection with Inertia
 - ReactMarkdown component parameter usage
 
 ## Ideas

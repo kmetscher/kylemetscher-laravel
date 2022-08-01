@@ -795,6 +795,15 @@
   .gutenberg {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+  }
 
+  .gutenbergposts {
+    height: 20vw;
+    overflow: scroll;
+  }
+
+  .gutenbergposts li {
+    list-style: none;
+    list-style-position: inside;
   }
   

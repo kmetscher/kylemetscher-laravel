@@ -55,3 +55,6 @@ Route::post('/gutenberg/new',
 
 Route::post('gutenberg/edit',
     [Gutenberg::class, 'updatePost']);
+
+Route::post('gutenberg/delete',
+    [Gutenberg::class, 'deletePost']);
