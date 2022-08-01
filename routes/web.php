@@ -3,7 +3,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InertiaTestController;
 use App\Http\Controllers\PostPreviewsController;
 use App\Http\Controllers\ViewPostController;
-use App\Http\Controllers\WritePostController;
+use App\Http\Controllers\Gutenberg;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -42,7 +42,16 @@ Route::inertia('/contact', 'Contact');
 // Auth
 
 Route::get('/gutenberg', 
-    [WritePostController::class, 'editor']);
+    [Gutenberg::class, 'home']);
 
-Route::post('/gutenberg',
-    [WritePostController::class, 'submitPost']);
+Route::get('/gutenberg/new', 
+    [Gutenberg::class, 'write']);
+
+Route::get('/gutenberg/edit/{postID}',
+    [Gutenberg::class, 'edit']);
+
+Route::post('/gutenberg/new',
+    [Gutenberg::class, 'submitPost']);
+
+Route::post('gutenberg/edit',
+    [Gutenberg::class, 'updatePost']);

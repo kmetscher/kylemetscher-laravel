@@ -6,9 +6,12 @@ import Site from "./Site";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 
 export default function ViewPost(props) {
+    const regExp = new RegExp('\\w'); // Remove markdown shit
+    const metaTitle = props.title.substring(props.title.search(regExp));
+    // Return the title string 
     return (
         <Layout>
-            <Site title={props.title} />
+            <Site title={metaTitle} />
             <div className="blogpost">
                 <ReactMarkdown>{props.title}</ReactMarkdown>
                 <img className="blogpost" src={props.image}></img>

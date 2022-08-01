@@ -42,7 +42,7 @@ class HandleInertiaRequests extends Middleware
         $alltags = Tags::selectRaw('
                 name, id, (select count(post_id) from post_tags
                 where post_tags.tag_id = tags.id) as refs')
-                ->get();
+                ->orderBy('name', 'asc')->get();
         $refs = $alltags->sum('refs');
         /* no but like seriously don't */
         $archives = BlogPost::selectRaw(

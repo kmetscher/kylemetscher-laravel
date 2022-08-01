@@ -5,11 +5,13 @@ import Site from "./Site";
 
 export default function Gutenberg(props) {
     const [text, setText] = useState({
-        title: '',
-        slug: '',
-        body: '',
-        image: '',
-        tags: '',
+        title: props.title,
+        slug: props.slug,
+        body: props.body,
+        image: props.image,
+        tags: props.tags,
+        id: props.id,
+        language: props.language,
         tagmap: '',
     });
     function handleChange(e) {
@@ -28,7 +30,11 @@ export default function Gutenberg(props) {
         <div className="gutenberg">
             <Site title="Gutenberg" />
             <div className="editor">
-                <form action="/gutenberg" method="post">
+                {props.id && <h3>Editing {props.title}</h3>}
+                <form action={!props.id ? '/gutenberg/new' : '/gutenberg/edit'} method="post">
+                    {props.id && <label htmlFor="id"><h3>Post ID</h3></label>}
+                    {props.id && <input type="number" name="id" id="id"
+                        value={props.id} />}
                     <label htmlFor="title"><h3>Title</h3></label>
                     <input type="text" name="title" id="title"
                         value={text.title}
@@ -47,8 +53,14 @@ export default function Gutenberg(props) {
                     <input type="text" name="image" id="image"
                         value={text.image}
                         onChange={handleChange} />
+                    <label htmlFor="language"><h3>Language</h3></label>
+                    <select name="language" id="language" value={props.language}>
+                        <option value="en">English</option>
+                        <option value="hu">Magyar</option>
+                        <option value="de">Deutsch</option>
+                    </select>
                     <label htmlFor="tags"><h3>Tags</h3></label>
-                    <input type="text"
+                    <input type="text" defaultValue = {props.tagstring}
                         onChange={
                             (e) => {
                                 let exploded = e.target.value.split(',');
@@ -59,11 +71,12 @@ export default function Gutenberg(props) {
                                     tags: exploded,
                                     tagmap: taglist,
                                 })
-                            }} />
+                            }}/>
                     <br></br>
-                    <input type="text" 
-                    value={JSON.stringify(text.tags)} 
-                    name="tags" id="tags"/>
+                    <input type="text"
+                        value={JSON.stringify(text.tags)}
+                        name="tags" id="tags" readOnly />
+                    <br></br>
                     <input type="submit" value="let's go girls" />
                 </form>
             </div>

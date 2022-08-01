@@ -2385,11 +2385,13 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function Gutenberg(props) {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({
-    title: '',
-    slug: '',
-    body: '',
-    image: '',
-    tags: '',
+    title: props.title,
+    slug: props.slug,
+    body: props.body,
+    image: props.image,
+    tags: props.tags,
+    id: props.id,
+    language: props.language,
     tagmap: ''
   }),
       _useState2 = _slicedToArray(_useState, 2),
@@ -2415,10 +2417,17 @@ function Gutenberg(props) {
     title: "Gutenberg"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
     className: "editor"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("form", {
-    action: "/gutenberg",
+  }, props.id && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("h3", null, "Editing ", props.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("form", {
+    action: !props.id ? '/gutenberg/new' : '/gutenberg/edit',
     method: "post"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("label", {
+  }, props.id && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("label", {
+    htmlFor: "id"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("h3", null, "Post ID")), props.id && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("input", {
+    type: "number",
+    name: "id",
+    id: "id",
+    value: props.id
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("label", {
     htmlFor: "title"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("h3", null, "Title")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("input", {
     type: "text",
@@ -2453,9 +2462,22 @@ function Gutenberg(props) {
     value: text.image,
     onChange: handleChange
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("label", {
+    htmlFor: "language"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("h3", null, "Language")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("select", {
+    name: "language",
+    id: "language",
+    value: props.language
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("option", {
+    value: "en"
+  }, "English"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("option", {
+    value: "hu"
+  }, "Magyar"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("option", {
+    value: "de"
+  }, "Deutsch")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("label", {
     htmlFor: "tags"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("h3", null, "Tags")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("input", {
     type: "text",
+    defaultValue: props.tagstring,
     onChange: function onChange(e) {
       var exploded = e.target.value.split(',');
       var taglist = exploded.map(function (tag, index) {
@@ -2472,8 +2494,9 @@ function Gutenberg(props) {
     type: "text",
     value: JSON.stringify(text.tags),
     name: "tags",
-    id: "tags"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("input", {
+    id: "tags",
+    readOnly: true
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("input", {
     type: "submit",
     value: "let's go girls"
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
@@ -2505,6 +2528,28 @@ function Gutenberg(props) {
   }, text.tagmap)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
     className: "pubdatebox"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("p", null, "Published April 20, 1337")))));
+}
+
+/***/ }),
+
+/***/ "./resources/js/Pages/GutenbergHome.js":
+/*!*********************************************!*\
+  !*** ./resources/js/Pages/GutenbergHome.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ GutenbergHome)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+function GutenbergHome(props) {
+  var posts = props.posts;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
+    href: "/gutenberg/new"
+  }, "Write"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Edit/Delete"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ol", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Image upload"));
 }
 
 /***/ }),
@@ -3356,8 +3401,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function ViewPost(props) {
+  var regExp = new RegExp('\\w'); // Remove markdown shit
+
+  var metaTitle = props.title.substring(props.title.search(regExp)); // Return the title string 
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Layout__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Site__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    title: props.title
+    title: metaTitle
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "blogpost"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_markdown_lib_react_markdown__WEBPACK_IMPORTED_MODULE_5__.ReactMarkdown, null, props.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
@@ -58090,6 +58139,8 @@ var map = {
 	"./DateList.js": "./resources/js/Pages/DateList.js",
 	"./Gutenberg": "./resources/js/Pages/Gutenberg.js",
 	"./Gutenberg.js": "./resources/js/Pages/Gutenberg.js",
+	"./GutenbergHome": "./resources/js/Pages/GutenbergHome.js",
+	"./GutenbergHome.js": "./resources/js/Pages/GutenbergHome.js",
 	"./HeaderNav": "./resources/js/Pages/HeaderNav.js",
 	"./HeaderNav.js": "./resources/js/Pages/HeaderNav.js",
 	"./InertiaTest": "./resources/js/Pages/InertiaTest.js",
