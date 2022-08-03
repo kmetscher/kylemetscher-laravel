@@ -806,4 +806,148 @@
     list-style: none;
     list-style-position: inside;
   }
+
+  .writecomment, .writecommentdark {
+    background-color: black;
+    padding: 2vw;
+    margin-bottom: 2vw;
+  }
+
+  .writecomment p, .writecommentdark p, .comment p, .mainflex label {
+    font-size: 1.5vw;
+  }
+
+  .writecomment h3, .writecommentdark h3, .comment h3 {
+    font-size: 2vw;
+    margin-top: 1vw;
+    margin-bottom: 1vw;
+  }
+
+  .writecomment input, .writecomment textarea, 
+  .writecommentdark input, .writecommentdark textarea {
+    border: none;
+    margin-top: 1vw;
+    margin-bottom: 1vw;
+    font-family: inherit;
+    resize: none;
+    transition-property: background-color;
+    transition-duration: 0.25s;
+    outline: none;
+    padding: 1vw;
+  }
+
+  .writecomment input, .writecomment textarea {
+    background-color: white;
+    color: black;
+  }
+
+  .writecommentdark input, .writecommentdark textarea {
+    background-color: #181b1c;
+    color: white;
+  }
+
+  .writecommentdark input:focus, .writecommentdark textarea:focus {
+    border: none;
+    background-color: #2e2f30;
+  }
+
+  .beehive {
+    display: none;
+  }
+
+  .comment {
+    background-color: black;
+    padding: 2vw;
+    margin-bottom: 1vw;
+  }
+
+  .writecomment button, .writecommentdark button {
+    border: 0;
+    font-size: 1.5vw;
+  }
+
+  .writecomment button {
+    background-color: white;
+    color: black;
+  }
+
+  .writecommentdark button {
+    background-color: #181b1c;
+    color: white;
+    padding: 1vw;
+  }
+
+  @media screen and (max-width: 800px) {
+    .writecomment, .writecommentdark {
+      background-color: black;
+      padding: 3vw;
+      margin-bottom: 2vw;
+    }
+  
+    .writecomment p, .writecommentdark p, .comment p, .mainflex label {
+      font-size: 3.5vw;
+    }
+  
+    .writecomment h3, .writecommentdark h3, .comment h3 {
+      font-size: 4vw;
+      margin-top: 1vw;
+      margin-bottom: 1vw;
+    }
+  
+    .writecomment input, .writecomment textarea, 
+    .writecommentdark input, .writecommentdark textarea {
+      border: none;
+      margin-top: 1vw;
+      margin-bottom: 1vw;
+      font-family: inherit;
+      resize: none;
+      transition-property: background-color;
+      transition-duration: 0.25s;
+      outline: none;
+      padding: 1vw;
+    }
+  
+    .writecomment input, .writecomment textarea {
+      background-color: white;
+      color: black;
+    }
+  
+    .writecommentdark input, .writecommentdark textarea {
+      background-color: #181b1c;
+      color: white;
+    }
+  
+    .writecommentdark input:focus, .writecommentdark textarea:focus {
+      border: none;
+      background-color: #2e2f30;
+    }
+  
+    .beehive {
+      display: none;
+    }
+  
+    .comment {
+      background-color: black;
+      padding: 3vw;
+      margin-bottom: 1vw;
+    }
+
+    .writecomment button, .writecommentdark button {
+      border: 0;
+      font-size: 3.5vw;
+    }
+  
+    .writecomment button {
+      background-color: white;
+      color: black;
+    }
+  
+    .writecommentdark button {
+      background-color: #181b1c;
+      color: white;
+      padding: 2vw;
+    }
+  
+  }
+
   

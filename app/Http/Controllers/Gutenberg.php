@@ -85,7 +85,7 @@ class Gutenberg extends Controller {
                 'tag_id' => $scalarTagID,
             ]);
         }
-        return Redirect::route("/viewpost/$postID");
+        return Redirect::route('index');
         // take me to the post we just wrote
     }
     // POST method. We're updating an existing post.
@@ -132,8 +132,9 @@ class Gutenberg extends Controller {
                 PostTags::where('tag_id', '=', $tag->id)->delete();
             }
         }
-        return Redirect::route("/viewpost/$postID");
-        // take me to the post we just edited
+        return Redirect::route('index');
+        // Inertia requests need Inertia responses
+        // country roads... take me home...
     }
     public function deletePost(Request $request) {
         // pretty self-explanatory
@@ -141,6 +142,6 @@ class Gutenberg extends Controller {
         BlogPost::where('id', '=', $postID)->delete();
         PostTags::where('post_id', '=', $postID)->delete();
 
-        return Redirect::route('/');
+        return Redirect::route('index');
     } 
 }

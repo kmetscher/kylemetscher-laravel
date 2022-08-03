@@ -3,6 +3,17 @@ import React, { useState } from "react"
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import Site from "./Site";
 
+/*
+<form onSubmit={(e) => {
+                    e.preventDefault;
+                    !props.id ?
+                    Inertia.post('/gutenberg/new') :
+                !delPost.bool ?
+                    Inertia.post('/gutenberg/edit') :
+                    Inertia.post('/gutenberg/delete')} 
+                }>
+*/
+
 export default function Gutenberg(props) {
     const [delPost, setDelPost] = useState({
         bool: false,
@@ -32,11 +43,12 @@ export default function Gutenberg(props) {
                 {props.id && <h3>Editing {props.title}</h3>}
                 <form onSubmit={(e) => {
                     e.preventDefault;
-                    !props.id ?
-                    Inertia.post('/gutenberg/new', {text: text, _token: props._token}) :
-                !delPost.bool ?
-                    Inertia.post('/gutenberg/edit', {text: text, _token: props._token}) :
-                    Inertia.post('/gutenberg/delete', {text: text, _token: props._token})} 
+                    !props.id ? // are we editing an existing post?
+                        Inertia.post('gutenberg.new') : // if no, then insert a new one
+                        !delPost.bool ? // if yes, are we deleting it?
+                            Inertia.post('gutenberg.update') : // if no, then update with this ID
+                            Inertia.post('gutenberg.delete') // if yes, then delete with this ID
+                }
                 }>
                     {props.id && <label htmlFor="id"><h3>Post ID</h3></label>}
                     {props.id && <input type="number" name="id" id="id"

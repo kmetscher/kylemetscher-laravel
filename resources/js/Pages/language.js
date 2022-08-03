@@ -14,6 +14,7 @@ export const languages = {
         typetag: 'Tagged',
         alltags: 'All Tags',
         locale: 'en-US',
+        said: 'said:'
     },
     hu: {
         home: 'Főoldal',
@@ -29,7 +30,8 @@ export const languages = {
         tagged: 'Ezekkel a témákkal:',
         typetag: 'témával',
         alltags: 'Minden téma',
-        locale: 'hu-HU', 
+        locale: 'hu-HU',
+        said: 'azt mondta, hogy:' 
     },
     de: {
         home: 'Startseite',
@@ -46,5 +48,6 @@ export const languages = {
         typetag: 'Mit Tag',
         alltags: 'Alle Tags',
         locale: 'de-DE',
+        said: 'hat gesagt:'
     }
 }
