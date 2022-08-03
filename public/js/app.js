@@ -61548,6 +61548,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /**
  * @param {H} h
+ * @returns {Element|null}
  */
 function footer(h) {
   let index = -1
@@ -61643,8 +61644,8 @@ function footer(h) {
     children: [
       {
         type: 'element',
-        tagName: 'h2',
-        properties: {id: 'footnote-label', className: ['sr-only']},
+        tagName: h.footnoteLabelTagName,
+        properties: JSON.parse(JSON.stringify(h.footnoteLabelProperties)),
         children: [(0,unist_builder__WEBPACK_IMPORTED_MODULE_3__.u)('text', h.footnoteLabel)]
       },
       {type: 'text', value: '\n'},
@@ -62808,6 +62809,8 @@ __webpack_require__.r(__webpack_exports__);
  * @property {boolean} dangerous Whether HTML is allowed
  * @property {string} clobberPrefix Prefix to use to prevent DOM clobbering
  * @property {string} footnoteLabel Label to use to introduce the footnote section
+ * @property {string} footnoteLabelTagName HTML used for the footnote label
+ * @property {Properties} footnoteLabelProperties properties on the HTML tag used for the footnote label
  * @property {string} footnoteBackLabel Label to use to go back to a footnote call from the footnote section
  * @property {(identifier: string) => Definition|null} definition Definition cache
  * @property {Record<string, FootnoteDefinition>} footnoteById Footnote cache
@@ -62837,6 +62840,13 @@ __webpack_require__.r(__webpack_exports__);
  *   Label to use for the footnotes section.
  *   Affects screen reader users.
  *   Change it if you’re authoring in a different language.
+ * @property {string} [footnoteLabelTagName='h2']
+ *   HTML tag to use for the footnote label.
+ *   Can be changed to match your document structure and play well with your choice of css.
+ * @property {Properties} [footnoteLabelProperties={id: 'footnote-label', className: ['sr-only']}]
+ *   Properties to use on the footnote label.
+ *   A 'sr-only' class is added by default to hide this from sighted users.
+ *   Change it to make the label visible, or add classes for other purposes.
  * @property {string} [footnoteBackLabel='Back to content']
  *   Label to use from backreferences back to their footnote call.
  *   Affects screen reader users.
@@ -62883,6 +62893,11 @@ function factory(tree, options) {
       ? 'user-content-'
       : settings.clobberPrefix
   h.footnoteLabel = settings.footnoteLabel || 'Footnotes'
+  h.footnoteLabelTagName = settings.footnoteLabelTagName || 'h2'
+  h.footnoteLabelProperties = settings.footnoteLabelProperties || {
+    id: 'footnote-label',
+    className: ['sr-only']
+  }
   h.footnoteBackLabel = settings.footnoteBackLabel || 'Back to content'
   h.definition = (0,mdast_util_definitions__WEBPACK_IMPORTED_MODULE_0__.definitions)(tree)
   h.footnoteById = footnoteById
