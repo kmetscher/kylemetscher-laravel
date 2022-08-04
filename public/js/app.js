@@ -2303,6 +2303,49 @@ function Comment(props) {
 
 /***/ }),
 
+/***/ "./resources/js/Pages/CommentCount.js":
+/*!********************************************!*\
+  !*** ./resources/js/Pages/CommentCount.js ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ CommentCount)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _LanguageContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./LanguageContext */ "./resources/js/Pages/LanguageContext.js");
+
+
+function CommentCount(props) {
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_LanguageContext__WEBPACK_IMPORTED_MODULE_1__.LanguageContext),
+      langState = _useContext.langState,
+      changeLanguage = _useContext.changeLanguage;
+
+  var count = props.commentcount[props.index];
+  var countText;
+
+  switch (count) {
+    case 0:
+      countText = langState.commentzero;
+      break;
+
+    case 1:
+      countText = "".concat(count, " ").concat(langState.commentsingular);
+      break;
+
+    default:
+      countText = "".concat(count, " ").concat(langState.commentplural);
+  }
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "commentcount"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, countText));
+}
+
+/***/ }),
+
 /***/ "./resources/js/Pages/Contact.js":
 /*!***************************************!*\
   !*** ./resources/js/Pages/Contact.js ***!
@@ -2854,8 +2897,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Tagbox__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Tagbox */ "./resources/js/Pages/Tagbox.js");
 /* harmony import */ var _Published__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Published */ "./resources/js/Pages/Published.js");
 /* harmony import */ var _Tagline__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Tagline */ "./resources/js/Pages/Tagline.js");
-/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
-/* harmony import */ var react_markdown_lib_react_markdown__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-markdown/lib/react-markdown */ "./node_modules/react-markdown/lib/react-markdown.js");
+/* harmony import */ var _CommentCount__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./CommentCount */ "./resources/js/Pages/CommentCount.js");
+/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
+/* harmony import */ var react_markdown_lib_react_markdown__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-markdown/lib/react-markdown */ "./node_modules/react-markdown/lib/react-markdown.js");
+
 
 
 
@@ -2870,14 +2915,14 @@ function PostPreviews(props) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
       key: post.id,
       className: "post"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_5__.Link, {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_6__.Link, {
       href: '/viewpost/' + post.id
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_markdown_lib_react_markdown__WEBPACK_IMPORTED_MODULE_6__.ReactMarkdown, {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_markdown_lib_react_markdown__WEBPACK_IMPORTED_MODULE_7__.ReactMarkdown, {
       className: "headline"
     }, post.title)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
       className: "postpreview",
       key: post.id
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_5__.Link, {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_6__.Link, {
       href: '/viewpost/' + post.id
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
       className: "featured",
@@ -2887,9 +2932,14 @@ function PostPreviews(props) {
     }, post.slug)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Tagbox__WEBPACK_IMPORTED_MODULE_2__["default"], {
       tags: tags,
       index: index
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Published__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "previewflex"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Published__WEBPACK_IMPORTED_MODULE_3__["default"], {
       date: post.date
-    }));
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_CommentCount__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      commentcount: props.comments,
+      index: index
+    })));
   });
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Layout__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Tagline__WEBPACK_IMPORTED_MODULE_4__["default"], {
     taglinetype: props.taglinetype,
@@ -3687,7 +3737,10 @@ var languages = {
     typetag: 'Tagged',
     alltags: 'All Tags',
     locale: 'en-US',
-    said: 'said:'
+    said: 'said:',
+    commentsingular: 'comment',
+    commentplural: 'comments',
+    commentzero: 'No comments'
   },
   hu: {
     home: 'Főoldal',
@@ -3704,7 +3757,10 @@ var languages = {
     typetag: 'témával',
     alltags: 'Minden téma',
     locale: 'hu-HU',
-    said: 'azt mondta, hogy:'
+    said: 'azt mondta, hogy:',
+    commentsingular: 'komment',
+    commentplural: 'komment',
+    commentzero: 'Nincs komment'
   },
   de: {
     home: 'Startseite',
@@ -3721,7 +3777,10 @@ var languages = {
     typetag: 'Mit Tag',
     alltags: 'Alle Tags',
     locale: 'de-DE',
-    said: 'hat gesagt:'
+    said: 'hat gesagt:',
+    commentsingular: 'Kommentar',
+    commentplural: 'Kommentare',
+    commentzero: 'Keine Kommentare'
   }
 };
 
@@ -58348,6 +58407,8 @@ var map = {
 	"./Archive.js": "./resources/js/Pages/Archive.js",
 	"./Comment": "./resources/js/Pages/Comment.js",
 	"./Comment.js": "./resources/js/Pages/Comment.js",
+	"./CommentCount": "./resources/js/Pages/CommentCount.js",
+	"./CommentCount.js": "./resources/js/Pages/CommentCount.js",
 	"./Contact": "./resources/js/Pages/Contact.js",
 	"./Contact.js": "./resources/js/Pages/Contact.js",
 	"./DateList": "./resources/js/Pages/DateList.js",

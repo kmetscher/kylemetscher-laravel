@@ -14,7 +14,10 @@ export const languages = {
         typetag: 'Tagged',
         alltags: 'All Tags',
         locale: 'en-US',
-        said: 'said:'
+        said: 'said:',
+        commentsingular: 'comment',
+        commentplural: 'comments',
+        commentzero: 'No comments',
     },
     hu: {
         home: 'Főoldal',
@@ -31,7 +34,10 @@ export const languages = {
         typetag: 'témával',
         alltags: 'Minden téma',
         locale: 'hu-HU',
-        said: 'azt mondta, hogy:' 
+        said: 'azt mondta, hogy:',
+        commentsingular: 'komment',
+        commentplural: 'komment',
+        commentzero: 'Nincs komment',
     },
     de: {
         home: 'Startseite',
@@ -48,6 +54,9 @@ export const languages = {
         typetag: 'Mit Tag',
         alltags: 'Alle Tags',
         locale: 'de-DE',
-        said: 'hat gesagt:'
+        said: 'hat gesagt:',
+        commentsingular: 'Kommentar',
+        commentplural: 'Kommentare',
+        commentzero: 'Keine Kommentare',
     }
 }

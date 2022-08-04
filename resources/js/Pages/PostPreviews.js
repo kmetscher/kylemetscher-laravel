@@ -3,6 +3,7 @@ import Layout from "./Layout";
 import Tagbox from "./Tagbox";
 import Published from "./Published";
 import Tagline from "./Tagline";
+import CommentCount from "./CommentCount";
 import { Link } from "@inertiajs/inertia-react";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 
@@ -17,13 +18,16 @@ export default function PostPreviews(props) {
                 </ReactMarkdown>
             </Link>
             <div className="postpreview" key={post.id}>
-            <Link href={'/viewpost/' + post.id}>
-                <img className="featured" src={post.image}></img>
-            </Link>
+                <Link href={'/viewpost/' + post.id}>
+                    <img className="featured" src={post.image}></img>
+                </Link>
                 <p className="postslug">{post.slug}</p>
             </div>
             <Tagbox tags={tags} index={index} />
-            <Published date={post.date} />
+            <div className="previewflex">
+                <Published date={post.date} />
+                <CommentCount commentcount = {props.comments} index = {index} />
+            </div>
         </div>
     );
     return (

@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 use App\Models\BlogPost;
 use App\Models\Tags;
 use App\Models\PostTags;
+use App\Models\Comments;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -39,6 +40,15 @@ class PostPreviewsController extends Controller {
         return $tags;
     }
 
+    private function retrieveCommentCount(Collection $posts) {
+        /* Accepts a collection as a parameter, and queries the comments table
+        aggregate to retrieve the number of comments on each post by ID. */
+        foreach ($posts as $post) {
+            $comments[] = Comments::where('post_id', '=', $post->id)->count(); 
+        }
+        return $comments;
+    }
+
     public function displayIndexPosts() {
 
         /* The index page displays the five most recent posts in descending order.
@@ -53,6 +63,7 @@ class PostPreviewsController extends Controller {
                         ->get();
         
         $tags = $this->retrieveTags($posts); // Retrieve the tags associated with these posts
+        $comments = $this->retrieveCommentCount($posts); // and any comments
 
         /* Now, we can hand off the posts collection and the tags array as props 
         to the PostPreview React component. */
@@ -60,7 +71,8 @@ class PostPreviewsController extends Controller {
         return Inertia::render('PostPreviews', [
             'taglinetype' => 'home',
             'posts' => $posts,
-            'tags' => $tags
+            'tags' => $tags,
+            'comments' => $comments
         ]);
     }
 
@@ -80,6 +92,7 @@ class PostPreviewsController extends Controller {
         $tagline = "\"{$tagName[0]->name}\""; // I hate this language
         
         $tags = $this->retrieveTags($posts);
+        $comments = $this->retrieveCommentCount($posts);
 
         return Inertia::render('PostPreviews', [
             'tagline' => $tagline,
@@ -89,7 +102,8 @@ class PostPreviewsController extends Controller {
             a language, depending on state. */
             'taglinetype' => 'tag',
             'posts' => $posts,
-            'tags' => $tags
+            'tags' => $tags,
+            'comments' => $comments,
         ]);
     }
 
@@ -109,12 +123,14 @@ class PostPreviewsController extends Controller {
                         ->orderBy('id', 'desc')->get();
 
         $tags = $this->retrieveTags($posts);
+        $comments = $this->retrieveCommentCount($posts);
 
         return Inertia::render('PostPreviews', [
             'tagline' => $date,
             'taglinetype' => 'date',
             'posts' => $posts,
-            'tags' => $tags
+            'tags' => $tags,
+            'comments' => $comments,
         ]);
 
     }
@@ -126,12 +142,14 @@ class PostPreviewsController extends Controller {
                             ->get();
         
         $tags = $this->retrieveTags($posts);
+        $comments = $this->retrieveCommentCount($posts);
 
         return Inertia::render('PostPreviews', [
             'tagline' => $lang,
             'taglinetype' => 'lang',
             'posts' => $posts,
-            'tags' => $tags
+            'tags' => $tags,
+            'comments' => $comments,
         ]);
     }
 }

@@ -803,7 +803,7 @@
   }
 
   .writecomment input, .writecomment textarea {
-    background-color: white;
+    background-color: #b8b8b8;
     color: black;
   }
 
@@ -817,6 +817,11 @@
     background-color: #2e2f30;
   }
 
+  .writecomment input:focus, .writecomment textarea:focus {
+    border: none;
+    background-color: white;
+  }
+
   .beehive {
     display: none;
   }
@@ -828,8 +833,11 @@
   }
 
   .writecomment button, .writecommentdark button {
+    padding: 1vw;
     border: 0;
     font-size: 1.5vw;
+    transition-property: background-color;
+    transition-duration: 0.25s;
   }
 
   .writecomment button {
@@ -840,7 +848,25 @@
   .writecommentdark button {
     background-color: #181b1c;
     color: white;
-    padding: 1vw;
+  }
+
+  .writecomment button:hover {
+    background-color: #858585;
+  }
+
+  .writecommentdark button:hover {
+    background-color: #2e2f30;
+  }
+
+  .previewflex {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .commentcount {
+    margin-right: 2vw;
+    font-size: 1.5vw;
   }
 
   @media screen and (max-width: 800px) {
@@ -874,8 +900,15 @@
     }
   
     .writecomment input, .writecomment textarea {
-      background-color: white;
+      background-color:#b8b8b8;
       color: black;
+      transition-property: background-color;
+      transition-duration: 0.25s;
+    }
+
+    .writecomment input:focus, .writecomment textarea:focus {
+      border: none;
+      background-color: white;
     }
   
     .writecommentdark input, .writecommentdark textarea {
@@ -887,6 +920,7 @@
       border: none;
       background-color: #2e2f30;
     }
+
   
     .beehive {
       display: none;
@@ -900,18 +934,28 @@
 
     .writecomment button, .writecommentdark button {
       border: 0;
-      font-size: 3.5vw;
     }
   
     .writecomment button {
+      padding: 2vw;
+      font-size: 3.5vw;
+      transition-property: background-color;
+      transition-duration: 0.25s;
       background-color: white;
       color: black;
     }
   
     .writecommentdark button {
+      padding: 2vw;
+      font-size: 3.5vw;
+      transition-property: background-color;
+      transition-duration: 0.25s;
       background-color: #181b1c;
       color: white;
-      padding: 2vw;
+    }
+
+    .writecommentdark button:hover {
+      background-color: #2e2f30;
     }
   
   }
