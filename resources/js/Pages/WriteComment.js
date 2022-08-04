@@ -12,6 +12,7 @@ export default function WriteComment(props) {
         comment: '',
         trip: '',
         beehive: '',
+        postid: props.postid
     });
     function handleChange(e) {
         const field = e.target.id;
@@ -38,8 +39,10 @@ export default function WriteComment(props) {
             {comment.comment &&
                 <Comment name={comment.name} comment={comment.comment}
                     date={new Date()} />}
-            <form action="/comment" method="post">
-                <input type="hidden" value={props.postid} name="postid" id="postid" />
+            <form /*action="/comment" method="post" */ 
+            onSubmit={(e) => {
+                e.preventDefault();
+                Inertia.post('/comment', comment)}}>
                 <label htmlFor="name">Name </label><br></br>
                 <input type="text" value={comment.name} onChange={handleChange}
                     id="name" name="name" required /><br></br>
@@ -51,7 +54,9 @@ export default function WriteComment(props) {
                     onChange={handleChange} cols="60" rows="5" required></textarea><br></br>
                 <input type="text" className="beehive" value={comment.beehive}
                     onChange={handleChange} id="beehive" name="beehive" autoComplete="off" />
-                <button type="submit">some shit here for now idk</button>
+                <button type="submit">
+                    some shit here for now idk
+                </button>
             </form>
         </div>
     )

@@ -48,6 +48,15 @@ Route::inertia('/contact', 'Contact');
 Route::post('/comment',
     [CommentsController::class, 'submitComment']);
 
+// Tests
+
+Route::inertia('/ffs', 'ffs');
+Route::post('ffs', function(Request $request) {
+    return Inertia::render('ffs', [
+        'values' => $request->input('test')
+    ]); 
+});
+
 // Auth
 
 Route::get('/gutenberg', 

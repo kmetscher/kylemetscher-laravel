@@ -7,5 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class BlogPost extends Model {
     protected $table = 'blog_posts';
+    protected $fillable = ['title', 'body', 'slug', 'image', 'date', 'language'];
     use HasFactory;
 }

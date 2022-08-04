@@ -3,7 +3,7 @@ namespace App\Http\Controllers;
 use App\Models\BlogPost;
 use App\Models\Tags;
 use App\Models\PostTags;
-use App\Models\Comments;
+use App\Models\Comment;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -44,7 +44,7 @@ class PostPreviewsController extends Controller {
         /* Accepts a collection as a parameter, and queries the comments table
         aggregate to retrieve the number of comments on each post by ID. */
         foreach ($posts as $post) {
-            $comments[] = Comments::where('post_id', '=', $post->id)->count(); 
+            $comments[] = Comment::where('post_id', '=', $post->id)->count(); 
         }
         return $comments;
     }

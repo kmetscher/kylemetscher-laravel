@@ -2515,12 +2515,12 @@ function Gutenberg(props) {
     className: "editor"
   }, props.id && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("h3", null, "Editing ", props.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("form", {
     onSubmit: function onSubmit(e) {
-      e.preventDefault;
+      e.preventDefault();
       !props.id ? // are we editing an existing post?
-      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_0__.Inertia.post('gutenberg.new') : // if no, then insert a new one
+      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_0__.Inertia.post('/gutenberg/new', text) : // if no, then insert a new one
       !delPost.bool ? // if yes, are we deleting it?
-      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_0__.Inertia.post('gutenberg.update') : // if no, then update with this ID
-      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_0__.Inertia.post('gutenberg.delete'); // if yes, then delete with this ID
+      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_0__.Inertia.post('/gutenberg/edit') : // if no, then update with this ID
+      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_0__.Inertia.post('/gutenberg/delete'); // if yes, then delete with this ID
     }
   }, props.id && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("label", {
     htmlFor: "id"
@@ -3610,7 +3610,8 @@ function WriteComment(props) {
     name: '',
     comment: '',
     trip: '',
-    beehive: ''
+    beehive: '',
+    postid: props.postid
   }),
       _useState2 = _slicedToArray(_useState, 2),
       comment = _useState2[0],
@@ -3629,14 +3630,12 @@ function WriteComment(props) {
     comment: comment.comment,
     date: new Date()
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
-    action: "/comment",
-    method: "post"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-    type: "hidden",
-    value: props.postid,
-    name: "postid",
-    id: "postid"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
+    /*action="/comment" method="post" */
+    onSubmit: function onSubmit(e) {
+      e.preventDefault();
+      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_3__.Inertia.post('/comment', comment);
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
     htmlFor: "name"
   }, "Name "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
     type: "text",
@@ -3675,6 +3674,64 @@ function WriteComment(props) {
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
     type: "submit"
   }, "some shit here for now idk")));
+}
+
+/***/ }),
+
+/***/ "./resources/js/Pages/ffs.js":
+/*!***********************************!*\
+  !*** ./resources/js/Pages/ffs.js ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Ffs)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+function Ffs(props) {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+    test: ''
+  }),
+      _useState2 = _slicedToArray(_useState, 2),
+      form = _useState2[0],
+      setForm = _useState2[1];
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
+    onSubmit: function onSubmit(e) {
+      e.preventDefault();
+      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_1__.Inertia.post('/ffs', form);
+    }
+  }, props.values && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, values), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+    type: "text",
+    name: "test",
+    id: "test",
+    value: form.test,
+    onChange: function onChange(e) {
+      return setForm({
+        test: e.target.value
+      });
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+    type: "submit",
+    value: "submit"
+  }));
 }
 
 /***/ }),
@@ -58455,6 +58512,8 @@ var map = {
 	"./ViewPost.js": "./resources/js/Pages/ViewPost.js",
 	"./WriteComment": "./resources/js/Pages/WriteComment.js",
 	"./WriteComment.js": "./resources/js/Pages/WriteComment.js",
+	"./ffs": "./resources/js/Pages/ffs.js",
+	"./ffs.js": "./resources/js/Pages/ffs.js",
 	"./formatDate": "./resources/js/Pages/formatDate.js",
 	"./formatDate.js": "./resources/js/Pages/formatDate.js",
 	"./language": "./resources/js/Pages/language.js",

@@ -870,6 +870,10 @@
   }
 
   @media screen and (max-width: 800px) {
+    .commentcount {
+      display: none;
+    }
+    
     .writecomment, .writecommentdark {
       background-color: black;
       padding: 3vw;

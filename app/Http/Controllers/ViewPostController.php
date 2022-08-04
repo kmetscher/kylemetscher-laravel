@@ -2,7 +2,7 @@
 namespace App\Http\Controllers;
 use App\Models\BlogPost;
 use App\Models\PostTags;
-use App\Models\Comments;
+use App\Models\Comment;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Inertia\Inertia;
@@ -19,7 +19,7 @@ class ViewPostController extends Controller {
     }
     private function retrieveComments($postID) {
         /* Accepts post ID as a parameter to query for comments. */
-        return Comments::where('post_id', '=', $postID)->get();
+        return Comment::where('post_id', '=', $postID)->get();
     }
     public function byID($postID) {
         $post = BlogPost::where('id', $postID)->get();

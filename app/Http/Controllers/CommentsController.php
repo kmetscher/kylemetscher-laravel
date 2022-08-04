@@ -2,26 +2,25 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\Models\Comments;
+use App\Models\Comment;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 
 class CommentsController extends Controller {
     public function submitComment(Request $request) {
         if (strlen($request->input('beehive')) > 0) {
-            return redirect('/');
+            return redirect('index');
         }
-        $trip = substr(crypt(($request->input('trip')), '/*'), 2);
-        // echo $request->input('postid');
-        Comments::insertGetID([
+        Comment::create([
             'post_id' => $request->input('postid'),
             'name' => $request->input('name'),
-            'trip' => $trip,
+            'trip' => substr(crypt(($request->input('trip')), '/*'), 2),
             'comment' => $request->input('comment')
         ]);
-        return back()->with('status', 'Comment posted.');
+        return Redirect::back();
+        // return Inertia::render('ffs');
+        //return Inertia::location("/viewpost/{$request->input('postid')}");
     }
 }
 
