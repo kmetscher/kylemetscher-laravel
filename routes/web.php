@@ -1,6 +1,5 @@
 <?php
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\InertiaTestController;
 use App\Http\Controllers\PostPreviewsController;
 use App\Http\Controllers\ViewPostController;
 use App\Http\Controllers\Gutenberg;
@@ -48,15 +47,6 @@ Route::inertia('/contact', 'Contact');
 
 Route::post('/comment',
     [CommentsController::class, 'submitComment']);
-
-// Tests
-
-Route::inertia('/ffs', 'ffs');
-Route::post('ffs', function(Request $request) {
-    return Inertia::render('ffs', [
-        'values' => $request->input('test')
-    ]); 
-});
 
 // Auth
 

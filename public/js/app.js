@@ -2806,25 +2806,6 @@ function HeaderNav(props) {
 
 /***/ }),
 
-/***/ "./resources/js/Pages/InertiaTest.js":
-/*!*******************************************!*\
-  !*** ./resources/js/Pages/InertiaTest.js ***!
-  \*******************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ InertiaTest)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-
-function InertiaTest(props) {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "well?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "title is ", props.title));
-}
-
-/***/ }),
-
 /***/ "./resources/js/Pages/LanguageContext.js":
 /*!***********************************************!*\
   !*** ./resources/js/Pages/LanguageContext.js ***!
@@ -3705,6 +3686,10 @@ function WriteComment(props) {
       themeState = _useContext.themeState,
       toggleTheme = _useContext.toggleTheme;
 
+  var _useContext2 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_LanguageContext__WEBPACK_IMPORTED_MODULE_1__.LanguageContext),
+      langState = _useContext2.langState,
+      changeLanguage = _useContext2.changeLanguage;
+
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
     name: '',
     comment: '',
@@ -3716,6 +3701,21 @@ function WriteComment(props) {
       comment = _useState2[0],
       setComment = _useState2[1];
 
+  var info;
+
+  switch (langState.locale) {
+    case 'en-US':
+      info = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Don't be a dick."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "This site stores no information about you. \"Sign\" your comments with a tripcode generated from a phrase you'll remember."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "You can use some Markdown formatting, like *asterisks* for", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", null, "italics"), ", **double asterisks** for ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("b", null, "bold"), ", or `backticks` for ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("code", null, "code"), "."));
+      break;
+
+    case 'hu-HU':
+      info = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Ne legyen k\xF6cs\xF6g."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Ez az oldal nem gy\u0171jti az \xD6n szemelyes inform\xE1ci\xF3j\xE1t. \"\xCDrja al\xE1\" a kommenteit egy mondatb\xF3l gener\xE1lt tripk\xF3ddal. Haszn\xE1lja \xD6n egy mondatot ami eml\xE9kezni fog."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Haszn\xE1lhat Markdown-ot, p\xE9ldaul *csillagok*", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", null, "d\xF6lt bet\u0171k\xE9rt"), ", **dupla csillag** ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("b", null, "er\u0151s bet\u0171k\xE9rt"), ", vagy `backtickek` ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("code", null, "k\xF3d\xE9rt"), "."));
+      break;
+
+    case 'de-DE':
+      info = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Seien Sie kein Arschloch."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Diese Seite sammelt nicht dein pers\xF6nliches Infos. Sie k\xF6nnen Ihren Kommentar \"unterschrieben\" mit einem Tripcode, der mit einer Phrase generiert ist, an die Sie sich errinern werden."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Sie k\xF6nnen etwas Markdown nutzen, wie zum Beispiel *Sterne* f\xFCr ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", null, "Kursivschrift"), ", **Doppelsterne** f\xFCr ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("b", null, "Fettschrift"), ", oder `Backticks` f\xFCr ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("code", null, "Code.")));
+  }
+
   function handleChange(e) {
     var field = e.target.id;
     var value = e.target.value;
@@ -3724,7 +3724,7 @@ function WriteComment(props) {
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: themeState.commentclass
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, "Write a comment"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Don't be a dick."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "This site stores no information about you. \"Sign\" your comments with a tripcode generated from a phrase you'll remember."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "You can use some Markdown formatting, like *asterisks* for", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", null, "italics"), ", **double asterisks** for ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("b", null, "bold"), ", or `backticks` for ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("code", null, "code"), "."), !comment.comment && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "A preview of your comment will appear here when you begin typing."), comment.comment && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Comment__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, langState.commentwrite), info, !comment.comment && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, langState.commentpreview), comment.comment && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Comment__WEBPACK_IMPORTED_MODULE_4__["default"], {
     name: comment.name,
     comment: comment.comment,
     date: new Date()
@@ -3736,7 +3736,7 @@ function WriteComment(props) {
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
     htmlFor: "name"
-  }, "Name "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+  }, langState.commentname, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
     type: "text",
     value: comment.name,
     onChange: handleChange,
@@ -3745,7 +3745,7 @@ function WriteComment(props) {
     required: true
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
     htmlFor: "trip"
-  }, "Trip phrase "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+  }, langState.commenttrip, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
     type: "text",
     value: comment.phrase,
     onChange: handleChange,
@@ -3754,7 +3754,7 @@ function WriteComment(props) {
     required: true
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
     htmlFor: "comment"
-  }, "Comment"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("textarea", {
+  }, langState.commentarea), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("textarea", {
     name: "comment",
     id: "comment",
     value: comment.comment,
@@ -3772,65 +3772,7 @@ function WriteComment(props) {
     autoComplete: "off"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
     type: "submit"
-  }, "some shit here for now idk")));
-}
-
-/***/ }),
-
-/***/ "./resources/js/Pages/ffs.js":
-/*!***********************************!*\
-  !*** ./resources/js/Pages/ffs.js ***!
-  \***********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Ffs)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-
-
-function Ffs(props) {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
-    test: ''
-  }),
-      _useState2 = _slicedToArray(_useState, 2),
-      form = _useState2[0],
-      setForm = _useState2[1];
-
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
-    onSubmit: function onSubmit(e) {
-      e.preventDefault();
-      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_1__.Inertia.post('/ffs', form);
-    }
-  }, props.values && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, values), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-    type: "text",
-    name: "test",
-    id: "test",
-    value: form.test,
-    onChange: function onChange(e) {
-      return setForm({
-        test: e.target.value
-      });
-    }
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-    type: "submit",
-    value: "submit"
-  }));
+  }, langState.commentsubmit)));
 }
 
 /***/ }),
@@ -3897,6 +3839,12 @@ var languages = {
     commentsingular: 'comment',
     commentplural: 'comments',
     commentzero: 'No comments',
+    commentwrite: 'Write a comment',
+    commentname: 'Name',
+    commenttrip: 'Trip phrase',
+    commentarea: 'Comment',
+    commentsubmit: 'Submit',
+    commentpreview: 'A preview of your comment will appear here when you begin typing.',
     error: 'Something went wrong.',
     backhome: 'Back to the home page'
   },
@@ -3919,6 +3867,12 @@ var languages = {
     commentsingular: 'komment',
     commentplural: 'komment',
     commentzero: 'Nincs komment',
+    commentwrite: 'Kommentet írni',
+    commentname: 'Nev',
+    commenttrip: 'Trip mondat',
+    commentarea: 'Komment',
+    commentsubmit: 'Hozzá',
+    commentpreview: 'Itt nézheti elő a kommentét gépelés után.',
     error: 'Valami elromlott.',
     backhome: 'Hátra a főoldalra'
   },
@@ -3941,6 +3895,12 @@ var languages = {
     commentsingular: 'Kommentar',
     commentplural: 'Kommentare',
     commentzero: 'Keine Kommentare',
+    commentwrite: 'Einen Kommentar schreiben',
+    commentname: 'Name',
+    commenttrip: 'Tripphrase',
+    commentarea: 'Kommentar',
+    commentsubmit: 'Einreichen',
+    commentpreview: 'Hier vorschauen Sie deinen Kommentar nachdem Sie tippen.',
     error: 'Etwas ist schiefgelaufen.',
     backhome: 'Zurück zur Startseite'
   }
@@ -58580,8 +58540,6 @@ var map = {
 	"./GutenbergHome.js": "./resources/js/Pages/GutenbergHome.js",
 	"./HeaderNav": "./resources/js/Pages/HeaderNav.js",
 	"./HeaderNav.js": "./resources/js/Pages/HeaderNav.js",
-	"./InertiaTest": "./resources/js/Pages/InertiaTest.js",
-	"./InertiaTest.js": "./resources/js/Pages/InertiaTest.js",
 	"./LanguageContext": "./resources/js/Pages/LanguageContext.js",
 	"./LanguageContext.js": "./resources/js/Pages/LanguageContext.js",
 	"./Languages": "./resources/js/Pages/Languages.js",
@@ -58616,8 +58574,6 @@ var map = {
 	"./ViewPost.js": "./resources/js/Pages/ViewPost.js",
 	"./WriteComment": "./resources/js/Pages/WriteComment.js",
 	"./WriteComment.js": "./resources/js/Pages/WriteComment.js",
-	"./ffs": "./resources/js/Pages/ffs.js",
-	"./ffs.js": "./resources/js/Pages/ffs.js",
 	"./formatDate": "./resources/js/Pages/formatDate.js",
 	"./formatDate.js": "./resources/js/Pages/formatDate.js",
 	"./language": "./resources/js/Pages/language.js",
