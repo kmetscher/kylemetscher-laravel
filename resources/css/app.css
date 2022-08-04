@@ -66,11 +66,11 @@
     padding-bottom: 0;
     margin-top: 0;
     margin-bottom: 0;
+    transition-property: color;
+    transition-duration: 0.25s;
   }
 
   .post .headline h1:hover {
-    animation-name: linkhover;
-    animation-duration: 0.25s;
     color: gray;
   }
   
@@ -734,7 +734,9 @@
     text-decoration: none;
     position: relative;
     display: block;
-    transition: font-size 1s;
+    transform: scale(1);
+    transition-property: transform;
+    transition-duration: 0.25s;
   }
 
   .taglist a:hover {
@@ -873,7 +875,7 @@
     .commentcount {
       display: none;
     }
-    
+
     .writecomment, .writecommentdark {
       background-color: black;
       padding: 3vw;

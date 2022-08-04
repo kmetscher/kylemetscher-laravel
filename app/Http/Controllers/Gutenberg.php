@@ -16,9 +16,7 @@ new post as well as to delete it. By routing to different controller behavior
 for the view, we can make the most out of the React component.
 */
 
-class Gutenberg extends Controller
-{
-
+class Gutenberg extends Controller {
     // We just need the posts on the site to pick one to edit/delete.
     public function home() {
         $posts = BlogPost::select('id', 'title')
@@ -34,8 +32,7 @@ class Gutenberg extends Controller
     } // Not much info needed to be passed.
 
     public function edit($postID) { // Editing an existing post
-        $postColl = BlogPost::where('id', '=', $postID)->get();
-        $post = $postColl[0];
+        $post = BlogPost::findOrFail($postID);
         // Retrieving the existing values of the blog post record
         $tags = PostTags::join('tags', 'tags.id', '=', 'post_tags.tag_id')
             ->where('post_tags.post_id', '=', $postID)->get('name');
@@ -55,7 +52,6 @@ class Gutenberg extends Controller
             'image' => $post->image,
             'language' => $post->language,
             'tagstring' => $tagString,
-            '_token' => csrf_token(),
         ]);
     }
     // POST method. We're putting a new post in the database.
@@ -71,10 +67,10 @@ class Gutenberg extends Controller
         ]);
 
         foreach ($request->input('tags') as $tag) {
-            $newTag = Tags::firstOrCreate([
-                'name' => $tag,
+            $newTag = Tags::firstOrCreate([ // Make new tags from those in input
+                'name' => $tag, // or retrieve their records if they already exist
             ]);
-            PostTags::create([
+            PostTags::create([ // and associate them
                 'post_id' => $newPost->id,
                 'tag_id' => $newTag->id
             ]);
@@ -85,54 +81,34 @@ class Gutenberg extends Controller
 
     // POST method. We're updating an existing post.
     public function updatePost(Request $request) {
-        $postID = $request->input('id');
-        BlogPost::where('id', '=', $postID)->update([
+
+        $updatedPost = BlogPost::findOrFail($request->input('id'));
+
+        $updatedPost->update([
             'title' => $request->input('title'),
             'slug' => $request->input('slug'),
             'body' => $request->input('body'),
             'image' => $request->input('image'),
             'language' => $request->input('language'),
         ]);
-        /* Now, we pull the existing associative records for the post in
-        from the post tags table to compare them to the tags that were
-        sent to the backend. That way, I can edit the tags for each post 
-        within the editor itself.
-        */
-        $comparisonTags = PostTags::join('tags', 'tags.id', '=', 'post_tags.tag_id')
-            ->where('post_tags.post_id', '=', $postID)
-            ->get();
-        // Get the tags included in the request
-        $collectedTags = collect($request->input('tags'));
-        foreach ($collectedTags as $index => $tag) {
-            // Add any totally new tags
-            Tags::upsert(['name' => $tag], ['id', 'name']);
-            /* "If the tags included in the update request contain something
-            that the post tags table doesn't for this post ID, then insert
-            them there." */
-            if (!$comparisonTags->contains('name', $tag)) {
-                $tagID = Tags::select('id')->where('name', '=', $tag)->get('id')->toArray();
-                $scalarTagID = strval($tagID[0]['id']);
-                PostTags::insert([
-                    'post_id' => $postID,
-                    'tag_id' => $scalarTagID,
-                ]);
-            }
-        }
-        foreach ($comparisonTags as $id => $tag) {
-            /* "If the tags in the post tags table associated with the 
-            updated post's ID contain something that the new tag list 
-            does not, then remove those tags from the post tags table."
-            */
-            if (!$collectedTags->contains($tag->name)) {
-                PostTags::where('tag_id', '=', $tag->id)->delete();
-            }
-        }
-        return Redirect::route('index');
-        // Inertia requests need Inertia responses
-        // country roads... take me home...
+
+        PostTags::where('post_id', '=', $updatedPost->id)->delete();
+        // Clear out the old tags
+
+        foreach ($request->input('tags') as $tag) {
+            $newTag = Tags::firstOrCreate([
+                'name' => $tag
+            ]); // and add the updated tags back
+            PostTags::create([
+                'post_id' => $updatedPost->id,
+                'tag_id' => $newTag->id,
+            ]);
+        }        
+
+        return Redirect::route('viewpost', $updatedPost->id);
     }
-    public function deletePost(Request $request)
-    {
+
+    public function deletePost(Request $request) {
         // pretty self-explanatory
         $postID = $request->input('id');
         BlogPost::where('id', '=', $postID)->delete();

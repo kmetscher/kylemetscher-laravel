@@ -2519,8 +2519,8 @@ function Gutenberg(props) {
       !props.id ? // are we editing an existing post?
       _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_0__.Inertia.post('/gutenberg/new', text) : // if no, then insert a new one
       !delPost.bool ? // if yes, are we deleting it?
-      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_0__.Inertia.post('/gutenberg/edit') : // if no, then update with this ID
-      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_0__.Inertia.post('/gutenberg/delete'); // if yes, then delete with this ID
+      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_0__.Inertia.post('/gutenberg/edit', text) : // if no, then update with this ID
+      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_0__.Inertia.post('/gutenberg/delete', text); // if yes, then delete with this ID
     }
   }, props.id && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("label", {
     htmlFor: "id"

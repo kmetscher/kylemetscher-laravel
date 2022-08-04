@@ -43,11 +43,16 @@ export default function Gutenberg(props) {
                 {props.id && <h3>Editing {props.title}</h3>}
                 <form onSubmit={(e) => {
                     e.preventDefault();
-                    !props.id ? // are we editing an existing post?
-                        Inertia.post('/gutenberg/new', text) : // if no, then insert a new one
-                        !delPost.bool ? // if yes, are we deleting it?
-                            Inertia.post('/gutenberg/edit') : // if no, then update with this ID
-                            Inertia.post('/gutenberg/delete') // if yes, then delete with this ID
+                    !props.id ? 
+                    // are we editing an existing post?
+                        Inertia.post('/gutenberg/new', text) : 
+                        // if no, then insert a new one
+                        !delPost.bool ? 
+                        // if yes, are we deleting it?
+                            Inertia.post('/gutenberg/edit', text) : 
+                            // if no, then update with this ID
+                            Inertia.post('/gutenberg/delete', text) 
+                            // if yes, then delete with this ID
                 }
                 }>
                     {props.id && <label htmlFor="id"><h3>Post ID</h3></label>}
