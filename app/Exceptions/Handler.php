@@ -4,6 +4,10 @@ namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
+use Inertia\Inertia;
+use Illuminate\Support\Facades\Response;
+use App\Models\Tags;
+use App\Models\BlogPost;
 
 class Handler extends ExceptionHandler
 {
@@ -37,5 +41,30 @@ class Handler extends ExceptionHandler
         $this->reportable(function (Throwable $e) {
             //
         });
+    }
+
+    public function render($request, Throwable $exception) {
+        $response = parent::render($request, $exception);
+
+        $alltags = Tags::selectRaw('
+        name, id, (select count(post_id) from post_tags
+        where post_tags.tag_id = tags.id) as refs')
+        ->orderBy('name', 'asc')->get();
+
+        $refs = $alltags->sum('refs');
+
+        $archives = BlogPost::selectRaw(
+            'DISTINCT YEAR(date) AS year, MONTH(date) AS month')
+            ->orderBy('year', 'desc')
+            ->get();
+
+
+        return Inertia::render('Error', [
+                'status' => $response->getStatusCode(),
+                'alltags' => $alltags,
+                'totalrefs' => $refs,
+                'archives' => $archives,
+            ]);
+        // return $response;
     }
 }

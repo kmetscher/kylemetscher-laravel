@@ -2429,6 +2429,99 @@ function DateList(props) {
 
 /***/ }),
 
+/***/ "./resources/js/Pages/Error.js":
+/*!*************************************!*\
+  !*** ./resources/js/Pages/Error.js ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Error)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _Layout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Layout */ "./resources/js/Pages/Layout.js");
+/* harmony import */ var _ErrorMessage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ErrorMessage */ "./resources/js/Pages/ErrorMessage.js");
+/* harmony import */ var _Site__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Site */ "./resources/js/Pages/Site.js");
+
+
+
+
+function Error(props) {
+  var errorDoge;
+
+  switch (props.status) {
+    case 401:
+      errorDoge = '/storage/images/401.png';
+      break;
+
+    case 403:
+      errorDoge = '/storage/images/403.png';
+      break;
+
+    case 404:
+      errorDoge = '/storage/images/404.png';
+      break;
+
+    case 405:
+      errorDoge = '/storage/images/405.png';
+      break;
+
+    case 419:
+      errorDoge = '/storage/images/419.png';
+      break;
+
+    case 500:
+      errorDoge = '/storage/images/500.png';
+      break;
+
+    case 503:
+      errorDoge = '/storage/images/503.png';
+  }
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Layout__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Site__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    title: props.status
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "blogpost"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+    src: errorDoge,
+    alt: props.status,
+    className: "blogpost"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ErrorMessage__WEBPACK_IMPORTED_MODULE_2__["default"], null)));
+}
+
+/***/ }),
+
+/***/ "./resources/js/Pages/ErrorMessage.js":
+/*!********************************************!*\
+  !*** ./resources/js/Pages/ErrorMessage.js ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ ErrorMessage)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _LanguageContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./LanguageContext */ "./resources/js/Pages/LanguageContext.js");
+/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
+
+
+
+function ErrorMessage(props) {
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_LanguageContext__WEBPACK_IMPORTED_MODULE_1__.LanguageContext),
+      langState = _useContext.langState,
+      changeLanguage = _useContext.changeLanguage;
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, langState.error), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.Link, {
+    href: "/"
+  }, langState.backhome)));
+}
+
+/***/ }),
+
 /***/ "./resources/js/Pages/Gutenberg.js":
 /*!*****************************************!*\
   !*** ./resources/js/Pages/Gutenberg.js ***!
@@ -2568,7 +2661,7 @@ function Gutenberg(props) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("h3", null, "Language")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("select", {
     name: "language",
     id: "language",
-    value: props.language
+    value: props.language || 'en'
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("option", {
     value: "en"
   }, "English"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("option", {
@@ -2813,9 +2906,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ Layout)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _HeaderNav__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./HeaderNav */ "./resources/js/Pages/HeaderNav.js");
-/* harmony import */ var _Sidebar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Sidebar */ "./resources/js/Pages/Sidebar.js");
-/* harmony import */ var _Providers__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Providers */ "./resources/js/Pages/Providers.js");
+/* harmony import */ var _inertiajs_progress__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @inertiajs/progress */ "./node_modules/@inertiajs/progress/dist/index.js");
+/* harmony import */ var _HeaderNav__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./HeaderNav */ "./resources/js/Pages/HeaderNav.js");
+/* harmony import */ var _Sidebar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Sidebar */ "./resources/js/Pages/Sidebar.js");
+/* harmony import */ var _Providers__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Providers */ "./resources/js/Pages/Providers.js");
+
 
 
 
@@ -2825,11 +2920,15 @@ function Layout(_ref) {
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useLayoutEffect)(function () {
     console.log('Container updated');
   }, [children.mainflex]);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Providers__WEBPACK_IMPORTED_MODULE_3__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("main", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_HeaderNav__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  _inertiajs_progress__WEBPACK_IMPORTED_MODULE_1__.InertiaProgress.init({
+    delay: 0,
+    showSpinner: true
+  });
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Providers__WEBPACK_IMPORTED_MODULE_4__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("main", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_HeaderNav__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "mainflex"
-  }, children), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Sidebar__WEBPACK_IMPORTED_MODULE_2__["default"], null))));
+  }, children), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Sidebar__WEBPACK_IMPORTED_MODULE_3__["default"], null))));
 }
 
 /***/ }),
@@ -3797,7 +3896,9 @@ var languages = {
     said: 'said:',
     commentsingular: 'comment',
     commentplural: 'comments',
-    commentzero: 'No comments'
+    commentzero: 'No comments',
+    error: 'Something went wrong.',
+    backhome: 'Back to the home page'
   },
   hu: {
     home: 'Főoldal',
@@ -3817,7 +3918,9 @@ var languages = {
     said: 'azt mondta, hogy:',
     commentsingular: 'komment',
     commentplural: 'komment',
-    commentzero: 'Nincs komment'
+    commentzero: 'Nincs komment',
+    error: 'Valami elromlott.',
+    backhome: 'Hátra a főoldalra'
   },
   de: {
     home: 'Startseite',
@@ -3837,7 +3940,9 @@ var languages = {
     said: 'hat gesagt:',
     commentsingular: 'Kommentar',
     commentplural: 'Kommentare',
-    commentzero: 'Keine Kommentare'
+    commentzero: 'Keine Kommentare',
+    error: 'Etwas ist schiefgelaufen.',
+    backhome: 'Zurück zur Startseite'
   }
 };
 
@@ -3901,11 +4006,6 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
         props = _ref.props;
     (0,react_dom__WEBPACK_IMPORTED_MODULE_1__.render)( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(App, props), el);
   }
-});
-_inertiajs_progress__WEBPACK_IMPORTED_MODULE_3__.InertiaProgress.init({
-  includeCSS: true,
-  delay: 5000,
-  showSpinner: true
 });
 
 /***/ }),
@@ -58470,6 +58570,10 @@ var map = {
 	"./Contact.js": "./resources/js/Pages/Contact.js",
 	"./DateList": "./resources/js/Pages/DateList.js",
 	"./DateList.js": "./resources/js/Pages/DateList.js",
+	"./Error": "./resources/js/Pages/Error.js",
+	"./Error.js": "./resources/js/Pages/Error.js",
+	"./ErrorMessage": "./resources/js/Pages/ErrorMessage.js",
+	"./ErrorMessage.js": "./resources/js/Pages/ErrorMessage.js",
 	"./Gutenberg": "./resources/js/Pages/Gutenberg.js",
 	"./Gutenberg.js": "./resources/js/Pages/Gutenberg.js",
 	"./GutenbergHome": "./resources/js/Pages/GutenbergHome.js",

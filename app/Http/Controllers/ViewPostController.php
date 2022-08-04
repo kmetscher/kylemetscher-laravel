@@ -22,23 +22,17 @@ class ViewPostController extends Controller {
         return Comment::where('post_id', '=', $postID)->get();
     }
     public function byID($postID) {
-        $post = BlogPost::where('id', $postID)->get();
-        foreach ($post as $postData) {
-            $title = $postData->title;
-            $image = $postData->image;
-            $body = $postData->body;
-            $date = $postData->date;
-            $lang = $postData->language;
-        }
+        $post = BlogPost::findOrFail($postID);
+
         $tags = $this->retrievePostTags($postID);
         $comments = $this->retrieveComments($postID);
         return Inertia::render('ViewPost', [
         'id' => $postID,
-        'title' => $title,
-        'image' => $image,
-        'body' => $body,
-        'date' => $date,
-        'lang' => $lang,
+        'title' => $post->title,
+        'image' => $post->image,
+        'body' => $post->body,
+        'date' => $post->date,
+        'lang' => $post->language,
         'tags' => $tags,
         'comments' => $comments
     ]);

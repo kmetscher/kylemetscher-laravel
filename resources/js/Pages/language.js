@@ -18,6 +18,9 @@ export const languages = {
         commentsingular: 'comment',
         commentplural: 'comments',
         commentzero: 'No comments',
+        error: 'Something went wrong.',
+        backhome: 'Back to the home page',
+
     },
     hu: {
         home: 'Főoldal',
@@ -38,6 +41,8 @@ export const languages = {
         commentsingular: 'komment',
         commentplural: 'komment',
         commentzero: 'Nincs komment',
+        error: 'Valami elromlott.',
+        backhome: 'Hátra a főoldalra',
     },
     de: {
         home: 'Startseite',
@@ -58,5 +63,7 @@ export const languages = {
         commentsingular: 'Kommentar',
         commentplural: 'Kommentare',
         commentzero: 'Keine Kommentare',
+        error: 'Etwas ist schiefgelaufen.',
+        backhome: 'Zurück zur Startseite',
     }
 }

@@ -10,9 +10,3 @@ createInertiaApp({
     render(<App {...props} />, el)
   },
 });
-
-InertiaProgress.init({
-  includeCSS: true,
-  delay: 5000,
-  showSpinner: true,
-});

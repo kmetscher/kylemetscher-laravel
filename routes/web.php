@@ -7,6 +7,7 @@ use App\Http\Controllers\Gutenberg;
 use App\Http\Controllers\CommentsController;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 use Inertia\Inertia;
 
 // Post preview controller

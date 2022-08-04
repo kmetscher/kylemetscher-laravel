@@ -77,7 +77,7 @@ export default function Gutenberg(props) {
                         value={text.image}
                         onChange={handleChange} />
                     <label htmlFor="language"><h3>Language</h3></label>
-                    <select name="language" id="language" value={props.language}>
+                    <select name="language" id="language" value={props.language || 'en'}>
                         <option value="en">English</option>
                         <option value="hu">Magyar</option>
                         <option value="de">Deutsch</option>
