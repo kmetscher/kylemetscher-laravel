@@ -732,8 +732,19 @@
       font-size: 3vw;
     }
 
-    .taglist a {
+    .taglistmobile {
+      background-color: black;
+      padding: 2vw;
       text-decoration: underline;
+      margin-bottom: 1vw;
+    }
+
+    .taglistmobile ul {
+      list-style-type: none;
+      list-style-position: inside;
+      padding-left: 1vw;
+      line-height: 1.5;
+      font-size: 4vw;
     }
   }
   
@@ -829,6 +840,7 @@
     margin-top: 1vw;
     margin-bottom: 1vw;
     font-family: inherit;
+    font-size: 1.5vw;
     resize: none;
     transition-property: background-color;
     transition-duration: 0.25s;
@@ -930,6 +942,7 @@
       margin-top: 1vw;
       margin-bottom: 1vw;
       font-family: inherit;
+      font-size: 3.5vw;
       resize: none;
       transition-property: background-color;
       transition-duration: 0.25s;

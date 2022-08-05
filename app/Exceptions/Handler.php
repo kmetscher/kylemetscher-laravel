@@ -44,7 +44,6 @@ class Handler extends ExceptionHandler
     }
 
     public function render($request, Throwable $exception) {
-        $response = parent::render($request, $exception);
 
         $alltags = Tags::selectRaw('
         name, id, (select count(post_id) from post_tags
@@ -60,11 +59,10 @@ class Handler extends ExceptionHandler
 
 
         return Inertia::render('Error', [
-                'status' => $response->getStatusCode(),
+                'status' => 404,
                 'alltags' => $alltags,
                 'totalrefs' => $refs,
                 'archives' => $archives,
             ]);
-        // return $response;
     }
 }

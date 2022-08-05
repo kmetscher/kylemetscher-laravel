@@ -2205,9 +2205,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function AllTags(props) {
+  var media = window.matchMedia('(max-width: 800px');
   var allTags = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_3__.usePage)().props.alltags;
   var totalRefs = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_3__.usePage)().props.totalrefs;
-  var shuffleTags = allTags.sort(function () {
+  var shuffleTags = allTags;
+  shuffleTags = shuffleTags.sort(function () {
     return Math.random() - 0.5;
   });
   var tagCloud = shuffleTags.map(function (tag) {
@@ -2219,12 +2221,22 @@ function AllTags(props) {
       },
       href: '/tagged/' + tag.id
     }, tag.name));
+  }); // for mobile
+
+  var tagList = allTags.map(function (tag) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+      key: tag.id
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_3__.Link, {
+      href: '/tagged/' + tag.id
+    }, tag.name + ' (' + tag.refs + ')'));
   });
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Layout__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Tagline__WEBPACK_IMPORTED_MODULE_2__["default"], {
     taglinetype: "tags"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }), !media.matches && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "taglist"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, tagCloud)));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, tagCloud)), media.matches && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "taglistmobile"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, tagList)));
 }
 
 /***/ }),
@@ -2449,44 +2461,22 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function Error(props) {
+  function getRandomDoge() {
+    var number = Math.floor(Math.random() * 10);
+    return '/storage/images/404doge' + number + '.png';
+  }
+
   var errorDoge;
 
-  switch (props.status) {
-    case 401:
-      errorDoge = '/storage/images/401.png';
-      break;
-
-    case 403:
-      errorDoge = '/storage/images/403.png';
-      break;
-
-    case 404:
-      errorDoge = '/storage/images/404.png';
-      break;
-
-    case 405:
-      errorDoge = '/storage/images/405.png';
-      break;
-
-    case 419:
-      errorDoge = '/storage/images/419.png';
-      break;
-
-    case 500:
-      errorDoge = '/storage/images/500.png';
-      break;
-
-    case 503:
-      errorDoge = '/storage/images/503.png';
-  }
+  switch (props.status) {}
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Layout__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Site__WEBPACK_IMPORTED_MODULE_3__["default"], {
     title: props.status
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "blogpost"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-    src: errorDoge,
-    alt: props.status,
+    src: getRandomDoge(),
+    alt: "404: Not Found",
     className: "blogpost"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ErrorMessage__WEBPACK_IMPORTED_MODULE_2__["default"], null)));
 }
@@ -2861,15 +2851,18 @@ function Languages(props) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.Link, {
     onClick: function onClick() {
       return changeLanguage(_language__WEBPACK_IMPORTED_MODULE_3__.languages.en);
-    }
+    },
+    preserveScroll: true
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "English")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.Link, {
     onClick: function onClick() {
       return changeLanguage(_language__WEBPACK_IMPORTED_MODULE_3__.languages.hu);
-    }
+    },
+    preserveScroll: true
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "Magyar")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.Link, {
     onClick: function onClick() {
       return changeLanguage(_language__WEBPACK_IMPORTED_MODULE_3__.languages.de);
-    }
+    },
+    preserveScroll: true
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", null, "Deutsch")))));
 }
 
