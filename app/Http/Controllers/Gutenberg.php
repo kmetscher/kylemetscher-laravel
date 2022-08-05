@@ -16,7 +16,8 @@ new post as well as to delete it. By routing to different controller behavior
 for the view, we can make the most out of the React component.
 */
 
-class Gutenberg extends Controller {
+class Gutenberg extends Controller
+{
     // We just need the posts on the site to pick one to edit/delete.
     public function home() {
         $posts = BlogPost::select('id', 'title')
@@ -103,7 +104,7 @@ class Gutenberg extends Controller {
                 'post_id' => $updatedPost->id,
                 'tag_id' => $newTag->id,
             ]);
-        }        
+        }
 
         return Redirect::route('viewpost', $updatedPost->id);
     }
@@ -121,8 +122,13 @@ class Gutenberg extends Controller {
         // I like to read books with lots of pictures.
         $uploadedImage = $request->file('file');
         $imageName = $request->input('fileName');
-        $path = $uploadedImage->storeAs('images', $imageName);
-        return Redirect::back([
+        $extension = $uploadedImage->extension();
+        $imageName = "$imageName.$extension";
+        $path = $uploadedImage->storeAs('/public/images', $imageName);
+        $posts = BlogPost::select('id', 'title')
+            ->orderBy('id', 'desc')->get()->toArray();
+        return Inertia::render('GutenbergHome', [
+            'posts' => $posts,
             'path' => $path,
         ]);
     }

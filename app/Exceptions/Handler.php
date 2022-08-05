@@ -36,33 +36,37 @@ class Handler extends ExceptionHandler
      *
      * @return void
      */
-    public function register()
-    {
+    public function register() {
         $this->reportable(function (Throwable $e) {
             //
         });
     }
 
     public function render($request, Throwable $exception) {
-
-        $alltags = Tags::selectRaw('
+        if (app()->environment(['local'])) {
+            return parent::render($request, $exception);
+        } 
+        else {
+            $alltags = Tags::selectRaw('
         name, id, (select count(post_id) from post_tags
         where post_tags.tag_id = tags.id) as refs')
-        ->orderBy('name', 'asc')->get();
+                ->orderBy('name', 'asc')->get();
 
-        $refs = $alltags->sum('refs');
+            $refs = $alltags->sum('refs');
 
-        $archives = BlogPost::selectRaw(
-            'DISTINCT YEAR(date) AS year, MONTH(date) AS month')
-            ->orderBy('year', 'desc')
-            ->get();
+            $archives = BlogPost::selectRaw(
+                'DISTINCT YEAR(date) AS year, MONTH(date) AS month'
+            )
+                ->orderBy('year', 'desc')
+                ->get();
 
 
-        return Inertia::render('Error', [
+            return Inertia::render('Error', [
                 'status' => 404,
                 'alltags' => $alltags,
                 'totalrefs' => $refs,
                 'archives' => $archives,
             ]);
+        }
     }
 }
