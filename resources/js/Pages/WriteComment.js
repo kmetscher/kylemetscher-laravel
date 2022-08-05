@@ -76,7 +76,13 @@ export default function WriteComment(props) {
             <form /*action="/comment" method="post" */
                 onSubmit={(e) => {
                     e.preventDefault();
-                    Inertia.post('/comment', comment)
+                    Inertia.post('/comment', comment);
+                    setComment({
+                        ...comment,
+                        name: '',
+                        comment: '',
+                        trip: '',
+                    });
                 }}>
                 <label htmlFor="name">{langState.commentname} </label><br></br>
                 <input type="text" value={comment.name} onChange={handleChange}

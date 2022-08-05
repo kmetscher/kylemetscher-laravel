@@ -3726,6 +3726,11 @@ function WriteComment(props) {
     onSubmit: function onSubmit(e) {
       e.preventDefault();
       _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_3__.Inertia.post('/comment', comment);
+      setComment(_objectSpread(_objectSpread({}, comment), {}, {
+        name: '',
+        comment: '',
+        trip: ''
+      }));
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
     htmlFor: "name"

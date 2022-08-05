@@ -9,9 +9,13 @@ use Inertia\Inertia;
 
 class CommentsController extends Controller {
     public function submitComment(Request $request) {
-        if (strlen($request->input('beehive')) > 0) {
-            return redirect('index');
-        }
+        $request->validate([
+            'beehive' => 'size:0',
+            'postid' => 'required',
+            'name' => 'required|max: 254',
+            'trip' => 'required|max: 254',
+            'comment' => 'required',
+        ]);
         Comment::create([
             'post_id' => $request->input('postid'),
             'name' => $request->input('name'),
@@ -19,8 +23,6 @@ class CommentsController extends Controller {
             'comment' => $request->input('comment')
         ]);
         return Redirect::back();
-        // return Inertia::render('ffs');
-        //return Inertia::location("/viewpost/{$request->input('postid')}");
     }
 }
 
