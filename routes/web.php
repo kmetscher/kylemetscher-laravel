@@ -77,3 +77,8 @@ Route::post('gutenberg/delete',
     [Gutenberg::class, 'deletePost'])
     ->name('gutenberg.delete')
     ->middleware('auth.basic');
+
+Route::post('gutenberg/image',
+    [Gutenberg::class, 'uploadImage'])
+    ->name('gutenberg.imageupload')
+    ->middleware('auth.basic');

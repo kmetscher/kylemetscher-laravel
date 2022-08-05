@@ -116,4 +116,14 @@ class Gutenberg extends Controller {
 
         return Redirect::route('index');
     }
+
+    public function uploadImage(Request $request) {
+        // I like to read books with lots of pictures.
+        $uploadedImage = $request->file('file');
+        $imageName = $request->input('fileName');
+        $path = $uploadedImage->storeAs('images', $imageName);
+        return Redirect::back([
+            'path' => $path,
+        ]);
+    }
 }
