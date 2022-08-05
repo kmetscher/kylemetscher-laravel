@@ -2619,7 +2619,8 @@ function Gutenberg(props) {
     name: "title",
     id: "title",
     value: text.title,
-    onChange: handleChange
+    onChange: handleChange,
+    required: true
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("label", {
     htmlFor: "slug"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("h3", null, "Slug")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("textarea", {
@@ -2637,7 +2638,8 @@ function Gutenberg(props) {
     cols: 50,
     rows: 20,
     value: text.body,
-    onChange: handleChange
+    onChange: handleChange,
+    required: true
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("label", {
     htmlFor: "image"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("h3", null, "Featured image")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("input", {
@@ -2645,13 +2647,15 @@ function Gutenberg(props) {
     name: "image",
     id: "image",
     value: text.image,
-    onChange: handleChange
+    onChange: handleChange,
+    required: true
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("label", {
     htmlFor: "language"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("h3", null, "Language")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("select", {
     name: "language",
     id: "language",
-    value: props.language || 'en'
+    value: props.language || 'en',
+    required: true
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("option", {
     value: "en"
   }, "English"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("option", {
@@ -2674,7 +2678,8 @@ function Gutenberg(props) {
         tags: exploded,
         tagmap: taglist
       }));
-    }
+    },
+    required: true
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("input", {
     type: "text",
     value: JSON.stringify(text.tags),

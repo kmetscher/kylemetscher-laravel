@@ -61,7 +61,8 @@ export default function Gutenberg(props) {
                     <label htmlFor="title"><h3>Title</h3></label>
                     <input type="text" name="title" id="title"
                         value={text.title}
-                        onChange={handleChange} />
+                        onChange={handleChange} 
+                        required/>
                     <label htmlFor="slug"><h3>Slug</h3></label>
                     <textarea name="slug" id="slug" cols={50} rows={2}
                         value={text.slug}
@@ -70,14 +71,16 @@ export default function Gutenberg(props) {
                     <label htmlFor="body"><h3>Body</h3></label>
                     <textarea name="body" id="body" cols={50} rows={20}
                         value={text.body}
-                        onChange={handleChange}>
+                        onChange={handleChange}
+                        required>
                     </textarea>
                     <label htmlFor="image"><h3>Featured image</h3></label>
                     <input type="text" name="image" id="image"
                         value={text.image}
-                        onChange={handleChange} />
+                        onChange={handleChange} 
+                        required/>
                     <label htmlFor="language"><h3>Language</h3></label>
-                    <select name="language" id="language" value={props.language || 'en'}>
+                    <select name="language" id="language" value={props.language || 'en'} required>
                         <option value="en">English</option>
                         <option value="hu">Magyar</option>
                         <option value="de">Deutsch</option>
@@ -94,7 +97,7 @@ export default function Gutenberg(props) {
                                     tags: exploded,
                                     tagmap: taglist,
                                 })
-                            }} />
+                            }} required/>
                     <br></br>
                     <input type="text"
                         value={JSON.stringify(text.tags)}
