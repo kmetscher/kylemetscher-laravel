@@ -29,6 +29,7 @@ class ViewPostController extends Controller {
         return Inertia::render('ViewPost', [
         'id' => $postID,
         'title' => $post->title,
+        'slug' => $post->slug,
         'image' => $post->image,
         'body' => $post->body,
         'date' => $post->date,

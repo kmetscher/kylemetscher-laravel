@@ -35,6 +35,8 @@ export default function PostPreviews(props) {
             <Tagline
                 taglinetype={props.taglinetype}
                 tagline={props.tagline}
+                slug='Unfortunately, Kyle Metscher is online.'
+                image='/storage/images/paisano.jpg'
             />
             {postPreviews}
         </Layout>

@@ -62,7 +62,7 @@ export default function Tagline(props) {
     const taglineContent = <h2 className="tagline">{titleContent}</h2>
     return(
         <div>
-            <Site title={titleContent} />
+            <Site title={titleContent} slug={props.slug} image={props.image}/>
             {taglineContent}
         </div>
     );

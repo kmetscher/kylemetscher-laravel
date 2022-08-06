@@ -16,7 +16,7 @@ export default function ViewPost(props) {
     comment={comment.comment} date={comment.created_at}/>)
     return (
         <Layout>
-            <Site title={metaTitle} />
+            <Site title={metaTitle} image={props.image} slug={props.slug}/>
             <div className="blogpost">
                 <ReactMarkdown>{props.title}</ReactMarkdown>
                 <img className="blogpost" src={props.image}></img>
