@@ -4,8 +4,7 @@ This is a port of [my website](https://github.com/kmetscher/kylemetscher-dot-com
 
 ## In progress
 
-- Full post editor functionality (edit, delete, more informative success page)
-- Conversion of blog post record data to Markdown
+- Let me rest, I will work on my website later.
 
 ## Stuck
 
@@ -19,7 +18,9 @@ This is a port of [my website](https://github.com/kmetscher/kylemetscher-dot-com
 ## Security
 
 - SQL injection vulnerabilities tested with [sqlmap.py](https://github.com/sqlmapproject/sqlmap)
-- Using limited-privilege mySQL user in development, will likely also use in production
+- Using limited-privilege mySQL user
+- Basic auth protection on administrative areas
+- Lightsail firewall - Does It Work?
 
 ## Links
 

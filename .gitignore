@@ -18,3 +18,4 @@ yarn-error.log
 /config/database.php
 /.styleci.yml
 /phpunit.xml
+/public/js/app.js.LICENSE.txt
