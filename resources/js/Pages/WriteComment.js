@@ -92,7 +92,7 @@ export default function WriteComment(props) {
                     id="trip" name="trip" required /><br></br>
                 <label htmlFor="comment">{langState.commentarea}</label><br></br>
                 <textarea name="comment" id="comment" value={comment.comment}
-                    onChange={handleChange} cols="60" rows="5" required></textarea><br></br>
+                    onChange={handleChange} rows="5" required></textarea><br></br>
                 <input type="text" className="beehive" value={comment.beehive}
                     onChange={handleChange} id="beehive" name="beehive" autoComplete="off" />
                 <button type="submit">
