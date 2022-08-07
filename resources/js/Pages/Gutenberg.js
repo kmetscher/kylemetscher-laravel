@@ -80,12 +80,9 @@ export default function Gutenberg(props) {
                         onChange={handleChange} 
                         required/>
                     <label htmlFor="language"><h3>Language</h3></label>
-                    <select name="language" id="language" value={props.language || 'en'} 
-                    onChange={handleChange} required>
-                        <option value="en">English</option>
-                        <option value="hu">Magyar</option>
-                        <option value="de">Deutsch</option>
-                    </select>
+                    <input type="text" name="language" id="language" 
+                    value={props.language} 
+                    onChange={handleChange} required />
                     <label htmlFor="tags"><h3>Tags</h3></label>
                     <input type="text" defaultValue={props.tagstring}
                         onChange={
