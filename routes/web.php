@@ -1,4 +1,6 @@
 <?php
+
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostPreviewsController;
 use App\Http\Controllers\ViewPostController;
@@ -50,35 +52,45 @@ Route::post('/comment',
 
 // Auth
 
+Route::get('/login',
+    [AuthController::class, 'login'])
+    ->name('login');
+
+Route::post('/login',
+    [AuthController::class, 'authenticate'])
+    ->name('authenticate');
+
+// Gutenberg
+
 Route::get('/gutenberg', 
     [Gutenberg::class, 'home'])
     ->name('gutenberg.home')
-    ->middleware('auth.basic');
+    ->middleware('auth');
 
 Route::get('/gutenberg/new', 
     [Gutenberg::class, 'write'])
-    ->middleware('auth.basic');
+    ->middleware('auth');
 
 Route::get('/gutenberg/edit/{postID}',
     [Gutenberg::class, 'edit'])
-    ->middleware('auth.basic');
+    ->middleware('auth');
 
 Route::post('/gutenberg/new',
     [Gutenberg::class, 'submitPost'])
     ->name('gutenberg.new')
-    ->middleware('auth.basic');
+    ->middleware('auth');
 
 Route::post('gutenberg/edit',
     [Gutenberg::class, 'updatePost'])
     ->name('gutenberg.update')
-    ->middleware('auth.basic');
+    ->middleware('auth');
 
 Route::post('gutenberg/delete',
     [Gutenberg::class, 'deletePost'])
     ->name('gutenberg.delete')
-    ->middleware('auth.basic');
+    ->middleware('auth');
 
 Route::post('gutenberg/image',
     [Gutenberg::class, 'uploadImage'])
     ->name('gutenberg.imageupload')
-    ->middleware('auth.basic');
+    ->middleware('auth');

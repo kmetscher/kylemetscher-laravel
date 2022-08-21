@@ -2,13 +2,9 @@
 
 This is a port of [my website](https://github.com/kmetscher/kylemetscher-dot-com) to a stack of the [Laravel PHP framework](https://laravel.com/), the [React JavaScript library](https://reactjs.org/), and the [Inertia adapter library](https://inertiajs.com/).
 
-## In progress
+## Changes
 
-- Let me rest, I will work on my website later.
-
-## Stuck
-
-- Give it time.
+- Authentication via Laravel middleware
 
 ## Ideas
 
@@ -19,7 +15,6 @@ This is a port of [my website](https://github.com/kmetscher/kylemetscher-dot-com
 
 - SQL injection vulnerabilities tested with [sqlmap.py](https://github.com/sqlmapproject/sqlmap)
 - Using limited-privilege mySQL user
-- Basic auth protection on administrative areas
 - Lightsail firewall - Does It Work?
 
 ## Links
