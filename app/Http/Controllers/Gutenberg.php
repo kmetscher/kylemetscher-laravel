@@ -18,7 +18,8 @@ for the view, we can make the most out of the React component.
 
 class Gutenberg extends Controller
 {
-    // We just need the posts on the site to pick one to edit/delete.
+    /* We need the posts on the site, so we can pick one to edit, as well as
+    * the images on the site already for management purposes. */
     public function home() {
         $posts = BlogPost::select('id', 'title')
             ->orderBy('id', 'desc')->get()->toArray(); // i have absolutely fucking had it
