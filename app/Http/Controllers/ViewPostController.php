@@ -23,7 +23,6 @@ class ViewPostController extends Controller {
     }
     public function byID($postID) {
         $post = BlogPost::findOrFail($postID);
-
         $tags = $this->retrievePostTags($postID);
         $comments = $this->retrieveComments($postID);
         return Inertia::render('ViewPost', [

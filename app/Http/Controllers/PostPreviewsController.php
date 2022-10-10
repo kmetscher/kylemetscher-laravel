@@ -72,7 +72,10 @@ class PostPreviewsController extends Controller {
             'taglinetype' => 'home',
             'posts' => $posts,
             'tags' => $tags,
-            'comments' => $comments
+            'comments' => $comments,
+            'title' => "Kyle Metscher",
+            'slug' => 'Unfortunately, Kyle is online.',
+            'image' => 'https://kylemetscher.com/storage/images/paisano.jpg',
         ]);
     }
 
@@ -104,6 +107,9 @@ class PostPreviewsController extends Controller {
             'posts' => $posts,
             'tags' => $tags,
             'comments' => $comments,
+            'title' => "Posts tagged $tagline | Kyle Metscher",
+            'slug' => "Posts tagged $tagline",
+            'image' => 'https://kylemetscher.com/storage/images/paisano.jpg',
         ]);
     }
 
@@ -131,6 +137,9 @@ class PostPreviewsController extends Controller {
             'posts' => $posts,
             'tags' => $tags,
             'comments' => $comments,
+            'title' => "$date | Kyle Metscher",
+            'slug' => "Posts dated $date",
+            'image' => 'https://kylemetscher.com/storage/images/paisano.jpg',
         ]);
 
     }
@@ -150,6 +159,9 @@ class PostPreviewsController extends Controller {
             'posts' => $posts,
             'tags' => $tags,
             'comments' => $comments,
+            'title' => "$lang | Kyle Metscher",
+            'slug' => "$lang",
+            'image' => 'https://kylemetscher.com/storage/images/paisano.jpg',
         ]);
     }
 }
