@@ -571,13 +571,11 @@
     text-decoration: underline;
   }
   
-  img.blogpost {
-    object-fit: contain;
-    max-height: 35vw;
-    max-width: 100%;
-    padding: 2vw;
-    padding-bottom: 1vw;
-    padding-top: 1vw;
+  .blogpost-featured {
+    max-height: 90%;
+    max-width: 90%;
+    padding: 1vw;
+    align-self: center;
   }
 
   .blogpost img {
@@ -650,7 +648,7 @@
       flex-direction: column;
     }
   
-    img.blogpost {
+    .blogpost-featured {
       object-fit: contain;
       max-height: none;
       display: block;

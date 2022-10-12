@@ -21,6 +21,10 @@ class ViewPostController extends Controller {
         /* Accepts post ID as a parameter to query for comments. */
         return Comment::where('post_id', '=', $postID)->get();
     }
+    private function seoTitle($title) {
+        $markdown = ['# ', '*',];
+        return str_replace($markdown, '', $title);
+    }
     public function byID($postID) {
         $post = BlogPost::findOrFail($postID);
         $tags = $this->retrievePostTags($postID);
@@ -28,6 +32,7 @@ class ViewPostController extends Controller {
         return Inertia::render('ViewPost', [
         'id' => $postID,
         'title' => $post->title,
+        'seoTitle' => ViewPostController::seoTitle($post->title),
         'slug' => $post->slug,
         'image' => $post->image,
         'body' => $post->body,

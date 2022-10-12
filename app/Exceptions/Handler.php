@@ -66,6 +66,9 @@ class Handler extends ExceptionHandler
                 'alltags' => $alltags,
                 'totalrefs' => $refs,
                 'archives' => $archives,
+                'seoTitle' => "404 | Kyle Metscher",
+                'slug' => "You try that again and see what happens.",
+                'image' => "/storage/images/paisano.jpg",
             ]);
         }
     }

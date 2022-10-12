@@ -19,7 +19,7 @@ export default function ViewPost(props) {
             <Site title={metaTitle} image={props.image} slug={props.slug}/>
             <div className="blogpost">
                 <ReactMarkdown>{props.title}</ReactMarkdown>
-                <img className="blogpost" src={props.image}></img>
+                <img className="blogpost-featured" src={props.image}></img>
                 <ReactMarkdown>
                     {props.body}
                 </ReactMarkdown>

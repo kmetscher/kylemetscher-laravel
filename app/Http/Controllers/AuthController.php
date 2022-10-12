@@ -7,7 +7,11 @@ use Inertia\Inertia;
 class AuthController extends Controller {
 
     public function login() {
-        return Inertia::render('Login');
+        return Inertia::render('Login', [
+            'seoTitle' => "",
+            'slug' => "",
+            'image' => "",
+        ]);
     }
 
     public function authenticate(Request $request) {

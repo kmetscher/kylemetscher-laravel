@@ -25,6 +25,9 @@ class Gutenberg extends Controller
             ->orderBy('id', 'desc')->get()->toArray(); // i have absolutely fucking had it
         // with laravel's """collections"""
         return Inertia::render('GutenbergHome', [
+            'seoTitle' => "",
+            'slug' => "",
+            'image' => "",
             'posts' => $posts,
         ]);
     }
@@ -49,6 +52,7 @@ class Gutenberg extends Controller
         return Inertia::render('Gutenberg', [
             'id' => $post->id,
             'title' => $post->title,
+            'seoTitle' => $post->title,
             'slug' => $post->slug,
             'body' => $post->body,
             'image' => $post->image,
@@ -130,6 +134,9 @@ class Gutenberg extends Controller
             ->orderBy('id', 'desc')->get()->toArray();
         return Inertia::render('GutenbergHome', [
             'posts' => $posts,
+            'seoTitle' => "",
+            'slug' => "",
+            'image' => "",
             'path' => $path,
         ]);
     }
