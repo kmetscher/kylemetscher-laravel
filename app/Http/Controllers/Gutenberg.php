@@ -33,7 +33,11 @@ class Gutenberg extends Controller
     }
 
     public function write() {
-        return Inertia::render('Gutenberg', []);
+        return Inertia::render('Gutenberg', [
+            'image' => "",
+            'seoTitle' => "",
+            'slug' => "",
+        ]);
     } // Not much info needed to be passed.
 
     public function edit($postID) { // Editing an existing post
